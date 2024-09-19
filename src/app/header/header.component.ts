@@ -9,4 +9,9 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
 
+ // Function to open an external eCommerce site in a new tab
+ openEcommerceSite() {
+  window.open('https://mydukaan.io/surajteahouse', '_blank'); // Replace with your sample eCommerce site URL
+}
+
 }
