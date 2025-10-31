@@ -5,13 +5,11 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css'] // ✅ corrected plural
 })
 export class HeaderComponent {
-
- // Function to open an external eCommerce site in a new tab
- openEcommerceSite() {
-  window.open('https://mydukaan.io/surajteahouse', '_blank'); // Replace with your sample eCommerce site URL
-}
-
+  // Function to open an external eCommerce site in a new tab
+  openEcommerceSite() {
+    window.open('https://mydukaan.io/surajteahouse', '_blank');
+  }
 }

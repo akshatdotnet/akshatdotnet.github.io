@@ -1,0 +1,84 @@
+/* ===== Education Section ===== */
+.education-section {
+  background-color: #ffffff;
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.education-container {
+  max-width: 900px;
+  width: 100%;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  padding: 2.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+}
+
+.education-container:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.education-container h2 {
+  text-align: center;
+  color: #0d6efd;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Education Item ===== */
+.education-item {
+  border-left: 4px solid #0d6efd;
+  padding-left: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.education-item h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+  margin-bottom: 0.3rem;
+}
+
+.education-item .university {
+  font-size: 1rem;
+  color: #555;
+}
+
+.education-item .year {
+  font-weight: 500;
+  color: #0d6efd;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  .education-container {
+    padding: 2rem 1.5rem;
+  }
+
+  .education-container h2 {
+    font-size: 1.6rem;
+  }
+
+  .education-item h3 {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .education-container {
+    padding: 1.5rem;
+  }
+
+  .education-item h3 {
+    font-size: 1rem;
+  }
+
+  .education-item .university {
+    font-size: 0.9rem;
+  }
+}
