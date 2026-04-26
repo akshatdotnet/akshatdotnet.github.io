@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azure Microservices Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --azure: #0078d4;
+    --azure-light: #50b5f5;
+    --bg: #050a14;
+    --surface: #0d1724;
+    --border: #1a2d45;
+    --text: #c9dff5;
+    --muted: #4a6a8a;
+    --accent: #00d4aa;
+    --warn: #f59e0b;
+    --mono: 'JetBrains Mono', monospace;
+    --sans: 'Syne', sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--mono);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 24px;
+  }
+
+  /* Header */
+  header {
+    margin-bottom: 56px;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--azure-light);
+    border: 1px solid var(--azure);
+    padding: 4px 10px;
+    margin-bottom: 16px;
+    border-radius: 2px;
+  }
+
+  h1 {
+    font-family: var(--sans);
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    color: #fff;
+    margin-bottom: 14px;
+  }
+
+  h1 span { color: var(--azure-light); }
+
+  .subtitle {
+    font-size: 13px;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.7;
+  }
+
+  /* Metrics strip */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .metric {
+    background: var(--surface);
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .metric::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--azure), transparent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+
+  .metric:hover::after { transform: scaleX(1); }
+
+  .metric-value {
+    font-family: var(--sans);
+    font-size: 2rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .metric-value .unit { color: var(--accent); font-size: 1.1rem; }
+
+  .metric-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* Architecture diagram */
+  .section {
+    margin-bottom: 40px;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  .section-num {
+    font-size: 10px;
+    color: var(--azure);
+    border: 1px solid var(--border);
+    padding: 2px 8px;
+  }
+
+  .section-title {
+    font-family: var(--sans);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.02em;
+  }
+
+  /* Architecture flow */
+  .arch {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 28px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0;
+    align-items: center;
+  }
+
+  .arch-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 16px 8px;
+    cursor: default;
+    transition: transform 0.2s;
+  }
+
+  .arch-node:hover { transform: translateY(-4px); }
+
+  .arch-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    position: relative;
+  }
+
+  .arch-icon.azure-blue { background: rgba(0,120,212,0.15); border: 1px solid rgba(0,120,212,0.4); }
+  .arch-icon.azure-green { background: rgba(0,212,170,0.1); border: 1px solid rgba(0,212,170,0.3); }
+  .arch-icon.azure-warn { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.3); }
+
+  .arch-label {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .arch-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--border);
+    font-size: 18px;
+  }
+
+  /* Skills grid */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .skill-card {
+    background: var(--surface);
+    padding: 20px;
+    transition: background 0.2s;
+    cursor: default;
+  }
+
+  .skill-card:hover { background: #111f33; }
+
+  .skill-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 12px;
+  }
+
+  .skill-icon { font-size: 22px; }
+
+  .skill-badge {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 2px;
+  }
+
+  .badge-azure { background: rgba(0,120,212,0.2); color: var(--azure-light); border: 1px solid rgba(0,120,212,0.3); }
+  .badge-green { background: rgba(0,212,170,0.15); color: var(--accent); border: 1px solid rgba(0,212,170,0.3); }
+  .badge-warn { background: rgba(245,158,11,0.15); color: var(--warn); border: 1px solid rgba(245,158,11,0.3); }
+
+  .skill-name {
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+  }
+
+  .skill-desc {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  .skill-bar {
+    margin-top: 12px;
+    height: 2px;
+    background: var(--border);
+    border-radius: 1px;
+    overflow: hidden;
+  }
+
+  .skill-fill {
+    height: 100%;
+    border-radius: 1px;
+    background: linear-gradient(90deg, var(--azure), var(--azure-light));
+    animation: fillBar 1.2s 0.5s ease both;
+    transform-origin: left;
+  }
+
+  .skill-fill.green { background: linear-gradient(90deg, var(--accent), #7df5e0); }
+  .skill-fill.warn { background: linear-gradient(90deg, var(--warn), #fcd34d); }
+
+  /* CI/CD Pipeline */
+  .pipeline {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 24px;
+  }
+
+  .pipe-stages {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .pipe-stage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 90px;
+    flex: 1;
+  }
+
+  .pipe-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .pipe-dot.done { border-color: var(--accent); background: rgba(0,212,170,0.1); }
+  .pipe-dot.active { border-color: var(--azure); background: rgba(0,120,212,0.15); animation: pulse 1.5s infinite; }
+  .pipe-dot.wait { border-color: var(--border); background: var(--bg); }
+
+  .pipe-name {
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .pipe-connector {
+    flex: 1;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), var(--border));
+    margin-top: -20px;
+    min-width: 20px;
+  }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fillBar {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+  }
+
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(0,120,212,0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(0,120,212,0); }
+  }
+
+  /* Terminal block */
+  .terminal {
+    background: #020810;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .terminal .prompt { color: var(--azure); }
+  .terminal .cmd { color: #fff; }
+  .terminal .out { color: var(--muted); }
+  .terminal .ok { color: var(--accent); }
+
+  /* Footer */
+  footer {
+    margin-top: 56px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+  }
+
+  .status-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    margin-right: 6px;
+    animation: pulse 2s infinite;
+  }
+
+  @media (max-width: 700px) {
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .skills-grid { grid-template-columns: 1fr; }
+    .arch { grid-template-columns: 1fr; }
+    .arch-arrow { transform: rotate(90deg); }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="tag">// Azure Cloud Architect</div>
+    <h1>Microservices<br><span>Platform Overview</span></h1>
+    <p class="subtitle">Azure-native distributed architecture · CI/CD · Event-driven · Clean Architecture · Agile delivery</p>
+  </header>
+
+  <!-- Metrics -->
+  <div class="metrics">
+    <div class="metric">
+      <div class="metric-value">40<span class="unit">%</span></div>
+      <div class="metric-label">Scalability Gain</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">35<span class="unit">%</span></div>
+      <div class="metric-label">API Performance</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">95<span class="unit">%</span></div>
+      <div class="metric-label">On-Time Delivery</div>
+    </div>
+    <div class="metric">
+      <div class="metric-value">20<span class="unit">%</span></div>
+      <div class="metric-label">Delivery Speed</div>
+    </div>
+  </div>
+
+  <!-- Architecture -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <span class="section-title">Event-Driven Architecture</span>
+    </div>
+    <div class="arch">
+      <div class="arch-node">
+        <div class="arch-icon azure-blue">🌐</div>
+        <div class="arch-label">Angular<br>Frontend</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <div class="arch-icon azure-blue">⚡</div>
+        <div class="arch-label">API Gateway<br>.NET Core</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <div class="arch-icon azure-warn">📨</div>
+        <div class="arch-label">Service Bus<br>Event Grid</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <div class="arch-icon azure-green">🔧</div>
+        <div class="arch-label">Azure<br>Functions</div>
+      </div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">
+        <div class="arch-icon azure-blue">☁️</div>
+        <div class="arch-label">AKS / App<br>Services</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CI/CD Pipeline -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <span class="section-title">CI/CD Pipeline · Azure DevOps</span>
+    </div>
+    <div class="pipeline">
+      <div class="pipe-stages">
+        <div class="pipe-stage">
+          <div class="pipe-dot done">✓</div>
+          <div class="pipe-name">Code<br>Commit</div>
+        </div>
+        <div class="pipe-connector"></div>
+        <div class="pipe-stage">
+          <div class="pipe-dot done">✓</div>
+          <div class="pipe-name">Build<br>& Test</div>
+        </div>
+        <div class="pipe-connector"></div>
+        <div class="pipe-stage">
+          <div class="pipe-dot done">✓</div>
+          <div class="pipe-name">Docker<br>Image</div>
+        </div>
+        <div class="pipe-connector"></div>
+        <div class="pipe-stage">
+          <div class="pipe-dot active">⚙</div>
+          <div class="pipe-name">Terraform<br>IaC</div>
+        </div>
+        <div class="pipe-connector" style="background: linear-gradient(90deg, var(--azure), var(--border))"></div>
+        <div class="pipe-stage">
+          <div class="pipe-dot wait">○</div>
+          <div class="pipe-name">Deploy<br>AKS</div>
+        </div>
+        <div class="pipe-connector" style="background: var(--border)"></div>
+        <div class="pipe-stage">
+          <div class="pipe-dot wait">○</div>
+          <div class="pipe-name">App<br>Insights</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <span class="section-title">Core Competencies</span>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon">☸️</div>
+          <span class="skill-badge badge-azure">Infra</span>
+        </div>
+        <div class="skill-name">AKS · Docker · Terraform</div>
+        <div class="skill-desc">Container orchestration & Infrastructure-as-Code for repeatable, scalable deployments.</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:92%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon">📨</div>
+          <span class="skill-badge badge-warn">Messaging</span>
+        </div>
+        <div class="skill-name">Service Bus · Event Grid</div>
+        <div class="skill-desc">Async event-driven inter-service communication reducing tight coupling by 40%.</div>
+        <div class="skill-bar"><div class="skill-fill warn" style="width:88%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon">⚡</div>
+          <span class="skill-badge badge-green">Serverless</span>
+        </div>
+        <div class="skill-name">Azure Functions</div>
+        <div class="skill-desc">Modular event-triggered functions for lightweight, decoupled microservices.</div>
+        <div class="skill-bar"><div class="skill-fill green" style="width:85%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon">🔷</div>
+          <span class="skill-badge badge-azure">Backend</span>
+        </div>
+        <div class="skill-name">.NET Core · Web API</div>
+        <div class="skill-desc">High-performance REST APIs with async processing & caching for 35% speed gains.</div>
+        <div class="skill-bar"><div class="skill-fill" style="width:95%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon">🏗️</div>
+          <span class="skill-badge badge-green">Design</span>
+        </div>
+        <div class="skill-name">Clean Architecture · SOLID</div>
+        <div class="skill-desc">Domain-driven layered architecture improving maintainability and delivery speed.</div>
+        <div class="skill-bar"><div class="skill-fill green" style="width:90%"></div></div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-top">
+          <div class="skill-icon">📊</div>
+          <span class="skill-badge badge-warn">Observability</span>
+        </div>
+        <div class="skill-name">Application Insights</div>
+        <div class="skill-desc">Proactive monitoring, telemetry & alerting for migrated on-prem workloads on Azure.</div>
+        <div class="skill-bar"><div class="skill-fill warn" style="width:82%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Terminal -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <span class="section-title">Quick Start · Local Dev</span>
+    </div>
+    <div class="terminal">
+      <div><span class="prompt">$</span> <span class="cmd">git clone https://github.com/org/azure-microservices-platform</span></div>
+      <div class="out">Cloning into 'azure-microservices-platform'...</div>
+      <div><span class="prompt">$</span> <span class="cmd">cd azure-microservices-platform && docker compose up -d</span></div>
+      <div class="out">✔ Service Bus emulator  running</div>
+      <div class="out">✔ API Gateway           running on :5000</div>
+      <div class="out">✔ Travel Service         running on :5001</div>
+      <div class="out">✔ Booking Service        running on :5002</div>
+      <div><span class="prompt">$</span> <span class="cmd">terraform init && terraform apply -auto-approve</span></div>
+      <div class="ok">Apply complete! Resources: 12 added, 0 changed, 0 destroyed.</div>
+      <div><span class="prompt">$</span> <span class="cmd">kubectl get pods -n production</span></div>
+      <div class="ok">All pods running · AKS cluster healthy · AppInsights connected ✓</div>
+    </div>
+  </div>
+
+  <footer>
+    <span><span class="status-dot"></span>ALL SYSTEMS OPERATIONAL</span>
+    <span>CLEAN ARCH · SOLID · AGILE · AZURE NATIVE</span>
+    <span>TEAM 5 · SPRINTS · 95% OTD</span>
+  </footer>
+
+</div>
+</body>
+</html>
