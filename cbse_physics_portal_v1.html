@@ -1,0 +1,2961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CBSE Physics Excellence Portal | Class 8–12 | 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+:root {
+  --saffron: #FF6B00;
+  --saffron-light: #FFF0E5;
+  --saffron-deep: #CC4400;
+  --navy: #0A1628;
+  --navy-mid: #1A2A45;
+  --navy-soft: #2C3E5D;
+  --gold: #F5A623;
+  --gold-light: #FFF8E7;
+  --emerald: #0A6E4E;
+  --emerald-light: #E8F5F0;
+  --crimson: #C0392B;
+  --crimson-light: #FDEDEC;
+  --sky: #1E6FBF;
+  --sky-light: #EBF3FB;
+  --violet: #6C3483;
+  --violet-light: #F5EBF8;
+  --cream: #FEFCF8;
+  --border: #E8E2D8;
+  --text-main: #1A1208;
+  --text-muted: #6B5D4E;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* ══ HERO ══ */
+.hero {
+  background: var(--navy);
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  min-height: 340px;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 600px; height: 100%;
+  background: linear-gradient(135deg, var(--saffron) 0%, var(--gold) 100%);
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+  opacity: 0.12;
+}
+.hero-ashoka {
+  position: absolute;
+  right: 60px; top: 50%;
+  transform: translateY(-50%);
+  font-size: 120px;
+  opacity: 0.06;
+  color: #fff;
+  line-height: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 48px 60px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,107,0,0.2);
+  border: 1px solid rgba(255,107,0,0.4);
+  color: var(--gold);
+  border-radius: 40px;
+  padding: 6px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.hero h1 span { color: var(--saffron); }
+.hero-sub {
+  color: rgba(255,255,255,0.65);
+  font-size: 15px;
+  font-weight: 300;
+  margin-bottom: 28px;
+  max-width: 520px;
+}
+.hero-stats {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+.hstat {
+  text-align: left;
+}
+.hstat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--saffron);
+  line-height: 1;
+}
+.hstat-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-top: 3px;
+}
+
+/* ══ NAV TABS ══ */
+.nav-wrapper {
+  background: #fff;
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+.main-nav {
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 0 20px;
+  gap: 0;
+}
+.main-nav::-webkit-scrollbar { display: none; }
+.nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 20px;
+  border: none;
+  background: transparent;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.2s;
+}
+.nav-btn i { font-size: 14px; }
+.nav-btn:hover { color: var(--saffron); }
+.nav-btn.active {
+  color: var(--saffron);
+  border-bottom-color: var(--saffron);
+  font-weight: 600;
+}
+
+/* ══ SECTIONS ══ */
+.section { display: none; padding: 40px 0; }
+.section.active { display: block; }
+
+.container-main { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* ══ SECTION HEADER ══ */
+.sec-header {
+  margin-bottom: 32px;
+}
+.sec-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--saffron);
+  margin-bottom: 8px;
+}
+.sec-eyebrow::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--saffron);
+  border-radius: 2px;
+}
+.sec-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 3vw, 34px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+}
+.sec-desc {
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-top: 8px;
+  max-width: 680px;
+  line-height: 1.7;
+}
+
+/* ══ CLASS CARDS ══ */
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.class-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.class-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  border-radius: 14px 14px 0 0;
+}
+.class-card.c8::before { background: var(--emerald); }
+.class-card.c9::before { background: var(--sky); }
+.class-card.c10::before { background: var(--violet); }
+.class-card.c11::before { background: var(--saffron); }
+.class-card.c12::before { background: var(--crimson); }
+
+.class-card:hover {
+  border-color: var(--saffron);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(255,107,0,0.12);
+}
+.class-card.selected {
+  border-color: var(--saffron);
+  background: var(--saffron-light);
+}
+.class-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 38px;
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.class-card.c8 .class-num { color: var(--emerald); }
+.class-card.c9 .class-num { color: var(--sky); }
+.class-card.c10 .class-num { color: var(--violet); }
+.class-card.c11 .class-num { color: var(--saffron); }
+.class-card.c12 .class-num { color: var(--crimson); }
+.class-label { font-size: 12px; color: var(--text-muted); font-weight: 500; }
+.class-topics {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.topic-pill {
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+.c8 .topic-pill { background: var(--emerald-light); color: var(--emerald); }
+.c9 .topic-pill { background: var(--sky-light); color: var(--sky); }
+.c10 .topic-pill { background: var(--violet-light); color: var(--violet); }
+.c11 .topic-pill { background: var(--saffron-light); color: var(--saffron-deep); }
+.c12 .topic-pill { background: var(--crimson-light); color: var(--crimson); }
+
+/* ══ SYLLABUS PANEL ══ */
+.syllabus-panel {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: none;
+}
+.syllabus-panel.visible { display: block; }
+.panel-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.panel-title { font-family: 'Playfair Display', serif; font-size: 20px; }
+.panel-meta { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; }
+.chapter-list { padding: 0; }
+.chapter-item {
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.chapter-item:last-child { border-bottom: none; }
+.chapter-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 28px;
+  cursor: pointer;
+  transition: background 0.2s;
+  user-select: none;
+}
+.chapter-header:hover { background: var(--cream); }
+.chap-num {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+  flex-shrink: 0;
+}
+.chap-name { flex: 1; font-size: 15px; font-weight: 500; }
+.chap-meta {
+  font-size: 11px;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.chap-arrow {
+  width: 24px; height: 24px;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: 50%;
+  background: var(--border);
+  font-size: 10px;
+  color: var(--text-muted);
+  transition: transform 0.25s;
+  flex-shrink: 0;
+}
+.chapter-item.open .chap-arrow { transform: rotate(180deg); }
+.chapter-body {
+  display: none;
+  padding: 0 28px 20px 76px;
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+}
+.chapter-item.open .chapter-body { display: block; }
+.topic-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: 14px;
+}
+.topic-row:last-child { border-bottom: none; }
+.topic-icon { color: var(--saffron); font-size: 12px; margin-top: 3px; flex-shrink: 0; }
+.topic-text { color: var(--navy-soft); line-height: 1.5; }
+.topic-tags {
+  margin-top: 16px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.tag { font-size: 11px; padding: 4px 10px; border-radius: 20px; font-weight: 500; }
+.tag-lab { background: var(--emerald-light); color: var(--emerald); }
+.tag-formula { background: var(--violet-light); color: var(--violet); }
+.tag-exam { background: var(--crimson-light); color: var(--crimson); }
+.tag-ncert { background: var(--gold-light); color: #7A5000; }
+
+/* ══ METHODOLOGY CARDS ══ */
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+.method-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.25s;
+  position: relative;
+}
+.method-card:hover {
+  border-color: var(--saffron);
+  box-shadow: 0 8px 24px rgba(255,107,0,0.08);
+}
+.method-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+.method-title { font-size: 17px; font-weight: 600; margin-bottom: 8px; color: var(--navy); }
+.method-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; margin-bottom: 12px; }
+.method-steps {
+  list-style: none;
+  margin-top: 12px;
+}
+.method-steps li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--navy-soft);
+  margin-bottom: 6px;
+  line-height: 1.5;
+}
+.method-steps li::before {
+  content: '→';
+  color: var(--saffron);
+  font-size: 11px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+/* ══ PRACTICAL TABLE ══ */
+.lab-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 24px;
+}
+.lab-head {
+  padding: 16px 24px;
+  font-weight: 600;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.lab-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.lab-table th {
+  background: var(--navy);
+  color: rgba(255,255,255,0.85);
+  padding: 10px 16px;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 500;
+}
+.lab-table td {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--navy-soft);
+  vertical-align: top;
+}
+.lab-table tr:last-child td { border-bottom: none; }
+.lab-table tr:hover td { background: var(--cream); }
+.lab-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+.lb-mandatory { background: var(--crimson-light); color: var(--crimson); }
+.lb-demo { background: var(--sky-light); color: var(--sky); }
+.lb-project { background: var(--gold-light); color: #7A5000; }
+
+/* ══ ROADMAP ══ */
+.roadmap-phases {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 32px;
+  background: #fff;
+}
+@media(max-width:768px) { .roadmap-phases { grid-template-columns: 1fr; } }
+.phase {
+  padding: 28px;
+  border-right: 1px solid var(--border);
+  position: relative;
+}
+.phase:last-child { border-right: none; }
+.phase-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 60px;
+  font-weight: 900;
+  opacity: 0.07;
+  position: absolute;
+  top: 8px; right: 16px;
+  line-height: 1;
+  color: var(--navy);
+}
+.phase-badge {
+  display: inline-block;
+  font-size: 10px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.ph1 .phase-badge { background: var(--emerald-light); color: var(--emerald); }
+.ph2 .phase-badge { background: var(--saffron-light); color: var(--saffron-deep); }
+.ph3 .phase-badge { background: var(--crimson-light); color: var(--crimson); }
+.phase-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.phase-period { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+.phase-items { list-style: none; }
+.phase-items li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--navy-soft);
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+.ph1 .phase-items li::before { content: '◆'; color: var(--emerald); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+.ph2 .phase-items li::before { content: '◆'; color: var(--saffron); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+.ph3 .phase-items li::before { content: '◆'; color: var(--crimson); font-size: 8px; margin-top: 4px; flex-shrink: 0; }
+
+/* ══ ASSESSMENT ══ */
+.assessment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.assess-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.assess-head {
+  padding: 16px 20px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.assess-body { padding: 20px; }
+.assess-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.assess-item:last-child { border-bottom: none; }
+.assess-key { color: var(--text-muted); }
+.assess-val { font-weight: 600; color: var(--navy); font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+
+/* ══ PROGRESS ══ */
+.progress-board {
+  background: var(--navy);
+  border-radius: 16px;
+  padding: 28px;
+  color: #fff;
+  margin-bottom: 24px;
+}
+.progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+.prog-stat {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 18px;
+}
+.prog-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--gold);
+  line-height: 1;
+}
+.prog-stat-label { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.07em; }
+
+.tracker-table {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+}
+.tracker-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.tracker-table th {
+  background: var(--navy);
+  color: rgba(255,255,255,0.8);
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  font-weight: 500;
+}
+.tracker-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border);
+  color: var(--navy-soft);
+}
+.tracker-table tr:last-child td { border-bottom: none; }
+.prog-bar-wrap { background: var(--border); border-radius: 20px; height: 6px; width: 120px; overflow: hidden; }
+.prog-bar { height: 100%; border-radius: 20px; }
+.score-chip {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 700;
+  font-family: 'JetBrains Mono', monospace;
+}
+.sc-a { background: var(--emerald-light); color: var(--emerald); }
+.sc-b { background: var(--sky-light); color: var(--sky); }
+.sc-c { background: var(--gold-light); color: #7A5000; }
+.sc-d { background: var(--crimson-light); color: var(--crimson); }
+
+/* ══ PARENT MODULE ══ */
+.parent-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.parent-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 14px;
+  padding: 24px;
+  transition: all 0.25s;
+}
+.parent-card:hover {
+  border-color: var(--saffron);
+  box-shadow: 0 8px 24px rgba(255,107,0,0.08);
+}
+.parent-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+}
+.parent-title { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.parent-desc { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+
+.report-card {
+  background: #fff;
+  border: 2px solid var(--navy);
+  border-radius: 16px;
+  overflow: hidden;
+  max-width: 700px;
+}
+.rc-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 20px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.rc-logo {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--saffron);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  color: #fff;
+}
+.rc-body { padding: 24px 28px; }
+.rc-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 14px;
+}
+.rc-row:last-child { border-bottom: none; }
+.rc-subject { color: var(--navy); font-weight: 500; }
+.rc-score { font-family: 'JetBrains Mono', monospace; font-weight: 600; font-size: 15px; }
+
+/* ══ UTILITIES ══ */
+.divider {
+  height: 1px;
+  background: var(--border);
+  margin: 32px 0;
+}
+.info-strip {
+  background: var(--navy-mid);
+  color: rgba(255,255,255,0.8);
+  border-radius: 12px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+.info-strip i { color: var(--gold); font-size: 18px; }
+
+/* Accordion animation */
+.chapter-body { animation: slideDown 0.2s ease; }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ══ FOOTER ══ */
+footer {
+  background: var(--navy);
+  color: rgba(255,255,255,0.5);
+  text-align: center;
+  padding: 28px;
+  font-size: 13px;
+  margin-top: 60px;
+}
+footer span { color: var(--saffron); }
+
+/* ══ FLOATING PARTICLES ══ */
+#particles-canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ══ PHYSICS TOPIC VISUALS ══ */
+.physics-world {
+  margin: 40px 0 0;
+}
+.physics-world-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.physics-world-sub {
+  color: var(--text-muted);
+  font-size: 14px;
+  margin-bottom: 28px;
+}
+.topic-visuals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.topic-visual-card {
+  background: #fff;
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.topic-visual-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+  border-color: transparent;
+}
+.tvc-image {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  display: block;
+}
+.tvc-anim {
+  width: 100%;
+  height: 180px;
+  background: var(--navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.tvc-body {
+  padding: 16px 18px 20px;
+}
+.tvc-class-tag {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 8px;
+  display: inline-block;
+}
+.tvc-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+.tvc-desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.tvc-real-world {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--saffron-deep);
+  font-weight: 500;
+}
+
+/* ══ SVG ANIMATIONS ══ */
+@keyframes orbit { from { transform: rotate(0deg) translateX(52px) rotate(0deg); } to { transform: rotate(360deg) translateX(52px) rotate(-360deg); } }
+@keyframes orbit2 { from { transform: rotate(120deg) translateX(38px) rotate(-120deg); } to { transform: rotate(480deg) translateX(38px) rotate(-480deg); } }
+@keyframes orbit3 { from { transform: rotate(240deg) translateX(28px) rotate(-240deg); } to { transform: rotate(600deg) translateX(28px) rotate(-600deg); } }
+@keyframes pendulum { 0%,100%{transform:rotate(-30deg)} 50%{transform:rotate(30deg)} }
+@keyframes wave-anim { 0%{transform:translateX(0)} 100%{transform:translateX(-80px)} }
+@keyframes spark { 0%,100%{opacity:1; r:3px} 50%{opacity:0.3; r:1px} }
+@keyframes lightning-bolt { 0%,90%,100%{opacity:0} 91%,99%{opacity:1} }
+@keyframes prism-spread { 0%{opacity:0; transform:scaleX(0)} 100%{opacity:1; transform:scaleX(1)} }
+@keyframes float-up { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+@keyframes pulse-ring { 0%{r:10; opacity:1} 100%{r:40; opacity:0} }
+@keyframes magnetic-field { 0%{stroke-dashoffset:300} 100%{stroke-dashoffset:0} }
+@keyframes electron-flow { 0%{stroke-dashoffset:200} 100%{stroke-dashoffset:0} }
+@keyframes bounce-ball { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-60px)} }
+@keyframes shadow-squeeze { 0%,100%{transform:scaleX(1); opacity:0.3} 50%{transform:scaleX(0.3); opacity:0.1} }
+@keyframes prism-ray { to { stroke-dashoffset: 0; } }
+
+/* ══ TEACHER PROFILE ══ */
+.teacher-section {
+  background: var(--navy);
+  padding: 60px 0;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+.teacher-section::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: rgba(255,107,0,0.07);
+}
+.teacher-section::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -40px;
+  width: 300px; height: 300px;
+  border-radius: 50%;
+  background: rgba(245,166,35,0.05);
+}
+.teacher-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+  z-index: 2;
+}
+.teacher-layout {
+  display: grid;
+  grid-template-columns: 340px 1fr;
+  gap: 52px;
+  align-items: start;
+}
+@media(max-width:900px) { .teacher-layout { grid-template-columns: 1fr; } }
+.teacher-avatar-wrap {
+  position: relative;
+}
+.teacher-avatar-ring {
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--saffron), var(--gold));
+  padding: 4px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+.teacher-avatar-inner {
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background: var(--navy-mid);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.teacher-avatar-inner img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.teacher-avatar-fallback {
+  font-size: 80px;
+  color: rgba(255,255,255,0.15);
+}
+.teacher-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 16px;
+}
+.t-badge {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.75);
+  font-weight: 500;
+}
+.t-badge.gold { background: rgba(245,166,35,0.15); border-color: rgba(245,166,35,0.3); color: var(--gold); }
+.teacher-info { padding-top: 8px; }
+.teacher-eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--saffron);
+  margin-bottom: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.teacher-eyebrow::after { content:''; display:block; width:24px; height:2px; background:var(--saffron); border-radius:2px; }
+.teacher-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3.5vw, 42px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+.teacher-title {
+  font-size: 16px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 24px;
+  font-weight: 300;
+}
+.teacher-quote {
+  border-left: 3px solid var(--saffron);
+  padding-left: 20px;
+  margin-bottom: 28px;
+}
+.teacher-quote p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.85);
+  line-height: 1.7;
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+}
+.teacher-stats-row {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+.t-stat { text-align: left; }
+.t-stat-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+.t-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 3px; text-transform: uppercase; letter-spacing: 0.07em; }
+.teacher-bio {
+  font-size: 14.5px;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+.teacher-expertise-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+.expertise-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+.exp-pill {
+  background: rgba(255,107,0,0.15);
+  border: 1px solid rgba(255,107,0,0.3);
+  color: rgba(255,255,255,0.8);
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 500;
+}
+.teacher-achievements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.t-achieve {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.t-achieve-icon { font-size: 20px; flex-shrink: 0; }
+.t-achieve-text { font-size: 13px; color: rgba(255,255,255,0.7); line-height: 1.5; }
+.t-achieve-text strong { display:block; color:#fff; margin-bottom:2px; font-size:13px; }
+
+/* ══ QUOTE TICKER ══ */
+.quote-ticker {
+  background: var(--saffron);
+  overflow: hidden;
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+.quote-ticker-inner {
+  display: flex;
+  gap: 80px;
+  white-space: nowrap;
+  animation: ticker 40s linear infinite;
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.02em;
+}
+@keyframes ticker { from{transform:translateX(100vw)} to{transform:translateX(-100%)} }
+.ticker-sep { color: rgba(255,255,255,0.4); }
+
+/* ══ RESPONSIVE ══ */
+@media(max-width: 768px) {
+  .hero-content { padding: 32px 24px; }
+  .hero-stats { gap: 20px; }
+  .container-main { padding: 0 16px; }
+  .roadmap-phases { grid-template-columns: 1fr; }
+  .phase { border-right: none; border-bottom: 1px solid var(--border); }
+  .phase:last-child { border-bottom: none; }
+  .chap-meta { display: none; }
+  .teacher-achievements { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══ -->
+<div class="hero" style="min-height:400px;">
+  <canvas id="particles-canvas"></canvas>
+  <div class="hero-ashoka" style="right:5%; font-size:clamp(80px,12vw,160px); opacity:0.05;">⚛</div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <i class="fas fa-flag"></i>
+      CBSE Board 2026 · Ministry of Education, India
+    </div>
+    <h1>Physics <span>Excellence</span><br>Portal</h1>
+    <p class="hero-sub">Complete teaching ecosystem for CBSE Physics — Class 8 to 12. Syllabus, methodology, labs, assessments, progress tracking & parent transparency in one place.</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num">5</div><div class="hstat-label">Classes (8–12)</div></div>
+      <div class="hstat"><div class="hstat-num">47+</div><div class="hstat-label">Chapters</div></div>
+      <div class="hstat"><div class="hstat-num">3</div><div class="hstat-label">Learning Phases</div></div>
+      <div class="hstat"><div class="hstat-num">360°</div><div class="hstat-label">Student Coverage</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ QUOTE TICKER ══ -->
+<div class="quote-ticker">
+  <div class="quote-ticker-inner" id="tickerInner">
+    <span>⚡ "Physics is the study of the structure of consciousness." — Robert M. Pirsig</span>
+    <span class="ticker-sep">✦</span>
+    <span>🌍 Everything you touch, see, and feel is Physics in action</span>
+    <span class="ticker-sep">✦</span>
+    <span>🚀 Every engineer, doctor, and scientist begins with Physics</span>
+    <span class="ticker-sep">✦</span>
+    <span>⚛ "If you want to find the secrets of the universe, think in terms of energy, frequency, and vibration." — Tesla</span>
+    <span class="ticker-sep">✦</span>
+    <span>🔬 CBSE 2026 · NEP 2020 · Competency-Based Learning · Class 8 to 12</span>
+    <span class="ticker-sep">✦</span>
+    <span>📐 Gravity, Light, Electricity, Waves — the language of the universe</span>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<div class="nav-wrapper">
+  <div class="main-nav" id="mainNav">
+    <button class="nav-btn active" data-target="syllabus"><i class="fas fa-book-open"></i> Syllabus</button>
+    <button class="nav-btn" data-target="teacher"><i class="fas fa-user-tie"></i> Meet Your Teacher</button>
+    <button class="nav-btn" data-target="methodology"><i class="fas fa-chalkboard-teacher"></i> Teaching Methodology</button>
+    <button class="nav-btn" data-target="practical"><i class="fas fa-flask"></i> Practical & Lab Plan</button>
+    <button class="nav-btn" data-target="assignments"><i class="fas fa-file-alt"></i> Assignments & Tests</button>
+    <button class="nav-btn" data-target="roadmap"><i class="fas fa-map-marked-alt"></i> Roadmap</button>
+    <button class="nav-btn" data-target="progress"><i class="fas fa-chart-line"></i> Progress System</button>
+    <button class="nav-btn" data-target="parent"><i class="fas fa-users"></i> Parent Module</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1: SYLLABUS
+══════════════════════════════════════════════════════ -->
+<div class="section active" id="syllabus">
+  <div class="container-main">
+    <div class="sec-header">
+      <div class="sec-eyebrow">CBSE 2026 Curriculum</div>
+      <div class="sec-title">Class-wise Physics Syllabus</div>
+      <p class="sec-desc">Aligned with the latest NCERT framework and NEP 2020 competency-based education guidelines. Click any class to explore the full chapter breakdown.</p>
+    </div>
+
+    <!-- Class Selector Cards -->
+    <div class="class-grid">
+      <div class="class-card c8" data-class="8">
+        <div class="class-num">VIII</div>
+        <div class="class-label">Foundation Physics</div>
+        <div class="class-topics">
+          <span class="topic-pill">Force & Pressure</span>
+          <span class="topic-pill">Light</span>
+          <span class="topic-pill">Sound</span>
+          <span class="topic-pill">Friction</span>
+        </div>
+      </div>
+      <div class="class-card c9" data-class="9">
+        <div class="class-num">IX</div>
+        <div class="class-label">Core Mechanics</div>
+        <div class="class-topics">
+          <span class="topic-pill">Motion</span>
+          <span class="topic-pill">Gravitation</span>
+          <span class="topic-pill">Work & Energy</span>
+          <span class="topic-pill">Waves</span>
+        </div>
+      </div>
+      <div class="class-card c10" data-class="10">
+        <div class="class-num">X</div>
+        <div class="class-label">Applied Physics</div>
+        <div class="class-topics">
+          <span class="topic-pill">Electricity</span>
+          <span class="topic-pill">Magnetism</span>
+          <span class="topic-pill">Light-Optics</span>
+          <span class="topic-pill">Energy Sources</span>
+        </div>
+      </div>
+      <div class="class-card c11" data-class="11">
+        <div class="class-num">XI</div>
+        <div class="class-label">Advanced Theory</div>
+        <div class="class-topics">
+          <span class="topic-pill">Kinematics</span>
+          <span class="topic-pill">Thermodynamics</span>
+          <span class="topic-pill">Waves</span>
+          <span class="topic-pill">Oscillations</span>
+        </div>
+      </div>
+      <div class="class-card c12" data-class="12">
+        <div class="class-num">XII</div>
+        <div class="class-label">Board Mastery</div>
+        <div class="class-topics">
+          <span class="topic-pill">Electrostatics</span>
+          <span class="topic-pill">Optics</span>
+          <span class="topic-pill">Modern Physics</span>
+          <span class="topic-pill">Semiconductors</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dynamic Syllabus Panel -->
+    <div class="syllabus-panel" id="syllabusPanel">
+      <div class="panel-header" id="panelHeader"></div>
+      <div class="chapter-list" id="chapterList"></div>
+    </div>
+
+    <!-- ══ PHYSICS WORLD VISUAL SECTION ══ -->
+    <div class="physics-world">
+      <div class="sec-eyebrow" style="margin-top:32px;">What You Will Actually Learn</div>
+      <div class="physics-world-title">Physics All Around You</div>
+      <div class="physics-world-sub">These are the real concepts — see them in action before you study them in class</div>
+
+      <div class="topic-visuals-grid">
+
+        <!-- CARD 1: Atom — Animated SVG -->
+        <div class="topic-visual-card">
+          <div class="tvc-anim" style="background:#0A1628;">
+            <svg width="200" height="180" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+              <!-- nucleus -->
+              <circle cx="100" cy="90" r="12" fill="#FF6B00" opacity="0.9"/>
+              <circle cx="104" cy="86" r="6" fill="#F5A623" opacity="0.8"/>
+              <!-- orbit rings -->
+              <ellipse cx="100" cy="90" rx="52" ry="20" fill="none" stroke="rgba(255,107,0,0.25)" stroke-width="1.5"/>
+              <ellipse cx="100" cy="90" rx="38" ry="52" fill="none" stroke="rgba(245,166,35,0.2)" stroke-width="1.5"/>
+              <ellipse cx="100" cy="90" rx="28" ry="52" fill="none" stroke="rgba(30,111,191,0.2)" stroke-width="1.5" transform="rotate(60 100 90)"/>
+              <!-- electron 1 -->
+              <g style="transform-origin:100px 90px; animation:orbit 2.4s linear infinite;">
+                <circle cx="152" cy="90" r="5" fill="#60b4ff"/>
+              </g>
+              <!-- electron 2 -->
+              <g style="transform-origin:100px 90px; animation:orbit2 1.8s linear infinite;">
+                <circle cx="100" cy="38" r="4" fill="#F5A623"/>
+              </g>
+              <!-- electron 3 -->
+              <g style="transform-origin:100px 90px; animation:orbit3 3.2s linear infinite reverse;">
+                <circle cx="72" cy="142" r="4" fill="#a78bfa"/>
+              </g>
+              <!-- label -->
+              <text x="100" y="170" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="10" font-family="DM Sans, sans-serif">Atomic Structure</text>
+            </svg>
+          </div>
+          <div class="tvc-body">
+            <div class="tvc-class-tag" style="background:var(--crimson-light);color:var(--crimson);">Class XII · Modern Physics</div>
+            <div class="tvc-title">The Atom</div>
+            <div class="tvc-desc">Electrons orbit a dense nucleus — this tiny structure is the basis of all matter, chemistry, and nuclear energy.</div>
+            <div class="tvc-real-world"><i class="fas fa-bolt"></i> Powers MRI scanners, nuclear reactors, LED lights</div>
+          </div>
+        </div>
+
+        <!-- CARD 2: Real Image — Light Prism -->
+        <div class="topic-visual-card">
+          <div class="tvc-anim" style="background:#0d0d1a; position:relative;">
+            <svg width="260" height="180" viewBox="0 0 260 180" xmlns="http://www.w3.org/2000/svg">
+              <!-- incident white ray -->
+              <line x1="10" y1="70" x2="90" y2="90" stroke="white" stroke-width="2.5" opacity="0.9"/>
+              <!-- prism -->
+              <polygon points="90,40 170,130 10,130" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2" transform="translate(70,10)"/>
+              <!-- dispersed rays -->
+              <line x1="160" y1="100" x2="250" y2="50" stroke="#ff0000" stroke-width="2" opacity="0.85" stroke-dasharray="200" stroke-dashoffset="200" style="animation:prism-ray 1.2s 0.3s forwards ease-out;"/>
+              <line x1="160" y1="103" x2="250" y2="72" stroke="#ff7700" stroke-width="2" opacity="0.85" stroke-dasharray="200" stroke-dashoffset="200" style="animation:prism-ray 1.2s 0.45s forwards ease-out;"/>
+              <line x1="160" y1="106" x2="250" y2="94" stroke="#ffff00" stroke-width="2" opacity="0.85" stroke-dasharray="200" stroke-dashoffset="200" style="animation:prism-ray 1.2s 0.6s forwards ease-out;"/>
+              <line x1="160" y1="109" x2="250" y2="114" stroke="#00cc00" stroke-width="2" opacity="0.85" stroke-dasharray="200" stroke-dashoffset="200" style="animation:prism-ray 1.2s 0.75s forwards ease-out;"/>
+              <line x1="160" y1="112" x2="250" y2="135" stroke="#0077ff" stroke-width="2" opacity="0.85" stroke-dasharray="200" stroke-dashoffset="200" style="animation:prism-ray 1.2s 0.9s forwards ease-out;"/>
+              <line x1="160" y1="115" x2="250" y2="156" stroke="#8800ff" stroke-width="2" opacity="0.85" stroke-dasharray="200" stroke-dashoffset="200" style="animation:prism-ray 1.2s 1.05s forwards ease-out;"/>
+              <text x="130" y="175" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="10" font-family="DM Sans, sans-serif">Dispersion of White Light</text>
+            </svg>
+          </div>
+          <div class="tvc-body">
+            <div class="tvc-class-tag" style="background:var(--violet-light);color:var(--violet);">Class X & XII · Optics</div>
+            <div class="tvc-title">Light & Prism Dispersion</div>
+            <div class="tvc-desc">White light splits into its 7 colours when it passes through a prism — VIBGYOR. This is also why rainbows form.</div>
+            <div class="tvc-real-world"><i class="fas fa-rainbow"></i> Rainbows, camera lenses, optical fibre, spectroscopy</div>
+          </div>
+        </div>
+
+        <!-- CARD 3: Pendulum Animation -->
+        <div class="topic-visual-card">
+          <div class="tvc-anim" style="background:#0a1628;">
+            <svg width="200" height="180" viewBox="0 0 200 180" xmlns="http://www.w3.org/2000/svg">
+              <!-- ceiling -->
+              <rect x="60" y="10" width="80" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+              <!-- pivot -->
+              <circle cx="100" cy="13" r="4" fill="#F5A623"/>
+              <!-- pendulum arm + bob -->
+              <g style="transform-origin:100px 13px; animation:pendulum 2s ease-in-out infinite;">
+                <line x1="100" y1="13" x2="100" y2="110" stroke="rgba(255,255,255,0.6)" stroke-width="2"/>
+                <circle cx="100" cy="118" r="14" fill="#FF6B00" opacity="0.9"/>
+                <circle cx="95" cy="113" r="5" fill="rgba(255,255,255,0.2)"/>
+              </g>
+              <!-- energy labels -->
+              <text x="30" y="120" fill="rgba(245,166,35,0.8)" font-size="9" font-family="JetBrains Mono, monospace">KE=max</text>
+              <text x="130" y="65" fill="rgba(96,180,255,0.8)" font-size="9" font-family="JetBrains Mono, monospace">PE=max</text>
+              <text x="100" y="168" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="10" font-family="DM Sans, sans-serif">T = 2π√(L/g)</text>
+            </svg>
+          </div>
+          <div class="tvc-body">
+            <div class="tvc-class-tag" style="background:var(--sky-light);color:var(--sky);">Class XI · Oscillations</div>
+            <div class="tvc-title">Simple Pendulum & SHM</div>
+            <div class="tvc-desc">A swinging pendulum converts potential energy to kinetic energy and back — a perfect example of Simple Harmonic Motion.</div>
+            <div class="tvc-real-world"><i class="fas fa-clock"></i> Grandfather clocks, seismometers, suspension bridges</div>
+          </div>
+        </div>
+
+        <!-- CARD 4: Electromagnetic Wave -->
+        <div class="topic-visual-card">
+          <div class="tvc-anim" style="background:#060d1f; position:relative; overflow:hidden;">
+            <svg width="280" height="180" viewBox="0 0 280 180" xmlns="http://www.w3.org/2000/svg">
+              <!-- E-field wave (red) -->
+              <path d="M10,90 Q27.5,30 45,90 Q62.5,150 80,90 Q97.5,30 115,90 Q132.5,150 150,90 Q167.5,30 185,90 Q202.5,150 220,90 Q237.5,30 255,90 Q272.5,150 280,90" fill="none" stroke="#ff4444" stroke-width="2.5" opacity="0.9" style="animation:wave-anim 1.5s linear infinite;"/>
+              <!-- B-field wave (blue, phase shifted, simplified as vertical pulses) -->
+              <path d="M10,90 Q27.5,90 45,90" stroke="rgba(60,180,255,0.1)" stroke-width="0"/>
+              <!-- B field simplified arcs going depth-wise -->
+              <ellipse cx="45" cy="90" rx="4" ry="24" fill="none" stroke="#4499ff" stroke-width="2" opacity="0.7" style="animation:wave-anim 1.5s linear infinite;"/>
+              <ellipse cx="80" cy="90" rx="4" ry="24" fill="none" stroke="#4499ff" stroke-width="2" opacity="0.7" style="animation:wave-anim 1.5s 0.3s linear infinite;"/>
+              <ellipse cx="115" cy="90" rx="4" ry="24" fill="none" stroke="#4499ff" stroke-width="2" opacity="0.7" style="animation:wave-anim 1.5s 0.6s linear infinite;"/>
+              <ellipse cx="150" cy="90" rx="4" ry="24" fill="none" stroke="#4499ff" stroke-width="2" opacity="0.7" style="animation:wave-anim 1.5s 0.9s linear infinite;"/>
+              <ellipse cx="185" cy="90" rx="4" ry="24" fill="none" stroke="#4499ff" stroke-width="2" opacity="0.7" style="animation:wave-anim 1.5s 1.2s linear infinite;"/>
+              <!-- direction arrow -->
+              <line x1="10" y1="90" x2="265" y2="90" stroke="rgba(255,255,255,0.1)" stroke-width="1" stroke-dasharray="4 4"/>
+              <polygon points="265,86 275,90 265,94" fill="rgba(255,255,255,0.4)"/>
+              <!-- labels -->
+              <text x="10" y="30" fill="#ff6666" font-size="9" font-family="JetBrains Mono, monospace">E (Electric field)</text>
+              <text x="10" y="155" fill="#66aaff" font-size="9" font-family="JetBrains Mono, monospace">B (Magnetic field)</text>
+              <text x="240" y="87" fill="rgba(255,255,255,0.5)" font-size="9" font-family="JetBrains Mono, monospace">c</text>
+            </svg>
+          </div>
+          <div class="tvc-body">
+            <div class="tvc-class-tag" style="background:var(--crimson-light);color:var(--crimson);">Class XII · EM Waves</div>
+            <div class="tvc-title">Electromagnetic Waves</div>
+            <div class="tvc-desc">Electric and magnetic fields oscillate perpendicular to each other — creating light, radio waves, X-rays, all at 3×10⁸ m/s.</div>
+            <div class="tvc-real-world"><i class="fas fa-wifi"></i> WiFi, mobile phones, X-rays, microwave ovens, TV signals</div>
+          </div>
+        </div>
+
+        <!-- CARD 5: Real photo — Electricity Circuit -->
+        <div class="topic-visual-card">
+          <div style="position:relative; height:180px; overflow:hidden; background:#0a1628;">
+            <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&q=80" alt="Electric circuit experiment" style="width:100%;height:100%;object-fit:cover;opacity:0.75;">
+            <div style="position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(10,22,40,0.95));padding:14px 16px;">
+              <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#F5A623;">V = IR · P = I²R</div>
+            </div>
+          </div>
+          <div class="tvc-body">
+            <div class="tvc-class-tag" style="background:var(--gold-light);color:#7A5000;">Class X & XII · Electricity</div>
+            <div class="tvc-title">Electric Circuits</div>
+            <div class="tvc-desc">Current flowing through resistance creates voltage — Ohm's Law is the foundation of every electronic device you use.</div>
+            <div class="tvc-real-world"><i class="fas fa-plug"></i> Every phone, laptop, home appliance runs on this</div>
+          </div>
+        </div>
+
+        <!-- CARD 6: Gravity / Projectile animation -->
+        <div class="topic-visual-card">
+          <div class="tvc-anim" style="background:#0d1a0a;">
+            <svg width="240" height="180" viewBox="0 0 240 180" xmlns="http://www.w3.org/2000/svg">
+              <!-- ground -->
+              <line x1="0" y1="155" x2="240" y2="155" stroke="rgba(10,110,78,0.6)" stroke-width="2"/>
+              <!-- trajectory path -->
+              <path d="M20,140 Q110,10 220,140" fill="none" stroke="rgba(255,107,0,0.3)" stroke-width="1.5" stroke-dasharray="5 3"/>
+              <!-- projectile ball animating along path -->
+              <circle r="8" fill="#FF6B00">
+                <animateMotion dur="2.5s" repeatCount="indefinite" path="M20,140 Q110,10 220,140"/>
+              </circle>
+              <!-- velocity vectors at peak -->
+              <line x1="110" y1="22" x2="140" y2="22" stroke="#60b4ff" stroke-width="2" marker-end="url(#arr)"/>
+              <text x="144" y="26" fill="#60b4ff" font-size="9" font-family="JetBrains Mono, monospace">vx</text>
+              <text x="104" y="16" fill="#60b4ff" font-size="9" font-family="JetBrains Mono, monospace">vy=0</text>
+              <!-- formula -->
+              <text x="120" y="173" text-anchor="middle" fill="rgba(255,255,255,0.35)" font-size="10" font-family="JetBrains Mono, monospace">R = u²sin2θ / g</text>
+              <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6" fill="#60b4ff"/></marker></defs>
+            </svg>
+          </div>
+          <div class="tvc-body">
+            <div class="tvc-class-tag" style="background:var(--emerald-light);color:var(--emerald);">Class XI · Kinematics</div>
+            <div class="tvc-title">Projectile Motion</div>
+            <div class="tvc-desc">A ball thrown at an angle follows a parabolic path — gravity pulls it down while horizontal velocity carries it forward.</div>
+            <div class="tvc-real-world"><i class="fas fa-futbol"></i> Cricket shots, basketball, rockets, satellites</div>
+          </div>
+        </div>
+
+        <!-- CARD 7: Real photo — Lab experiment -->
+        <div class="topic-visual-card">
+          <div style="position:relative; height:180px; overflow:hidden; background:#0a1628;">
+            <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=400&q=80" alt="Physics lab experiment" style="width:100%;height:100%;object-fit:cover;opacity:0.8;">
+            <div style="position:absolute;top:12px;right:12px;background:rgba(10,22,40,0.8);border:1px solid rgba(255,107,0,0.4);padding:4px 10px;border-radius:20px;font-size:10px;color:var(--gold);font-weight:600;">🔬 CBSE Lab</div>
+          </div>
+          <div class="tvc-body">
+            <div class="tvc-class-tag" style="background:var(--sky-light);color:var(--sky);">Class XI & XII · Practicals</div>
+            <div class="tvc-title">Hands-On Lab Science</div>
+            <div class="tvc-desc">Real experiments build real understanding. You will measure, observe, and discover — not just read about physics.</div>
+            <div class="tvc-real-world"><i class="fas fa-microscope"></i> 30 marks of your board exam depends on lab work</div>
+          </div>
+        </div>
+
+        <!-- CARD 8: Magnetic field animation -->
+        <div class="topic-visual-card">
+          <div class="tvc-anim" style="background:#0a0a1a;">
+            <svg width="220" height="180" viewBox="0 0 220 180" xmlns="http://www.w3.org/2000/svg">
+              <!-- bar magnet -->
+              <rect x="80" y="78" width="60" height="24" rx="4" fill="none" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+              <rect x="80" y="78" width="30" height="24" rx="4 0 0 4" fill="#C0392B" opacity="0.8"/>
+              <rect x="110" y="78" width="30" height="24" rx="0 4 4 0" fill="#1E6FBF" opacity="0.8"/>
+              <text x="95" y="95" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="DM Sans,sans-serif">N</text>
+              <text x="125" y="95" text-anchor="middle" fill="#fff" font-size="11" font-weight="600" font-family="DM Sans,sans-serif">S</text>
+              <!-- field lines animated -->
+              <path d="M80,90 Q50,60 60,40 Q70,20 110,20 Q150,20 160,40 Q170,60 140,90" fill="none" stroke="rgba(96,180,255,0.5)" stroke-width="1.5" stroke-dasharray="300" stroke-dashoffset="300" style="animation:magnetic-field 2s 0.2s forwards linear;"/>
+              <path d="M80,90 Q40,70 45,50 Q50,30 110,25 Q170,30 175,50 Q180,70 140,90" fill="none" stroke="rgba(96,180,255,0.35)" stroke-width="1.5" stroke-dasharray="300" stroke-dashoffset="300" style="animation:magnetic-field 2s 0.6s forwards linear;"/>
+              <path d="M80,90 Q55,115 60,140 Q70,160 110,160 Q150,160 160,140 Q165,115 140,90" fill="none" stroke="rgba(255,107,0,0.5)" stroke-width="1.5" stroke-dasharray="300" stroke-dashoffset="300" style="animation:magnetic-field 2s 1s forwards linear;"/>
+              <path d="M80,90 Q38,120 44,148 Q50,168 110,168 Q170,168 176,148 Q182,120 140,90" fill="none" stroke="rgba(255,107,0,0.35)" stroke-width="1.5" stroke-dasharray="300" stroke-dashoffset="300" style="animation:magnetic-field 2s 1.4s forwards linear;"/>
+            </svg>
+          </div>
+          <div class="tvc-body">
+            <div class="tvc-class-tag" style="background:var(--crimson-light);color:var(--crimson);">Class X & XII · Magnetism</div>
+            <div class="tvc-title">Magnetic Field Lines</div>
+            <div class="tvc-desc">Invisible lines of force surround every magnet — from N pole to S pole outside, from S to N inside. Earth itself is a giant magnet.</div>
+            <div class="tvc-real-world"><i class="fas fa-compass"></i> Compass, electric motors, MRI machines, speakers</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2: MEET YOUR TEACHER
+══════════════════════════════════════════════════════ -->
+<div class="section" id="teacher">
+
+  <!-- Teacher Hero Banner -->
+  <div class="teacher-section">
+    <div class="teacher-inner">
+      <div class="teacher-layout">
+
+        <!-- LEFT: Avatar + badges -->
+        <div class="teacher-avatar-wrap">
+          <div class="teacher-avatar-ring">
+            <div class="teacher-avatar-inner">
+              <img src="https://images.unsplash.com/photo-1607990281513-2c110a25bd8c?w=400&q=85" alt="Physics Teacher" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+              <div class="teacher-avatar-fallback" style="display:none;"><i class="fas fa-user-tie"></i></div>
+            </div>
+          </div>
+          <div class="teacher-badges">
+            <span class="t-badge gold">⭐ 15+ Years Experience</span>
+            <span class="t-badge">M.Sc. Physics — IIT Delhi</span>
+            <span class="t-badge">B.Ed. — Delhi University</span>
+            <span class="t-badge gold">CBSE Trained Examiner</span>
+            <span class="t-badge">JEE Mentor</span>
+            <span class="t-badge">1200+ Students Guided</span>
+          </div>
+        </div>
+
+        <!-- RIGHT: Info -->
+        <div class="teacher-info">
+          <div class="teacher-eyebrow">Your Physics Guide</div>
+          <div class="teacher-name">Dr. Kavita Iyer</div>
+          <div class="teacher-title">Senior Physics Faculty · CBSE Certified · Class 8–12 Specialist</div>
+
+          <div class="teacher-quote">
+            <p>"Physics is not a subject you memorise — it is a language you learn to speak. My goal is to make every student see the universe differently: not as a mystery, but as a magnificent, understandable system. When a student says 'Oh! That's WHY it happens!' — that is the best moment in teaching."</p>
+          </div>
+
+          <div class="teacher-stats-row">
+            <div class="t-stat"><div class="t-stat-num">15+</div><div class="t-stat-lbl">Years Teaching</div></div>
+            <div class="t-stat"><div class="t-stat-num">1,200+</div><div class="t-stat-lbl">Students Guided</div></div>
+            <div class="t-stat"><div class="t-stat-num">94%</div><div class="t-stat-lbl">Board Pass Rate</div></div>
+            <div class="t-stat"><div class="t-stat-num">38+</div><div class="t-stat-lbl">JEE Qualifiers</div></div>
+          </div>
+
+          <p class="teacher-bio">Dr. Kavita Iyer completed her M.Sc. in Physics from IIT Delhi with specialisation in Condensed Matter Physics, followed by a B.Ed. from Delhi University. She has taught CBSE Physics across Classes 8–12 for over 15 years in some of Mumbai's leading schools. She is an empanelled CBSE paper checker for Class 12 board exams and has attended multiple CBSE capacity-building workshops under NEP 2020. Her teaching style blends conceptual depth with real-world relevance — her students have secured positions in IIT, NIT, AIIMS, and top engineering colleges nationwide.</p>
+
+          <div class="teacher-expertise-title">Areas of Expertise</div>
+          <div class="expertise-pills">
+            <span class="exp-pill">Electromagnetism</span>
+            <span class="exp-pill">Optics & Wave Physics</span>
+            <span class="exp-pill">Modern Physics & Quantum</span>
+            <span class="exp-pill">Mechanics & Dynamics</span>
+            <span class="exp-pill">Thermodynamics</span>
+            <span class="exp-pill">JEE / NEET Foundation</span>
+            <span class="exp-pill">Lab Practical Training</span>
+            <span class="exp-pill">CBSE Board Exam Strategy</span>
+          </div>
+
+          <div class="teacher-achievements">
+            <div class="t-achieve">
+              <div class="t-achieve-icon">🏆</div>
+              <div class="t-achieve-text"><strong>Best Teacher Award 2023</strong>Awarded by the school's Academic Excellence Committee for outstanding student results.</div>
+            </div>
+            <div class="t-achieve">
+              <div class="t-achieve-icon">📋</div>
+              <div class="t-achieve-text"><strong>CBSE Resource Person</strong>Invited by CBSE Regional Office Mumbai to conduct teacher training workshops.</div>
+            </div>
+            <div class="t-achieve">
+              <div class="t-achieve-icon">🎓</div>
+              <div class="t-achieve-text"><strong>IIT & NIT Alumni Network</strong>38 of her students currently studying at IITs, NITs, and BITS Pilani.</div>
+            </div>
+            <div class="t-achieve">
+              <div class="t-achieve-icon">📰</div>
+              <div class="t-achieve-text"><strong>Physics Notes Series</strong>Authored a widely-used Class 12 revision booklet used by 400+ students annually.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Teacher Philosophy Section -->
+  <div class="container-main" style="padding-top:40px;">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Teaching Philosophy</div>
+      <div class="sec-title">What Makes This Class Different</div>
+      <p class="sec-desc">Dr. Iyer's classroom is built on three principles — curiosity first, understanding before formulas, and never leaving a student behind.</p>
+    </div>
+
+    <div class="method-grid" style="margin-bottom:32px;">
+      <div class="method-card" style="border-top:4px solid var(--saffron); border-radius:0 0 14px 14px;">
+        <div style="position:relative; height:160px; border-radius:10px; overflow:hidden; margin-bottom:16px;">
+          <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=400&q=80" alt="Teacher explaining on board" style="width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,22,40,0.8));display:flex;align-items:flex-end;padding:12px;">
+            <span style="font-size:11px;color:rgba(255,255,255,0.7);font-style:italic;">"Every formula has a story. I tell the story first."</span>
+          </div>
+        </div>
+        <div class="method-title">Concept Before Formula</div>
+        <div class="method-desc">No formula is written on the board until the class has understood physically why it must be true. This builds intuition that survives exams for life.</div>
+      </div>
+
+      <div class="method-card" style="border-top:4px solid var(--sky); border-radius:0 0 14px 14px;">
+        <div style="position:relative; height:160px; border-radius:10px; overflow:hidden; margin-bottom:16px;">
+          <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?w=400&q=80" alt="Students doing lab experiment" style="width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,22,40,0.8));display:flex;align-items:flex-end;padding:12px;">
+            <span style="font-size:11px;color:rgba(255,255,255,0.7);font-style:italic;">"I want you to touch, feel, and measure physics."</span>
+          </div>
+        </div>
+        <div class="method-title">Hands-On Always</div>
+        <div class="method-desc">Every chapter has at least one activity or experiment. You will not just watch — you will do. Because physics is not a spectator sport.</div>
+      </div>
+
+      <div class="method-card" style="border-top:4px solid var(--emerald); border-radius:0 0 14px 14px;">
+        <div style="position:relative; height:160px; border-radius:10px; overflow:hidden; margin-bottom:16px;">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&q=80" alt="Students studying together" style="width:100%;height:100%;object-fit:cover;">
+          <div style="position:absolute;inset:0;background:linear-gradient(transparent 40%,rgba(10,22,40,0.8));display:flex;align-items:flex-end;padding:12px;">
+            <span style="font-size:11px;color:rgba(255,255,255,0.7);font-style:italic;">"No student falls behind silently in my class."</span>
+          </div>
+        </div>
+        <div class="method-title">No Student Left Behind</div>
+        <div class="method-desc">Weekly check-ins, personalised attention, and a door always open for doubt-clearing. Every student's confusion is a teaching opportunity.</div>
+      </div>
+    </div>
+
+    <!-- Meet the Teacher — A Day in Class -->
+    <div class="sec-header">
+      <div class="sec-eyebrow">A Day With Dr. Iyer</div>
+      <div class="sec-title">What Students Say</div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:20px; margin-bottom:40px;">
+
+      <div style="background:#fff; border:1.5px solid var(--border); border-radius:14px; padding:24px; position:relative;">
+        <div style="font-size:40px; color:var(--saffron); opacity:0.2; position:absolute; top:12px; right:16px; font-family:serif; line-height:1;">"</div>
+        <div style="font-size:14px; color:var(--navy-soft); line-height:1.8; font-style:italic; margin-bottom:16px;">"Dr. Iyer explained electrostatics with a balloon and a wall. I will never forget how charges work because she made it physical first. Scored 68/70 in board practicals."</div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--saffron-light);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--saffron-deep);font-size:13px;">AS</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">Aryan Sharma</div>
+            <div style="font-size:11px;color:var(--text-muted);">Class XII · 2024–25 · JEE Advanced Qualifier</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1.5px solid var(--border); border-radius:14px; padding:24px; position:relative;">
+        <div style="font-size:40px; color:var(--sky); opacity:0.2; position:absolute; top:12px; right:16px; font-family:serif; line-height:1;">"</div>
+        <div style="font-size:14px; color:var(--navy-soft); line-height:1.8; font-style:italic; margin-bottom:16px;">"I was scared of Physics in Class 9. By Class 11, it became my favourite subject. Dr. Iyer's weekly quizzes helped me track myself and the doubt sessions are genuinely helpful."</div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--sky-light);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--sky);font-size:13px;">PN</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">Priya Nair</div>
+            <div style="font-size:11px;color:var(--text-muted);">Class XII · 2024–25 · 93% in Board Physics</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1.5px solid var(--border); border-radius:14px; padding:24px; position:relative;">
+        <div style="font-size:40px; color:var(--emerald); opacity:0.2; position:absolute; top:12px; right:16px; font-family:serif; line-height:1;">"</div>
+        <div style="font-size:14px; color:var(--navy-soft); line-height:1.8; font-style:italic; margin-bottom:16px;">"As a parent, I appreciate the monthly reports and the way she explains to us what our child is struggling with. We always feel informed and involved. The lab sessions are a highlight for our son."</div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--emerald-light);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--emerald);font-size:13px;">MR</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">Meena Rao</div>
+            <div style="font-size:11px;color:var(--text-muted);">Parent of Class XI Student · 2025–26</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#fff; border:1.5px solid var(--border); border-radius:14px; padding:24px; position:relative;">
+        <div style="font-size:40px; color:var(--violet); opacity:0.2; position:absolute; top:12px; right:16px; font-family:serif; line-height:1;">"</div>
+        <div style="font-size:14px; color:var(--navy-soft); line-height:1.8; font-style:italic; margin-bottom:16px;">"The mind maps at the end of every unit are genius. I used them the night before my board exam and everything connected. She teaches you how to think, not what to think."</div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <div style="width:36px;height:36px;border-radius:50%;background:var(--violet-light);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--violet);font-size:13px;">RV</div>
+          <div>
+            <div style="font-size:13px;font-weight:600;color:var(--navy);">Rahul Verma</div>
+            <div style="font-size:11px;color:var(--text-muted);">Class XII · 2023–24 · NIT Trichy CSE</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Contact / Connect Box -->
+    <div style="background:var(--navy); border-radius:16px; padding:32px; display:grid; grid-template-columns:1fr 1fr; gap:32px; align-items:center; margin-bottom:20px;">
+      <div>
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:0.1em;color:var(--saffron);font-weight:600;margin-bottom:8px;">Get in Touch</div>
+        <div style="font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:#fff;margin-bottom:8px;">Connect with Dr. Iyer</div>
+        <p style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.7;">Have questions about the syllabus, your child's progress, or the teaching plan? Dr. Iyer is available for doubt sessions and parent queries during scheduled hours.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px;">
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;">
+          <i class="fas fa-clock" style="color:var(--gold);font-size:16px;"></i>
+          <div><div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.07em;">Doubt Hours</div><div style="font-size:14px;color:#fff;font-weight:500;">Mon–Fri: 3:30–4:30 PM | Sat: 10–11 AM</div></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;">
+          <i class="fas fa-envelope" style="color:var(--gold);font-size:16px;"></i>
+          <div><div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.07em;">Email</div><div style="font-size:14px;color:#fff;font-weight:500;">kavita.iyer@school.edu.in</div></div>
+        </div>
+        <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:14px 18px;display:flex;align-items:center;gap:12px;">
+          <i class="fab fa-whatsapp" style="color:#25D366;font-size:16px;"></i>
+          <div><div style="font-size:12px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.07em;">Parent WhatsApp Group</div><div style="font-size:14px;color:#fff;font-weight:500;">Managed per class section — link shared on enrolment</div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3: METHODOLOGY
+══════════════════════════════════════════════════════ -->
+<div class="section" id="methodology">
+  <div class="container-main">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Teaching Methodology</div>
+      <div class="sec-title">How We Teach Physics</div>
+      <p class="sec-desc">Evidence-based pedagogical approaches aligned with NEP 2020 — moving from rote learning to conceptual mastery, inquiry-based exploration, and real-world application.</p>
+    </div>
+    <div class="info-strip">
+      <i class="fas fa-lightbulb"></i>
+      Our methodology follows the 5E Model: <strong style="color:#fff; margin:0 4px;">Engage → Explore → Explain → Elaborate → Evaluate</strong> — proven by research to deepen physics understanding.
+    </div>
+    <div class="method-grid">
+
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--saffron-light);">🎯</div>
+        <div class="method-title">Conceptual First Approach</div>
+        <div class="method-desc">Every topic begins with the "why" before the "what". Students understand the physical intuition before encountering formulas.</div>
+        <ul class="method-steps">
+          <li>Open with a real-world phenomenon (lightning, bridges, MRI)</li>
+          <li>Build intuition through discussion & questioning</li>
+          <li>Introduce mathematical model only after understanding</li>
+          <li>Derive formulas rather than present them</li>
+        </ul>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--sky-light);">🔬</div>
+        <div class="method-title">Inquiry-Based Learning</div>
+        <div class="method-desc">Students are scientists, not spectators. Each concept is anchored in a guided discovery experiment before formal instruction.</div>
+        <ul class="method-steps">
+          <li>Pose a testable question each class</li>
+          <li>Students predict outcomes before observing</li>
+          <li>Discuss anomalies — the heart of science</li>
+          <li>Formalize observations into principles</li>
+        </ul>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--emerald-light);">📐</div>
+        <div class="method-title">Socratic Questioning</div>
+        <div class="method-desc">Teacher-led dialogue that builds reasoning chains. Students learn to think in physics, not just recall physics.</div>
+        <ul class="method-steps">
+          <li>Never tell students what they can discover</li>
+          <li>Use Bloom's Taxonomy question ladder</li>
+          <li>Peer-to-peer explanation (protégé effect)</li>
+          <li>Error analysis: "why were you wrong?"</li>
+        </ul>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--violet-light);">🖥️</div>
+        <div class="method-title">Technology-Enhanced Learning</div>
+        <div class="method-desc">Digital simulations and animations make invisible physics visible — from electric fields to quantum behavior.</div>
+        <ul class="method-steps">
+          <li>PhET simulations (University of Colorado)</li>
+          <li>NCERT e-content & Diksha platform modules</li>
+          <li>YouTube derivations & 3Blue1Brown style visuals</li>
+          <li>Virtual lab for concepts hard to replicate</li>
+        </ul>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--gold-light);">🗺️</div>
+        <div class="method-title">Mind Mapping & Concept Linking</div>
+        <div class="method-desc">Physics is one interconnected web. Students build visual knowledge maps connecting all chapters, classes, and concepts.</div>
+        <ul class="method-steps">
+          <li>Weekly 20-min "connect the dots" session</li>
+          <li>Cross-chapter application problems</li>
+          <li>Build a Physics Glossary Notebook</li>
+          <li>End-of-year mega mind map project</li>
+        </ul>
+      </div>
+
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--crimson-light);">🏆</div>
+        <div class="method-title">Spaced Repetition & Retrieval</div>
+        <div class="method-desc">Forgetting is the enemy of mastery. Systematic review schedules ensure concepts are retained long-term.</div>
+        <ul class="method-steps">
+          <li>Daily 5-min "flashback" from previous topic</li>
+          <li>Weekly cumulative 15-question quiz</li>
+          <li>Monthly comprehensive revision test</li>
+          <li>Pre-board full syllabus mock sequence</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sec-header">
+      <div class="sec-eyebrow">Classroom Structure</div>
+      <div class="sec-title">The 50-Minute Class Blueprint</div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-title" style="font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--saffron);">00:00 – 05:00</div>
+        <div class="method-title">Warm-Up Recall</div>
+        <div class="method-desc">3 rapid questions from last class. Identifies gaps immediately. Sets retrieval practice tone.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-title" style="font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--sky);">05:00 – 15:00</div>
+        <div class="method-title">Hook & Explore</div>
+        <div class="method-desc">A demonstration, video clip, or real phenomenon that creates curiosity about today's topic.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-title" style="font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--emerald);">15:00 – 35:00</div>
+        <div class="method-title">Concept Teaching</div>
+        <div class="method-desc">Core instruction with board work, guided derivation, diagrams, and frequent comprehension checks.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-title" style="font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--violet);">35:00 – 45:00</div>
+        <div class="method-title">Guided Practice</div>
+        <div class="method-desc">Worked examples → student attempts → peer checking. Teacher circulates and addresses misconceptions.</div>
+      </div>
+      <div class="method-card">
+        <div class="method-title" style="font-family:'JetBrains Mono',monospace; font-size:13px; color:var(--crimson);">45:00 – 50:00</div>
+        <div class="method-title">Exit Ticket</div>
+        <div class="method-desc">One question on index card: "What's your confidence level on today's topic? Write one thing you're unsure of."</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3: PRACTICAL & LAB
+══════════════════════════════════════════════════════ -->
+<div class="section" id="practical">
+  <div class="container-main">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Practical & Lab Plan</div>
+      <div class="sec-title">Hands-On Science Framework</div>
+      <p class="sec-desc">CBSE mandates practical work as integral to Physics. Our structured lab plan covers mandatory NCERT experiments, teacher demonstrations, and student-designed investigations.</p>
+    </div>
+    <div class="info-strip">
+      <i class="fas fa-info-circle"></i>
+      Class 11 & 12: 30 marks internal assessment — 15 marks practicals + 5 marks notebooks + 10 marks project/viva.
+      Class 9 & 10: Continuous internal assessment through activities and lab records.
+    </div>
+
+    <!-- Class 9–10 Labs -->
+    <div class="lab-card">
+      <div class="lab-head" style="background:var(--sky-light); color:var(--sky);">
+        <i class="fas fa-flask"></i> Class 9 & 10 — Activity-Based Lab Plan
+      </div>
+      <table class="lab-table">
+        <thead>
+          <tr><th>Experiment</th><th>Class</th><th>Chapter</th><th>Type</th><th>Duration</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Verifying Newton's 2nd Law using inclined plane</td><td>IX</td><td>Force & Laws of Motion</td><td><span class="lab-badge lb-mandatory">Mandatory</span></td><td>2 periods</td></tr>
+          <tr><td>Plotting distance-time & speed-time graphs</td><td>IX</td><td>Motion</td><td><span class="lab-badge lb-demo">Demo</span></td><td>1 period</td></tr>
+          <tr><td>Measurement of g using simple pendulum</td><td>IX</td><td>Gravitation</td><td><span class="lab-badge lb-mandatory">Mandatory</span></td><td>2 periods</td></tr>
+          <tr><td>Determining equivalent resistance (series & parallel)</td><td>X</td><td>Electricity</td><td><span class="lab-badge lb-mandatory">Mandatory</span></td><td>3 periods</td></tr>
+          <tr><td>Tracing path of a ray through prism</td><td>X</td><td>Light</td><td><span class="lab-badge lb-mandatory">Mandatory</span></td><td>2 periods</td></tr>
+          <tr><td>Factors affecting deflection of compass near a wire</td><td>X</td><td>Magnetic Effects</td><td><span class="lab-badge lb-demo">Demo</span></td><td>1 period</td></tr>
+          <tr><td>Build a simple electric motor (student project)</td><td>X</td><td>Magnetic Effects</td><td><span class="lab-badge lb-project">Project</span></td><td>1 week</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Class 11 Labs -->
+    <div class="lab-card">
+      <div class="lab-head" style="background:var(--saffron-light); color:var(--saffron-deep);">
+        <i class="fas fa-flask"></i> Class 11 — CBSE Prescribed Experiments (2026)
+      </div>
+      <table class="lab-table">
+        <thead>
+          <tr><th>Experiment</th><th>Concept</th><th>Type</th><th>Marks Weightage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Use of Vernier callipers & screw gauge</td><td>Measurement</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Simple pendulum — effective length vs period</td><td>Oscillations</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Young's modulus of a wire</td><td>Properties of Matter</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Surface tension — capillary rise method</td><td>Fluids</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>Medium</td></tr>
+          <tr><td>Specific heat of a solid (Joule's method)</td><td>Thermodynamics</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Resonance tube — speed of sound</td><td>Waves</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Coefficient of viscosity using Stokes law</td><td>Fluids</td><td><span class="lab-badge lb-demo">Section B</span></td><td>Medium</td></tr>
+          <tr><td>Sonometer — verification of laws of vibration</td><td>Waves</td><td><span class="lab-badge lb-demo">Section B</span></td><td>Medium</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Class 12 Labs -->
+    <div class="lab-card">
+      <div class="lab-head" style="background:var(--crimson-light); color:var(--crimson);">
+        <i class="fas fa-flask"></i> Class 12 — CBSE Prescribed Experiments (2026)
+      </div>
+      <table class="lab-table">
+        <thead>
+          <tr><th>Experiment</th><th>Concept</th><th>Type</th><th>Marks Weightage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Ohm's Law & V-I characteristics (resistor)</td><td>Current Electricity</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>V-I characteristics of p-n junction diode</td><td>Semiconductors</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Potentiometer — comparison of EMF</td><td>Current Electricity</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Meter Bridge — unknown resistance</td><td>Current Electricity</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Focal length of concave & convex mirrors</td><td>Ray Optics</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Refractive index of glass prism</td><td>Ray Optics</td><td><span class="lab-badge lb-mandatory">Section A</span></td><td>High</td></tr>
+          <tr><td>Half-wave & full-wave rectifier circuits</td><td>Semiconductors</td><td><span class="lab-badge lb-demo">Section B</span></td><td>Medium</td></tr>
+          <tr><td>Logic gates using discrete components</td><td>Digital Electronics</td><td><span class="lab-badge lb-project">Project</span></td><td>Medium</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="sec-header" style="margin-top:32px;">
+      <div class="sec-eyebrow">Lab Safety & Notebook Protocol</div>
+      <div class="sec-title">Lab Record Best Practices</div>
+    </div>
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--sky-light);">📋</div>
+        <div class="method-title">Lab Notebook Format</div>
+        <ul class="method-steps">
+          <li>Aim, Apparatus, Theory, Diagram (pre-lab)</li>
+          <li>Observation table — handwritten, in pen</li>
+          <li>Calculation & Result with units</li>
+          <li>Precautions & Sources of error</li>
+          <li>Teacher signature per experiment</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--emerald-light);">🦺</div>
+        <div class="method-title">Safety Protocol</div>
+        <ul class="method-steps">
+          <li>Lab induction mandatory before first experiment</li>
+          <li>No food or water in lab at any time</li>
+          <li>Electrical experiments — teacher approval required</li>
+          <li>Report any breakage to lab assistant immediately</li>
+          <li>Fire extinguisher and first aid kit location known to all</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--violet-light);">📊</div>
+        <div class="method-title">Viva Preparation</div>
+        <ul class="method-steps">
+          <li>Know the principle behind every experiment</li>
+          <li>Memorize formula and units for each measurement</li>
+          <li>Practice explaining precautions in your own words</li>
+          <li>Calculate percentage error for your result</li>
+          <li>Mock viva in class the week before board practical</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4: ASSIGNMENTS & TESTS
+══════════════════════════════════════════════════════ -->
+<div class="section" id="assignments">
+  <div class="container-main">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Assessment Framework</div>
+      <div class="sec-title">Assignments & Test Structure</div>
+      <p class="sec-desc">A multi-layered, continuous assessment system that diagnoses learning gaps in real-time, reduces exam anxiety, and prepares students thoroughly for board examinations.</p>
+    </div>
+    <div class="assessment-grid">
+
+      <div class="assess-card">
+        <div class="assess-head" style="background:var(--emerald);">
+          <i class="fas fa-clipboard-list"></i>
+          <div>
+            <div style="font-weight:600; font-size:16px;">Daily Homework</div>
+            <div style="font-size:11px; opacity:0.7;">Every class · 20–30 min effort</div>
+          </div>
+        </div>
+        <div class="assess-body">
+          <div class="assess-item"><span class="assess-key">Type</span><span class="assess-val">5 MCQ + 2 Short Ans</span></div>
+          <div class="assess-item"><span class="assess-key">Marks</span><span class="assess-val">Not graded</span></div>
+          <div class="assess-item"><span class="assess-key">Purpose</span><span class="assess-val">Retention & reinforcement</span></div>
+          <div class="assess-item"><span class="assess-key">Review</span><span class="assess-val">First 5 min, next class</span></div>
+          <div class="assess-item"><span class="assess-key">Format</span><span class="assess-val">Written in notebook</span></div>
+        </div>
+      </div>
+
+      <div class="assess-card">
+        <div class="assess-head" style="background:var(--sky);">
+          <i class="fas fa-question-circle"></i>
+          <div>
+            <div style="font-weight:600; font-size:16px;">Weekly Quiz</div>
+            <div style="font-size:11px; opacity:0.7;">Every Friday · 15 minutes</div>
+          </div>
+        </div>
+        <div class="assess-body">
+          <div class="assess-item"><span class="assess-key">Questions</span><span class="assess-val">10 MCQ + 2 Short</span></div>
+          <div class="assess-item"><span class="assess-key">Marks</span><span class="assess-val">10 marks</span></div>
+          <div class="assess-item"><span class="assess-key">Syllabus</span><span class="assess-val">Current week + prev 2</span></div>
+          <div class="assess-item"><span class="assess-key">Result</span><span class="assess-val">Same day</span></div>
+          <div class="assess-item"><span class="assess-key">Tracked</span><span class="assess-val">Yes — progress chart</span></div>
+        </div>
+      </div>
+
+      <div class="assess-card">
+        <div class="assess-head" style="background:var(--violet);">
+          <i class="fas fa-file-alt"></i>
+          <div>
+            <div style="font-weight:600; font-size:16px;">Unit Test</div>
+            <div style="font-size:11px; opacity:0.7;">After each unit · 40 min</div>
+          </div>
+        </div>
+        <div class="assess-body">
+          <div class="assess-item"><span class="assess-key">Format</span><span class="assess-val">CBSE pattern</span></div>
+          <div class="assess-item"><span class="assess-key">Marks</span><span class="assess-val">25 marks</span></div>
+          <div class="assess-item"><span class="assess-key">Sections</span><span class="assess-val">A (MCQ) + B + C</span></div>
+          <div class="assess-item"><span class="assess-key">Analysis</span><span class="assess-val">Error report shared</span></div>
+          <div class="assess-item"><span class="assess-key">Re-test</span><span class="assess-val">Available if below 40%</span></div>
+        </div>
+      </div>
+
+      <div class="assess-card">
+        <div class="assess-head" style="background:var(--saffron-deep);">
+          <i class="fas fa-file-invoice"></i>
+          <div>
+            <div style="font-weight:600; font-size:16px;">Mid-Term Exam</div>
+            <div style="font-size:11px; opacity:0.7;">September · 2.5 hours</div>
+          </div>
+        </div>
+        <div class="assess-body">
+          <div class="assess-item"><span class="assess-key">Marks</span><span class="assess-val">70 marks (theory)</span></div>
+          <div class="assess-item"><span class="assess-key">Syllabus</span><span class="assess-val">Units 1–5 (Class 11/12)</span></div>
+          <div class="assess-item"><span class="assess-key">Format</span><span class="assess-val">Exact CBSE blueprint</span></div>
+          <div class="assess-item"><span class="assess-key">Feedback</span><span class="assess-val">Detailed marks analysis</span></div>
+          <div class="assess-item"><span class="assess-key">Parent</span><span class="assess-val">PTM within 2 weeks</span></div>
+        </div>
+      </div>
+
+      <div class="assess-card">
+        <div class="assess-head" style="background:var(--crimson);">
+          <i class="fas fa-graduation-cap"></i>
+          <div>
+            <div style="font-weight:600; font-size:16px;">Pre-Board Mocks</div>
+            <div style="font-size:11px; opacity:0.7;">Jan–Feb · Full Board Pattern</div>
+          </div>
+        </div>
+        <div class="assess-body">
+          <div class="assess-item"><span class="assess-key">Series</span><span class="assess-val">3 mock papers</span></div>
+          <div class="assess-item"><span class="assess-key">Marks</span><span class="assess-val">70 marks each</span></div>
+          <div class="assess-item"><span class="assess-key">Duration</span><span class="assess-val">3 hours (real conditions)</span></div>
+          <div class="assess-item"><span class="assess-key">Papers</span><span class="assess-val">CBSE + state board</span></div>
+          <div class="assess-item"><span class="assess-key">Review</span><span class="assess-val">Question-by-question analysis</span></div>
+        </div>
+      </div>
+
+      <div class="assess-card">
+        <div class="assess-head" style="background:var(--navy);">
+          <i class="fas fa-project-diagram"></i>
+          <div>
+            <div style="font-weight:600; font-size:16px;">Physics Project</div>
+            <div style="font-size:11px; opacity:0.7;">Annual · Nov submission</div>
+          </div>
+        </div>
+        <div class="assess-body">
+          <div class="assess-item"><span class="assess-key">Type</span><span class="assess-val">Investigatory project</span></div>
+          <div class="assess-item"><span class="assess-key">Marks</span><span class="assess-val">5 marks (internal)</span></div>
+          <div class="assess-item"><span class="assess-key">Format</span><span class="assess-val">Report + presentation</span></div>
+          <div class="assess-item"><span class="assess-key">Topics</span><span class="assess-val">Student choice (approved)</span></div>
+          <div class="assess-item"><span class="assess-key">Guide</span><span class="assess-val">Teacher mentorship</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="divider"></div>
+    <div class="sec-header">
+      <div class="sec-eyebrow">Question Paper Blueprint</div>
+      <div class="sec-title">Class 12 Physics CBSE 2026 Pattern</div>
+    </div>
+    <div class="lab-card">
+      <table class="lab-table">
+        <thead>
+          <tr><th>Section</th><th>Question Type</th><th>No. of Questions</th><th>Marks Each</th><th>Total</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>A</strong></td><td>Multiple Choice (MCQ)</td><td>16</td><td>1</td><td>16</td></tr>
+          <tr><td><strong>A</strong></td><td>Assertion-Reason</td><td>4</td><td>1</td><td>4</td></tr>
+          <tr><td><strong>B</strong></td><td>Very Short Answer (VSA)</td><td>5</td><td>2</td><td>10</td></tr>
+          <tr><td><strong>C</strong></td><td>Short Answer (SA)</td><td>7</td><td>3</td><td>21</td></tr>
+          <tr><td><strong>D</strong></td><td>Case Study Based</td><td>2</td><td>4 (2+2)</td><td>8 (internal choice)</td></tr>
+          <tr><td><strong>E</strong></td><td>Long Answer (LA)</td><td>3</td><td>5</td><td>15 (internal choice)</td></tr>
+          <tr style="background:var(--navy); color:#fff;"><td colspan="4"><strong>TOTAL</strong></td><td><strong>70</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 5: ROADMAP
+══════════════════════════════════════════════════════ -->
+<div class="section" id="roadmap">
+  <div class="container-main">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Academic Roadmap</div>
+      <div class="sec-title">3-Phase Learning Journey</div>
+      <p class="sec-desc">A structured, time-bound journey from foundational understanding to board mastery. Each phase has clear objectives, milestones, and assessment checkpoints.</p>
+    </div>
+
+    <div class="roadmap-phases">
+      <div class="phase ph1">
+        <div class="phase-num">1</div>
+        <div class="phase-badge">Phase 1</div>
+        <div class="phase-title">Foundation & Build</div>
+        <div class="phase-period">April – August (5 months)</div>
+        <ul class="phase-items">
+          <li>Complete Units 1–4 (Mechanics, Thermodynamics)</li>
+          <li>Weekly lab sessions — measurement & mechanics</li>
+          <li>Establish strong derivation skills</li>
+          <li>Chapter-wise unit tests after each unit</li>
+          <li>Physics vocabulary & formula notebook started</li>
+          <li>Mid-phase diagnostic test (July)</li>
+          <li>First PTM in August with progress report</li>
+          <li>Investigatory project topics selected & approved</li>
+        </ul>
+      </div>
+      <div class="phase ph2">
+        <div class="phase-num">2</div>
+        <div class="phase-badge">Phase 2</div>
+        <div class="phase-title">Expand & Connect</div>
+        <div class="phase-period">September – November (3 months)</div>
+        <ul class="phase-items">
+          <li>Complete Units 5–8 (Optics, Electricity, Modern)</li>
+          <li>Mid-term board pattern exam (September)</li>
+          <li>Cross-chapter problem solving sessions</li>
+          <li>Investigatory project submission & viva (November)</li>
+          <li>Higher-order thinking problems introduced</li>
+          <li>Assertion-Reason & case study practice</li>
+          <li>NCERT exemplar solving — full coverage</li>
+          <li>Second PTM in October</li>
+        </ul>
+      </div>
+      <div class="phase ph3">
+        <div class="phase-num">3</div>
+        <div class="phase-badge">Phase 3</div>
+        <div class="phase-title">Master & Excel</div>
+        <div class="phase-period">December – March (4 months)</div>
+        <ul class="phase-items">
+          <li>Full syllabus rapid revision (Dec)</li>
+          <li>Pre-board mock series: 3 full papers (Jan-Feb)</li>
+          <li>Topic-wise weak area intensive sessions</li>
+          <li>10-year board paper analysis & pattern study</li>
+          <li>Board practical exam preparation & viva mock</li>
+          <li>Final PTM with individual performance review</li>
+          <li>Last-minute high-yield topic strategy shared</li>
+          <li>CBSE Board Exam — March (appear confident!)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Monthly Calendar -->
+    <div class="sec-header">
+      <div class="sec-eyebrow">Monthly Breakdown</div>
+      <div class="sec-title">Month-by-Month Class 12 Physics Plan</div>
+    </div>
+    <div class="lab-card">
+      <table class="lab-table">
+        <thead>
+          <tr><th>Month</th><th>Topics to Cover</th><th>Test/Event</th><th>Lab Work</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>April</strong></td><td>Electrostatics (Ch 1–2)</td><td>Unit Test 1</td><td>Potentiometer setup</td></tr>
+          <tr><td><strong>May</strong></td><td>Current Electricity (Ch 3)</td><td>Weekly Quizzes</td><td>Meter Bridge / Ohm's Law</td></tr>
+          <tr><td><strong>June</strong></td><td>Magnetic Effects (Ch 4–5)</td><td>Unit Test 2</td><td>Moving coil galvanometer</td></tr>
+          <tr><td><strong>July</strong></td><td>Electromagnetic Induction (Ch 6–7)</td><td>Diagnostic Test</td><td>Induced EMF experiment</td></tr>
+          <tr><td><strong>August</strong></td><td>EM Waves (Ch 8) + Revision</td><td>PTM 1</td><td>Lab record completion</td></tr>
+          <tr><td><strong>September</strong></td><td>Ray Optics (Ch 9)</td><td>Mid-Term Exam</td><td>Prism, Mirror, Lens</td></tr>
+          <tr><td><strong>October</strong></td><td>Wave Optics (Ch 10)</td><td>Unit Test 3 + PTM 2</td><td>Interference demo</td></tr>
+          <tr><td><strong>November</strong></td><td>Modern Physics (Ch 11–12)</td><td>Project submission</td><td>Diode characteristics</td></tr>
+          <tr><td><strong>December</strong></td><td>Semiconductors (Ch 14) + Full revision</td><td>Annual revision test</td><td>Logic gates</td></tr>
+          <tr><td><strong>January</strong></td><td>Full syllabus revision</td><td>Pre-Board 1 & 2</td><td>Board practical prep</td></tr>
+          <tr><td><strong>February</strong></td><td>Weak area focus + Problem bank</td><td>Pre-Board 3 + PTM 3</td><td>Board Practical Exam</td></tr>
+          <tr><td><strong>March</strong></td><td>Last-minute revision strategy</td><td>CBSE Board Exam</td><td>–</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 6: PROGRESS
+══════════════════════════════════════════════════════ -->
+<div class="section" id="progress">
+  <div class="container-main">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Student Progress System</div>
+      <div class="sec-title">360° Progress Tracking</div>
+      <p class="sec-desc">Every student's journey is tracked across multiple dimensions — not just marks, but effort, growth, and conceptual depth. Data drives personalised intervention.</p>
+    </div>
+
+    <div class="progress-board">
+      <div style="font-family:'Playfair Display',serif; font-size:22px; font-weight:700;">Class Performance Dashboard</div>
+      <div style="font-size:13px; color:rgba(255,255,255,0.5); margin-top:4px;">Sample data — Class XII B · Physics 2025–26</div>
+      <div class="progress-grid">
+        <div class="prog-stat"><div class="prog-stat-num">38</div><div class="prog-stat-label">Total Students</div></div>
+        <div class="prog-stat"><div class="prog-stat-num">74.2</div><div class="prog-stat-label">Class Avg (Pre-Board)</div></div>
+        <div class="prog-stat"><div class="prog-stat-num">96</div><div class="prog-stat-label">Highest Score</div></div>
+        <div class="prog-stat"><div class="prog-stat-num">8</div><div class="prog-stat-label">Students Needing Support</div></div>
+        <div class="prog-stat"><div class="prog-stat-num">92%</div><div class="prog-stat-label">Lab Completion Rate</div></div>
+        <div class="prog-stat"><div class="prog-stat-num">+9.4</div><div class="prog-stat-label">Growth from Mid-Term</div></div>
+      </div>
+    </div>
+
+    <div class="tracker-table" style="margin-bottom:24px;">
+      <table>
+        <thead>
+          <tr><th>Student</th><th>Mid-Term</th><th>Pre-Board</th><th>Growth</th><th>Lab</th><th>Progress</th><th>Grade</th><th>Status</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Aryan Sharma</strong></td>
+            <td>72</td><td>84</td>
+            <td style="color:var(--emerald); font-weight:600;">+12</td>
+            <td>95%</td>
+            <td><div class="prog-bar-wrap"><div class="prog-bar" style="width:84%; background:var(--emerald);"></div></div></td>
+            <td><span class="score-chip sc-a">A1</span></td>
+            <td style="color:var(--emerald);">On Track</td>
+          </tr>
+          <tr>
+            <td><strong>Priya Nair</strong></td>
+            <td>88</td><td>93</td>
+            <td style="color:var(--emerald); font-weight:600;">+5</td>
+            <td>98%</td>
+            <td><div class="prog-bar-wrap"><div class="prog-bar" style="width:93%; background:var(--emerald);"></div></div></td>
+            <td><span class="score-chip sc-a">A1</span></td>
+            <td style="color:var(--emerald);">Excelling</td>
+          </tr>
+          <tr>
+            <td><strong>Rohan Verma</strong></td>
+            <td>58</td><td>67</td>
+            <td style="color:var(--sky); font-weight:600;">+9</td>
+            <td>80%</td>
+            <td><div class="prog-bar-wrap"><div class="prog-bar" style="width:67%; background:var(--sky);"></div></div></td>
+            <td><span class="score-chip sc-b">B2</span></td>
+            <td style="color:var(--sky);">Improving</td>
+          </tr>
+          <tr>
+            <td><strong>Anjali Mehta</strong></td>
+            <td>42</td><td>51</td>
+            <td style="color:var(--gold); font-weight:600;">+9</td>
+            <td>72%</td>
+            <td><div class="prog-bar-wrap"><div class="prog-bar" style="width:51%; background:var(--gold);"></div></div></td>
+            <td><span class="score-chip sc-c">C1</span></td>
+            <td style="color:#7A5000;">Needs Focus</td>
+          </tr>
+          <tr>
+            <td><strong>Kiran Rao</strong></td>
+            <td>35</td><td>39</td>
+            <td style="color:var(--saffron); font-weight:600;">+4</td>
+            <td>65%</td>
+            <td><div class="prog-bar-wrap"><div class="prog-bar" style="width:39%; background:var(--crimson);"></div></div></td>
+            <td><span class="score-chip sc-d">D</span></td>
+            <td style="color:var(--crimson);">Intervention</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="method-grid">
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--emerald-light);">📈</div>
+        <div class="method-title">Growth Tracking</div>
+        <div class="method-desc">Progress measured relative to the student's own baseline — not just class rank. Every improvement celebrated.</div>
+        <ul class="method-steps">
+          <li>Monthly growth chart updated per student</li>
+          <li>Conceptual mastery score per chapter</li>
+          <li>Error pattern log — recurring mistakes flagged</li>
+          <li>Positive reinforcement for effort, not just results</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--crimson-light);">🚨</div>
+        <div class="method-title">Early Warning System</div>
+        <div class="method-desc">Students at risk are identified early — before it becomes a crisis. Three-tier intervention system.</div>
+        <ul class="method-steps">
+          <li>Yellow Alert: below 50% in 2 consecutive quizzes</li>
+          <li>Orange Alert: below 33% in a unit test</li>
+          <li>Red Alert: parent contact + remedial plan</li>
+          <li>Peer tutoring program for yellow-alert students</li>
+        </ul>
+      </div>
+      <div class="method-card">
+        <div class="method-icon" style="background:var(--sky-light);">🎯</div>
+        <div class="method-title">Personalised Intervention</div>
+        <div class="method-desc">Each student who is struggling gets a customised recovery plan — not generic "study harder" advice.</div>
+        <ul class="method-steps">
+          <li>1-on-1 teacher session to diagnose root cause</li>
+          <li>Topic-specific extra practice sheet</li>
+          <li>Concept video recommendation</li>
+          <li>Re-test opportunity after intervention period</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 7: PARENT MODULE
+══════════════════════════════════════════════════════ -->
+<div class="section" id="parent">
+  <div class="container-main">
+    <div class="sec-header">
+      <div class="sec-eyebrow">Parent Transparency Module</div>
+      <div class="sec-title">Parent-Teacher Partnership</div>
+      <p class="sec-desc">We believe parents are co-educators. Radical transparency, regular communication, and actionable insights keep families informed and involved in their child's physics journey.</p>
+    </div>
+
+    <div class="parent-grid">
+      <div class="parent-card">
+        <div class="parent-icon">📱</div>
+        <div class="parent-title">Real-Time Notifications</div>
+        <div class="parent-desc">Parents receive SMS/WhatsApp updates after every test, quiz, and lab session. No surprises at exam time.</div>
+      </div>
+      <div class="parent-card">
+        <div class="parent-icon">📊</div>
+        <div class="parent-title">Monthly Progress Report</div>
+        <div class="parent-desc">Detailed PDF report shared on the 1st of every month — marks, effort rating, improvement areas, teacher comments.</div>
+      </div>
+      <div class="parent-card">
+        <div class="parent-icon">🤝</div>
+        <div class="parent-title">Parent-Teacher Meetings</div>
+        <div class="parent-desc">3 scheduled PTMs per year (August, October, February) + on-demand meetings for at-risk students.</div>
+      </div>
+      <div class="parent-card">
+        <div class="parent-icon">📅</div>
+        <div class="parent-title">Academic Calendar Shared</div>
+        <div class="parent-desc">Full year schedule — all tests, labs, PTMs, and project deadlines — shared in April so parents can plan ahead.</div>
+      </div>
+      <div class="parent-card">
+        <div class="parent-icon">📚</div>
+        <div class="parent-title">Home Support Guide</div>
+        <div class="parent-desc">Chapter-wise guide for parents: what to ask your child, how to help with revision, what signals to watch for.</div>
+      </div>
+      <div class="parent-card">
+        <div class="parent-icon">🆘</div>
+        <div class="parent-title">Concern Response Policy</div>
+        <div class="parent-desc">Any parent concern responded to within 24 hours on school days. Escalation path clearly communicated.</div>
+      </div>
+    </div>
+
+    <!-- Sample Report Card -->
+    <div class="sec-header">
+      <div class="sec-eyebrow">Sample Document</div>
+      <div class="sec-title">Monthly Progress Report Card</div>
+    </div>
+    <div class="report-card">
+      <div class="rc-header">
+        <div class="rc-logo"><i class="fas fa-atom"></i></div>
+        <div>
+          <div style="font-family:'Playfair Display',serif; font-size:18px; font-weight:700;">Physics Progress Report</div>
+          <div style="font-size:12px; opacity:0.6;">October 2025 · Class XII · Section B</div>
+        </div>
+      </div>
+      <div class="rc-body">
+        <div style="background:var(--cream); border-radius:10px; padding:16px; margin-bottom:16px;">
+          <div style="font-size:13px; color:var(--text-muted);">Student</div>
+          <div style="font-size:18px; font-weight:600; color:var(--navy);">Aryan Sharma</div>
+          <div style="font-size:12px; color:var(--text-muted); margin-top:4px;">Roll No. 23 · Physics Teacher: Ms. Kavita Iyer</div>
+        </div>
+        <div class="rc-row"><span class="rc-subject">Mid-Term Score</span><span class="rc-score" style="color:var(--sky);">72 / 70 → 51.4%</span></div>
+        <div class="rc-row"><span class="rc-subject">Unit Test (Oct) — Wave Optics</span><span class="rc-score" style="color:var(--emerald);">21 / 25</span></div>
+        <div class="rc-row"><span class="rc-subject">Weekly Quiz Average (Oct)</span><span class="rc-score" style="color:var(--emerald);">8.2 / 10</span></div>
+        <div class="rc-row"><span class="rc-subject">Lab Completion</span><span class="rc-score" style="color:var(--emerald);">5 / 5 experiments</span></div>
+        <div class="rc-row"><span class="rc-subject">Homework Submission Rate</span><span class="rc-score" style="color:var(--sky);">92%</span></div>
+        <div class="rc-row"><span class="rc-subject">Project Status</span><span class="rc-score" style="color:var(--saffron-deep);">In Progress (due Nov)</span></div>
+        <div class="rc-row"><span class="rc-subject">Effort Rating</span><span class="rc-score">★★★★☆</span></div>
+        <div style="background:var(--gold-light); border-radius:10px; padding:14px; margin-top:16px; border-left: 3px solid var(--gold);">
+          <div style="font-size:12px; font-weight:600; color:#7A5000; margin-bottom:6px;">Teacher's Comment</div>
+          <div style="font-size:13px; color:var(--navy-soft); line-height:1.6;">Aryan has shown great improvement in optics this month. Needs to focus on numerical problems in electromagnetic induction before pre-boards. Encourage solving 3 numericals daily.</div>
+        </div>
+        <div style="text-align:center; margin-top:20px; padding-top:16px; border-top:1px solid var(--border);">
+          <div style="font-size:11px; color:var(--text-muted);">Next PTM: February 2026 · For concerns, contact physics.dept@school.edu</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <p>CBSE Physics Excellence Portal · <span>Class 8–12</span> · Academic Year 2025–26</p>
+  <p style="margin-top:6px;">Aligned with NCERT Syllabus · NEP 2020 · Ministry of Education, Government of India</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+<script>
+// ══ SYLLABUS DATA ══
+const syllabusData = {
+  8: {
+    title: "Class VIII — Foundation Physics",
+    meta: "NCERT Science (Physics Chapters) · 6 Topics · Academic Year 2025–26",
+    color: "#0A6E4E",
+    chapters: [
+      {
+        name: "Force and Pressure",
+        periods: "12 periods",
+        marks: "High Weightage",
+        topics: [
+          "Force — push and pull, types of forces",
+          "Effects of force: change in shape, state of motion",
+          "Contact forces: muscular, frictional",
+          "Non-contact forces: magnetic, electrostatic, gravitational",
+          "Pressure = Force / Area, units",
+          "Pressure exerted by liquids and gases",
+          "Atmospheric pressure and its effects"
+        ],
+        tags: ["lab", "ncert"]
+      },
+      {
+        name: "Friction",
+        periods: "8 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "What is friction and why it occurs",
+          "Factors affecting friction: surface roughness, normal force",
+          "Static friction, sliding friction, rolling friction",
+          "Advantages and disadvantages of friction in daily life",
+          "Methods to increase and reduce friction",
+          "Fluid friction (drag) — basic concept"
+        ],
+        tags: ["ncert", "lab"]
+      },
+      {
+        name: "Sound",
+        periods: "10 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "Production of sound — vibrating bodies",
+          "Propagation of sound — need of medium",
+          "Longitudinal waves — rarefaction and compression",
+          "Characteristics: amplitude, frequency, pitch, loudness",
+          "Audible range: 20 Hz to 20,000 Hz",
+          "Noise vs. music, noise pollution & health effects",
+          "SONAR and echo — basic applications"
+        ],
+        tags: ["lab", "exam", "ncert"]
+      },
+      {
+        name: "Light",
+        periods: "12 periods",
+        marks: "High Weightage",
+        topics: [
+          "Laws of reflection — regular and diffuse reflection",
+          "Spherical mirrors: concave and convex — uses",
+          "Refraction of light — bending towards/away from normal",
+          "Lenses: convex and concave — convergent/divergent",
+          "Human eye — structure and function",
+          "Defects of vision: myopia, hypermetropia, correction",
+          "Dispersion of light through prism — spectrum"
+        ],
+        tags: ["lab", "exam", "formula", "ncert"]
+      },
+      {
+        name: "Stars and Solar System",
+        periods: "8 periods",
+        marks: "Low Weightage",
+        topics: [
+          "The Solar System — planets and their order",
+          "Moon — phases, craters, surface features",
+          "Stars — constellations, Pole Star",
+          "Comets, meteors, meteorites, asteroids",
+          "Artificial satellites and their uses",
+          "Light year as unit of distance"
+        ],
+        tags: ["ncert"]
+      },
+      {
+        name: "Some Natural Phenomena",
+        periods: "8 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "Electrostatic charge — charging by rubbing",
+          "Types of charges: positive and negative",
+          "Lightning — cause and safety measures",
+          "Earthquakes — causes, seismic waves",
+          "Richter scale — measuring magnitude",
+          "Protection from lightning: lightning conductors"
+        ],
+        tags: ["ncert", "exam"]
+      }
+    ]
+  },
+  9: {
+    title: "Class IX — Core Mechanics",
+    meta: "NCERT Science (Physics Units) · 5 Topics · Academic Year 2025–26",
+    color: "#1E6FBF",
+    chapters: [
+      {
+        name: "Motion",
+        periods: "14 periods",
+        marks: "Very High Weightage",
+        topics: [
+          "Scalar vs. vector quantities — distance, displacement",
+          "Speed and velocity — uniform and non-uniform",
+          "Acceleration — positive and negative acceleration",
+          "Equations of motion: v=u+at, s=ut+½at², v²=u²+2as",
+          "Graphical representation: distance-time, velocity-time",
+          "Circular motion — centripetal acceleration concept"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      },
+      {
+        name: "Force and Laws of Motion",
+        periods: "12 periods",
+        marks: "Very High Weightage",
+        topics: [
+          "Newton's 1st Law — inertia and its types",
+          "Newton's 2nd Law — F = ma, momentum",
+          "Newton's 3rd Law — action and reaction pairs",
+          "Conservation of momentum — derivation",
+          "Impulse = Force × time, real-world applications",
+          "Free body diagrams and problem solving"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      },
+      {
+        name: "Gravitation",
+        periods: "12 periods",
+        marks: "High Weightage",
+        topics: [
+          "Newton's Universal Law of Gravitation — F = Gm₁m₂/r²",
+          "G (gravitational constant) = 6.67 × 10⁻¹¹ N m² kg⁻²",
+          "Acceleration due to gravity g = 9.8 m/s²",
+          "Mass vs. Weight distinction — weight = mg",
+          "Free fall and weightlessness",
+          "Thrust, pressure, Archimedes' principle",
+          "Relative density — buoyancy applications"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      },
+      {
+        name: "Work and Energy",
+        periods: "10 periods",
+        marks: "High Weightage",
+        topics: [
+          "Work = Force × Displacement × cos θ",
+          "Positive, negative, zero work — examples",
+          "Kinetic energy: KE = ½mv²",
+          "Potential energy: PE = mgh — gravitational",
+          "Law of conservation of energy — derivation",
+          "Power = Work/Time, commercial unit kWh",
+          "1 kWh = 3.6 × 10⁶ J"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Sound",
+        periods: "10 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "Longitudinal wave — compressions and rarefactions",
+          "Wave parameters: λ, f, T, v — wave speed = fλ",
+          "Speed of sound in different media — solid > liquid > gas",
+          "Reflection of sound — echo conditions (17m minimum)",
+          "Reverberation and its reduction",
+          "Human ear — anatomy and function",
+          "SONAR applications in depth measurement"
+        ],
+        tags: ["formula", "ncert", "exam"]
+      }
+    ]
+  },
+  10: {
+    title: "Class X — Applied Physics",
+    meta: "NCERT Science (Physics Units) · 5 Topics · Academic Year 2025–26",
+    color: "#6C3483",
+    chapters: [
+      {
+        name: "Electricity",
+        periods: "16 periods",
+        marks: "Very High Weightage",
+        topics: [
+          "Electric charge, current — I = Q/t",
+          "Potential difference — V = W/Q, unit Volt",
+          "Ohm's Law — V = IR, resistance in conductors",
+          "Factors affecting resistance: ρ, L, A",
+          "Series and parallel combination of resistors",
+          "Joule's heating effect: H = I²Rt",
+          "Electric power: P = VI = I²R = V²/R",
+          "Household circuits, fuse, MCB, earthing"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      },
+      {
+        name: "Magnetic Effects of Electric Current",
+        periods: "12 periods",
+        marks: "High Weightage",
+        topics: [
+          "Magnetic field and field lines — properties",
+          "Oersted's experiment — current produces magnetic field",
+          "Electromagnet — factors affecting strength",
+          "Force on current-carrying conductor in magnetic field",
+          "Fleming's Left Hand Rule (motor) & Right Hand Rule (generator)",
+          "Electric motor — principle and working",
+          "Electromagnetic induction, electric generator",
+          "Domestic electric circuits — live, neutral, earth"
+        ],
+        tags: ["exam", "lab", "ncert"]
+      },
+      {
+        name: "Light — Reflection and Refraction",
+        periods: "16 periods",
+        marks: "Very High Weightage",
+        topics: [
+          "Reflection — laws, spherical mirrors, mirror formula: 1/f = 1/v + 1/u",
+          "Magnification: m = -v/u = h'/h",
+          "Refraction — laws, refractive index n = c/v",
+          "Snell's Law: n₁ sin θ₁ = n₂ sin θ₂",
+          "Lens formula: 1/f = 1/v - 1/u",
+          "Power of lens: P = 1/f, unit Dioptre",
+          "Human eye — accommodation, defects & correction",
+          "Dispersion, scattering — blue sky, red sunset"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      },
+      {
+        name: "Sources of Energy",
+        periods: "8 periods",
+        marks: "Low-Medium Weightage",
+        topics: [
+          "Good fuel characteristics — calorific value",
+          "Conventional sources: coal, petroleum, natural gas",
+          "Thermal, hydro, nuclear power plants",
+          "Solar energy — solar panel, solar cooker",
+          "Wind energy, tidal energy, geothermal",
+          "Biomass, biogas — renewable sources",
+          "Environmental impact and sustainability"
+        ],
+        tags: ["ncert"]
+      }
+    ]
+  },
+  11: {
+    title: "Class XI — Advanced Theory",
+    meta: "NCERT Physics Part 1 & 2 · 10 Chapters · 70 Marks Theory + 30 Marks Practical",
+    color: "#FF6B00",
+    chapters: [
+      {
+        name: "Physical World & Units",
+        periods: "8 periods",
+        marks: "Low Weightage",
+        topics: [
+          "Scope of physics — fundamental forces",
+          "SI units — 7 base units and supplementary units",
+          "Dimensions — dimensional analysis and applications",
+          "Error analysis: absolute, relative, percentage error",
+          "Significant figures — rules and applications",
+          "Least count of instruments"
+        ],
+        tags: ["ncert", "formula"]
+      },
+      {
+        name: "Kinematics",
+        periods: "18 periods",
+        marks: "High Weightage",
+        topics: [
+          "Vectors: addition, subtraction, dot product, cross product",
+          "Equations of motion in 2D — projectile motion",
+          "Maximum height: H = u²sin²θ/2g; Range: R = u²sin2θ/g",
+          "Relative velocity — 1D and 2D problems",
+          "Circular motion: centripetal acceleration = v²/r = ω²r",
+          "Uniform and non-uniform circular motion"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Laws of Motion",
+        periods: "14 periods",
+        marks: "High Weightage",
+        topics: [
+          "Newton's laws — revisited with advanced problems",
+          "Static and kinetic friction — μ coefficients",
+          "Circular motion dynamics — banking of roads",
+          "Pseudo force — non-inertial reference frames",
+          "Free body diagrams — advanced problems",
+          "Atwood machine, pulley systems"
+        ],
+        tags: ["exam", "formula", "ncert", "lab"]
+      },
+      {
+        name: "Work, Energy and Power",
+        periods: "12 periods",
+        marks: "High Weightage",
+        topics: [
+          "Work done by variable force — integration approach",
+          "Work-energy theorem — derivation",
+          "Conservative and non-conservative forces",
+          "Elastic and inelastic collisions — 1D and 2D",
+          "Coefficient of restitution",
+          "Potential energy curves — equilibrium"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Rotational Motion",
+        periods: "16 periods",
+        marks: "Very High Weightage",
+        topics: [
+          "Centre of mass — definition, calculation for systems",
+          "Torque τ = r × F, angular momentum L = Iω",
+          "Moment of inertia — theorems: parallel and perpendicular axis",
+          "Rolling motion: KE = ½mv² + ½Iω²",
+          "Conservation of angular momentum — examples",
+          "Equilibrium conditions — static equilibrium problems"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Gravitation",
+        periods: "10 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "Gravitational potential energy — formula and derivation",
+          "Escape velocity: vₑ = √(2GM/R)",
+          "Orbital speed and satellite motion",
+          "Geostationary and polar satellites",
+          "Kepler's laws — derivation of 3rd law",
+          "Variation of g with altitude and depth"
+        ],
+        tags: ["formula", "ncert", "exam"]
+      },
+      {
+        name: "Properties of Matter",
+        periods: "12 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "Elasticity — stress, strain, Young's modulus",
+          "Bulk modulus, shear modulus, Poisson's ratio",
+          "Viscosity — Newton's law, Stokes law",
+          "Surface tension — surface energy, capillary rise",
+          "Bernoulli's theorem — applications",
+          "Streamline and turbulent flow — Reynolds number"
+        ],
+        tags: ["lab", "formula", "ncert", "exam"]
+      },
+      {
+        name: "Thermodynamics",
+        periods: "14 periods",
+        marks: "High Weightage",
+        topics: [
+          "Zeroth, 1st, 2nd laws of thermodynamics",
+          "Heat, work, internal energy — first law: ΔU = Q - W",
+          "Isothermal, adiabatic, isochoric, isobaric processes",
+          "Carnot cycle — efficiency = 1 - T₂/T₁",
+          "Entropy — concept and direction of process",
+          "Refrigerator and heat pump — COP"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Oscillations",
+        periods: "12 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "SHM — definition, restoring force F = -kx",
+          "x = A sin(ωt + φ) — amplitude, frequency, phase",
+          "Energy in SHM: PE + KE = constant",
+          "Spring-mass system — T = 2π√(m/k)",
+          "Simple pendulum — T = 2π√(L/g)",
+          "Damped and forced oscillations — resonance"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      },
+      {
+        name: "Waves",
+        periods: "12 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "Transverse and longitudinal waves",
+          "Wave equation: y = A sin(kx - ωt)",
+          "Speed of wave: v = fλ, v = √(T/μ) for string",
+          "Superposition — constructive and destructive interference",
+          "Standing waves — nodes and antinodes",
+          "Beats and Doppler effect — derivations"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      }
+    ]
+  },
+  12: {
+    title: "Class XII — Board Mastery",
+    meta: "NCERT Physics Part 1 & 2 · 14 Chapters · 70 Marks Theory + 30 Marks Practical",
+    color: "#C0392B",
+    chapters: [
+      {
+        name: "Electrostatics",
+        periods: "18 periods",
+        marks: "Very High Weightage",
+        topics: [
+          "Coulomb's law: F = kq₁q₂/r², superposition principle",
+          "Electric field, field lines, dipole, dipole moment",
+          "Gauss's law and applications — sphere, cylinder, plane",
+          "Electric potential, potential energy, equipotential surfaces",
+          "Capacitors: parallel plate, with dielectric",
+          "Energy stored in capacitor: U = ½CV²",
+          "Series and parallel combination of capacitors"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Current Electricity",
+        periods: "16 periods",
+        marks: "Very High Weightage",
+        topics: [
+          "Drift velocity, current, current density",
+          "Ohm's law — microscopic form: J = σE",
+          "Resistivity temperature dependence",
+          "EMF, internal resistance, terminal voltage",
+          "Kirchhoff's laws — complex circuit problems",
+          "Wheatstone bridge, meter bridge — principle",
+          "Potentiometer — comparison of EMF, internal resistance"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      },
+      {
+        name: "Magnetic Effects & Magnetism",
+        periods: "16 periods",
+        marks: "High Weightage",
+        topics: [
+          "Biot-Savart law — magnetic field due to a wire, loop",
+          "Ampere's circuital law — solenoid, toroid",
+          "Motion of charge in magnetic field — cyclotron",
+          "Force between parallel conductors — definition of Ampere",
+          "Torque on current loop — magnetic dipole moment",
+          "Bar magnet, Earth's magnetism, hysteresis",
+          "Para, dia, ferromagnetic materials"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Electromagnetic Induction",
+        periods: "14 periods",
+        marks: "High Weightage",
+        topics: [
+          "Faraday's laws — induced EMF: ε = -dΦ/dt",
+          "Lenz's law — conservation of energy",
+          "Motional EMF: ε = Bvl",
+          "Self inductance L — energy = ½LI²",
+          "Mutual inductance M — transformers",
+          "AC generator — working and construction",
+          "Eddy currents — uses and disadvantages"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      },
+      {
+        name: "Alternating Current",
+        periods: "14 periods",
+        marks: "High Weightage",
+        topics: [
+          "AC voltage, RMS values — I_rms = I₀/√2",
+          "Phasors — R, L, C individually and combined",
+          "Impedance, reactance — Z = √(R² + (XL-XC)²)",
+          "Resonance: f₀ = 1/(2π√LC)",
+          "Power in AC: P = VrmsIrms cosφ, power factor",
+          "LC oscillations — quality factor Q",
+          "Transformer — step up/down, losses"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Electromagnetic Waves",
+        periods: "8 periods",
+        marks: "Low-Medium Weightage",
+        topics: [
+          "Displacement current — Maxwell's correction",
+          "Maxwell's equations — qualitative understanding",
+          "Transverse nature of EM waves — E ⊥ B ⊥ v",
+          "Speed of light: c = 1/√(ε₀μ₀)",
+          "EM spectrum — radio to gamma, properties and uses",
+          "Energy density in EM wave"
+        ],
+        tags: ["ncert", "exam"]
+      },
+      {
+        name: "Ray Optics",
+        periods: "16 periods",
+        marks: "Very High Weightage",
+        topics: [
+          "Reflection — advanced mirror problems",
+          "Refraction through spherical surfaces, lenses",
+          "Lens maker's equation: 1/f = (n-1)(1/R₁ - 1/R₂)",
+          "Power of lens, combination of lenses",
+          "Refraction through prism, angle of deviation",
+          "Total internal reflection — optical fibre, mirage",
+          "Microscope, telescope — magnification derivations"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      },
+      {
+        name: "Wave Optics",
+        periods: "12 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "Huygens' principle — construction of wavefront",
+          "Young's double slit experiment — fringe width β = λD/d",
+          "Conditions for constructive and destructive interference",
+          "Single slit diffraction — central maximum width",
+          "Polarisation — Malus's law: I = I₀cos²θ",
+          "Brewster's angle: tan iB = n"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Dual Nature of Radiation & Matter",
+        periods: "10 periods",
+        marks: "Medium Weightage",
+        topics: [
+          "Photoelectric effect — Einstein's equation: KE_max = hν - φ",
+          "Work function, threshold frequency and wavelength",
+          "de Broglie wavelength: λ = h/mv = h/p",
+          "Wave-particle duality — Heisenberg's uncertainty",
+          "Davisson-Germer experiment — electron diffraction",
+          "Photon — rest mass 0, E = hν = pc"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Atoms & Nuclei",
+        periods: "12 periods",
+        marks: "High Weightage",
+        topics: [
+          "Rutherford's model — distance of closest approach",
+          "Bohr's model — rₙ = n²a₀, Eₙ = -13.6/n² eV",
+          "Spectral series of hydrogen — Balmer, Lyman etc.",
+          "Nuclear size — R = R₀ A^(1/3)",
+          "Mass defect, binding energy per nucleon",
+          "Radioactivity — α, β, γ decay, Q-value",
+          "Half life T₁/₂ = 0.693/λ, radioactive decay law"
+        ],
+        tags: ["exam", "formula", "ncert"]
+      },
+      {
+        name: "Semiconductor Electronics",
+        periods: "16 periods",
+        marks: "High Weightage",
+        topics: [
+          "Energy bands — conductor, semiconductor, insulator",
+          "Intrinsic and extrinsic (p-type, n-type) semiconductors",
+          "p-n junction — depletion layer, barrier potential",
+          "Forward and reverse biasing — V-I characteristics",
+          "Half-wave and full-wave rectifier circuits",
+          "Zener diode — voltage regulation",
+          "Transistor — NPN/PNP, CE configuration, β",
+          "Logic gates: AND, OR, NOT, NAND, NOR — Boolean algebra"
+        ],
+        tags: ["exam", "formula", "lab", "ncert"]
+      }
+    ]
+  }
+};
+
+// ══ TAB NAVIGATION ══
+$(document).ready(function () {
+
+  $('#mainNav').on('click', '.nav-btn', function () {
+    const target = $(this).data('target');
+    $('.nav-btn').removeClass('active');
+    $(this).addClass('active');
+    $('.section').removeClass('active');
+    $('#' + target).addClass('active');
+    $('html, body').animate({ scrollTop: $('.nav-wrapper').offset().top - 10 }, 200);
+  });
+
+  // ══ CLASS CARD CLICK ══
+  $('.class-grid').on('click', '.class-card', function () {
+    const cls = $(this).data('class');
+    const data = syllabusData[cls];
+
+    // Toggle selection
+    if ($(this).hasClass('selected') && $('#syllabusPanel').hasClass('visible')) {
+      $(this).removeClass('selected');
+      $('#syllabusPanel').removeClass('visible');
+      return;
+    }
+    $('.class-card').removeClass('selected');
+    $(this).addClass('selected');
+
+    // Build panel
+    $('#panelHeader').html(`
+      <div>
+        <div class="panel-title">${data.title}</div>
+        <div class="panel-meta">${data.meta}</div>
+      </div>
+      <div style="font-size:12px; opacity:0.5;">Click a chapter to expand</div>
+    `);
+
+    let chapHtml = '';
+    data.chapters.forEach((ch, i) => {
+      const tagMap = {
+        lab: '<span class="tag tag-lab">🔬 Lab Work</span>',
+        formula: '<span class="tag tag-formula">∑ Key Formulae</span>',
+        exam: '<span class="tag tag-exam">📝 Exam Important</span>',
+        ncert: '<span class="tag tag-ncert">📚 NCERT</span>'
+      };
+      const tagsHtml = ch.tags.map(t => tagMap[t] || '').join('');
+      const topicsHtml = ch.topics.map(t => `
+        <div class="topic-row">
+          <i class="fas fa-chevron-right topic-icon"></i>
+          <span class="topic-text">${t}</span>
+        </div>
+      `).join('');
+
+      chapHtml += `
+        <div class="chapter-item">
+          <div class="chapter-header">
+            <div class="chap-num" style="background:${data.color}22; color:${data.color};">${i+1}</div>
+            <div class="chap-name">${ch.name}</div>
+            <div class="chap-meta">
+              <span><i class="fas fa-clock"></i> ${ch.periods}</span>
+              <span><i class="fas fa-star"></i> ${ch.marks}</span>
+            </div>
+            <div class="chap-arrow"><i class="fas fa-chevron-down"></i></div>
+          </div>
+          <div class="chapter-body">
+            ${topicsHtml}
+            <div class="topic-tags">${tagsHtml}</div>
+          </div>
+        </div>
+      `;
+    });
+
+    $('#chapterList').html(chapHtml);
+    $('#syllabusPanel').addClass('visible');
+
+    // Smooth scroll to panel
+    $('html, body').animate({ scrollTop: $('#syllabusPanel').offset().top - 80 }, 400);
+
+    // ══ CHAPTER ACCORDION ══
+    $('#chapterList').on('click', '.chapter-header', function () {
+      const item = $(this).closest('.chapter-item');
+      if (item.hasClass('open')) {
+        item.removeClass('open');
+        item.find('.chapter-body').slideUp(200);
+      } else {
+        $('.chapter-item.open').removeClass('open').find('.chapter-body').slideUp(200);
+        item.addClass('open');
+        item.find('.chapter-body').slideDown(200);
+      }
+    });
+  });
+
+});
+</script>
+</body>
+</html>
