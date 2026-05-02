@@ -28,6 +28,8 @@ const SECTIONS = {
   testing:  { name: 'Testing',                 progId: 'prog-testing' },
   devops:   { name: 'DevOps',                  progId: 'prog-devops' },
   advanced: { name: 'Advanced Topics',         progId: 'prog-advanced' },
+  azure:    { name: 'Azure Cloud Services',    progId: 'prog-azure' },
+  ai:       { name: 'AI & ML with .NET',       progId: 'prog-ai' },
 };
 
 const LS_KEY_THEME    = 'dotnet-roadmap-theme';

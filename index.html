@@ -70,6 +70,8 @@
       <li><a href="#section-testing"   class="nav-link" data-section="testing">⑧ Testing</a></li>
       <li><a href="#section-devops"    class="nav-link" data-section="devops">⑨ DevOps</a></li>
       <li><a href="#section-advanced"  class="nav-link" data-section="advanced">⑩ Advanced Topics</a></li>
+      <li><a href="#section-azure"     class="nav-link" data-section="azure">☁ Azure Cloud Services</a></li>
+      <li><a href="#section-ai"        class="nav-link" data-section="ai">🤖 AI &amp; ML with .NET</a></li>
       <li><a href="#section-projects"  class="nav-link" data-section="projects">🚀 Project Ideas</a></li>
     </ul>
 
@@ -147,6 +149,15 @@
             <h3>Advanced &amp; Architecture</h3>
             <p>Microservices, SignalR, gRPC, caching, security, performance tuning.</p>
             <div class="tl-tags"><span>Microservices</span><span>gRPC</span><span>Security</span></div>
+          </div>
+        </div>
+        <div class="timeline-item" data-phase="6">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-phase">Phase 6 · Weeks 25–32</span>
+            <h3>Azure Cloud &amp; AI</h3>
+            <p>Azure PaaS services, serverless, AI/ML integration with Azure OpenAI, Cognitive Services &amp; ML.NET.</p>
+            <div class="tl-tags"><span>Azure</span><span>OpenAI</span><span>ML.NET</span><span>Serverless</span></div>
           </div>
         </div>
       </div>
@@ -868,6 +879,397 @@
     </section>
 
     <!-- ══════════════════════════════════════════════════════
+         AZURE CLOUD SERVICES
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-azure" data-searchable>
+      <div class="section-header">
+        <div class="section-badge section-badge--azure">☁ CLOUD</div>
+        <h2 class="section-title">Azure Cloud Services</h2>
+        <p class="section-sub">Deploy, scale, and operate production .NET applications on Microsoft Azure — the cloud platform built for the .NET ecosystem.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-azure"></div></div>
+      </div>
+
+      <div class="accordion-group">
+
+        <!-- Overview -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>Azure is Microsoft's cloud platform with 200+ services spanning compute, storage, databases, networking, AI, and DevOps. For .NET Core developers, Azure is the most natural deployment target — with deep SDK integration, managed identity support, and first-class tooling in Visual Studio and the .NET CLI.</p>
+            <p>Estimated time: <strong>4–6 weeks</strong> to reach practical proficiency. The <strong>AZ-900</strong> (Fundamentals) certification is an excellent starting goal, followed by <strong>AZ-204</strong> (Developer Associate).</p>
+            <div class="info-chips">
+              <span class="chip chip--blue">AZ-900 Foundation</span>
+              <span class="chip chip--blue">AZ-204 Developer</span>
+              <span class="chip chip--purple">AZ-400 DevOps</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Compute & Hosting -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🖥 Compute &amp; Hosting</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Azure App Service</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-1" /> App Service plans, pricing tiers &amp; scaling</label></li>
+              <li><label><input type="checkbox" data-id="az-2" /> Deploying .NET Core apps via ZIP, Git, GitHub Actions</label></li>
+              <li><label><input type="checkbox" data-id="az-3" /> Deployment slots (staging, production) &amp; slot swapping</label></li>
+              <li><label><input type="checkbox" data-id="az-4" /> Custom domains, SSL/TLS certificates &amp; HTTPS enforcement</label></li>
+              <li><label><input type="checkbox" data-id="az-5" /> Auto-scaling rules: schedule-based &amp; metric-based</label></li>
+              <li><label><input type="checkbox" data-id="az-6" /> App Service Environment (ASE) for isolated workloads</label></li>
+            </ul>
+            <h4>Azure Functions (Serverless)</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-7" /> Consumption, Premium &amp; Dedicated hosting plans</label></li>
+              <li><label><input type="checkbox" data-id="az-8" /> Triggers: HTTP, Timer, Blob, Queue, Service Bus, Event Grid</label></li>
+              <li><label><input type="checkbox" data-id="az-9" /> Input &amp; output bindings for zero-plumbing integrations</label></li>
+              <li><label><input type="checkbox" data-id="az-10" /> Durable Functions: orchestrations, activities &amp; fan-out</label></li>
+              <li><label><input type="checkbox" data-id="az-11" /> Isolated worker model for .NET 8 Functions</label></li>
+              <li><label><input type="checkbox" data-id="az-12" /> Cold start mitigation strategies</label></li>
+            </ul>
+            <h4>Azure Container Apps &amp; AKS</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-13" /> Azure Container Registry (ACR) — push &amp; pull images</label></li>
+              <li><label><input type="checkbox" data-id="az-14" /> Azure Container Apps: scaling rules, revisions &amp; traffic splitting</label></li>
+              <li><label><input type="checkbox" data-id="az-15" /> Azure Kubernetes Service (AKS) cluster setup &amp; node pools</label></li>
+              <li><label><input type="checkbox" data-id="az-16" /> KEDA (event-driven autoscaling) with AKS</label></li>
+              <li><label><input type="checkbox" data-id="az-17" /> Helm charts for .NET microservice deployments</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Storage & Databases -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🗄 Storage &amp; Databases</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Azure SQL &amp; Cosmos DB</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-18" /> Azure SQL Database: elastic pools, serverless tier</label></li>
+              <li><label><input type="checkbox" data-id="az-19" /> Managed Identity auth to Azure SQL (no passwords)</label></li>
+              <li><label><input type="checkbox" data-id="az-20" /> Geo-replication &amp; failover groups for HA</label></li>
+              <li><label><input type="checkbox" data-id="az-21" /> Azure Cosmos DB: partitioning, consistency levels</label></li>
+              <li><label><input type="checkbox" data-id="az-22" /> Cosmos DB .NET SDK v3 — CRUD &amp; LINQ queries</label></li>
+              <li><label><input type="checkbox" data-id="az-23" /> Change feed for event-driven architectures</label></li>
+            </ul>
+            <h4>Azure Storage</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-24" /> Blob Storage: containers, access tiers (Hot/Cool/Archive)</label></li>
+              <li><label><input type="checkbox" data-id="az-25" /> Azure Storage SDK for .NET (BlobServiceClient)</label></li>
+              <li><label><input type="checkbox" data-id="az-26" /> Shared Access Signatures (SAS) &amp; stored access policies</label></li>
+              <li><label><input type="checkbox" data-id="az-27" /> Azure Queue Storage for lightweight messaging</label></li>
+              <li><label><input type="checkbox" data-id="az-28" /> Azure Table Storage for structured NoSQL data</label></li>
+              <li><label><input type="checkbox" data-id="az-29" /> Azure Files &amp; File Sync</label></li>
+            </ul>
+            <h4>Caching &amp; Redis</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-30" /> Azure Cache for Redis: tiers &amp; cluster mode</label></li>
+              <li><label><input type="checkbox" data-id="az-31" /> StackExchange.Redis in .NET — connection multiplexer</label></li>
+              <li><label><input type="checkbox" data-id="az-32" /> Distributed session &amp; response caching patterns</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Messaging & Integration -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📨 Messaging &amp; Integration</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-33" /> Azure Service Bus: queues, topics &amp; subscriptions</label></li>
+              <li><label><input type="checkbox" data-id="az-34" /> Service Bus .NET SDK — send/receive/settle messages</label></li>
+              <li><label><input type="checkbox" data-id="az-35" /> Dead-letter queues &amp; message deferral strategies</label></li>
+              <li><label><input type="checkbox" data-id="az-36" /> Azure Event Hubs: partitions, consumer groups, Kafka protocol</label></li>
+              <li><label><input type="checkbox" data-id="az-37" /> Azure Event Grid: event routing, subscriptions &amp; filters</label></li>
+              <li><label><input type="checkbox" data-id="az-38" /> Azure Logic Apps for low-code workflow orchestration</label></li>
+              <li><label><input type="checkbox" data-id="az-39" /> Azure API Management (APIM): policies, rate limiting, portal</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Security & Identity -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🔐 Security &amp; Identity</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-40" /> Microsoft Entra ID (Azure AD): tenants, app registrations</label></li>
+              <li><label><input type="checkbox" data-id="az-41" /> OAuth 2.0 &amp; OIDC flows with MSAL.NET</label></li>
+              <li><label><input type="checkbox" data-id="az-42" /> Managed Identity (system-assigned &amp; user-assigned)</label></li>
+              <li><label><input type="checkbox" data-id="az-43" /> Azure Key Vault: secrets, keys &amp; certificate management</label></li>
+              <li><label><input type="checkbox" data-id="az-44" /> Key Vault references in App Service / Functions</label></li>
+              <li><label><input type="checkbox" data-id="az-45" /> Azure Defender &amp; Microsoft Sentinel basics</label></li>
+              <li><label><input type="checkbox" data-id="az-46" /> Role-Based Access Control (RBAC) in Azure</label></li>
+              <li><label><input type="checkbox" data-id="az-47" /> Virtual Network (VNet) integration &amp; Private Endpoints</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Monitoring & Observability -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📊 Monitoring &amp; Observability</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-48" /> Application Insights SDK integration in .NET</label></li>
+              <li><label><input type="checkbox" data-id="az-49" /> Distributed tracing with TraceId &amp; SpanId correlation</label></li>
+              <li><label><input type="checkbox" data-id="az-50" /> Custom metrics, events &amp; dependencies tracking</label></li>
+              <li><label><input type="checkbox" data-id="az-51" /> Azure Monitor: alerts, action groups &amp; dashboards</label></li>
+              <li><label><input type="checkbox" data-id="az-52" /> Log Analytics Workspace &amp; KQL queries</label></li>
+              <li><label><input type="checkbox" data-id="az-53" /> Azure Managed Grafana for visualization</label></li>
+              <li><label><input type="checkbox" data-id="az-54" /> OpenTelemetry with Azure Monitor exporter</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Infrastructure as Code -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🏗 Infrastructure as Code</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-55" /> Azure CLI &amp; PowerShell for resource management</label></li>
+              <li><label><input type="checkbox" data-id="az-56" /> ARM templates: structure, parameters &amp; deployment</label></li>
+              <li><label><input type="checkbox" data-id="az-57" /> Bicep: modules, scopes &amp; what-if deployments</label></li>
+              <li><label><input type="checkbox" data-id="az-58" /> Terraform with AzureRM provider</label></li>
+              <li><label><input type="checkbox" data-id="az-59" /> Azure Developer CLI (azd) for end-to-end app deployment</label></li>
+              <li><label><input type="checkbox" data-id="az-60" /> Azure Resource Manager (ARM) RBAC &amp; policy governance</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Always use <strong>Managed Identity</strong> instead of connection strings or API keys for service-to-service auth — eliminates secret sprawl entirely.</li>
+              <li>Store all secrets in <strong>Azure Key Vault</strong> and reference them via Key Vault references, never hardcode in configuration files.</li>
+              <li>Use <strong>deployment slots</strong> with slot-swap for zero-downtime production deployments and instant rollback capability.</li>
+              <li>Tag all Azure resources with <code>Environment</code>, <code>CostCenter</code>, and <code>Owner</code> tags for governance and cost tracking.</li>
+              <li>Apply the <strong>principle of least privilege</strong> — assign only the RBAC roles required; avoid Owner/Contributor at subscription scope.</li>
+              <li>Use <strong>VNet integration</strong> and Private Endpoints to keep traffic off the public internet for sensitive services.</li>
+              <li>Enable <strong>Application Insights</strong> from day one — retro-fitting observability is significantly harder than adding it upfront.</li>
+              <li>Use <strong>Bicep or Terraform</strong> for all infrastructure — manual portal changes in production are a reliability anti-pattern.</li>
+              <li>Set up <strong>budget alerts</strong> in Azure Cost Management to avoid surprise bills during development and testing.</li>
+              <li>Always configure <strong>geo-redundant backups</strong> for production databases and test restoration periodically.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /accordion-group -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         AI & ML WITH .NET
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-ai" data-searchable>
+      <div class="section-header">
+        <div class="section-badge section-badge--ai">🤖 AI</div>
+        <h2 class="section-title">AI &amp; ML with .NET</h2>
+        <p class="section-sub">Integrate large language models, cognitive services, and machine learning directly into your .NET applications.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-ai"></div></div>
+      </div>
+
+      <div class="accordion-group">
+
+        <!-- Overview -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>AI is no longer a specialist domain — it's an expected skill for modern .NET developers. The ecosystem spans three tiers: <strong>Azure OpenAI / Azure AI Services</strong> (cloud APIs), <strong>Semantic Kernel</strong> (orchestration framework for LLM apps), and <strong>ML.NET</strong> (custom on-premise/embedded ML).</p>
+            <p>Estimated time: <strong>4–8 weeks</strong> depending on prior ML background. Start with Azure OpenAI integrations, then move to Semantic Kernel for agent orchestration, and ML.NET for custom model scenarios.</p>
+            <div class="info-chips">
+              <span class="chip chip--green">Azure OpenAI</span>
+              <span class="chip chip--green">Semantic Kernel</span>
+              <span class="chip chip--purple">ML.NET</span>
+              <span class="chip chip--orange">AI-102 Cert</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Azure OpenAI & LLMs -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🧠 Azure OpenAI &amp; Large Language Models</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Azure OpenAI Service</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-1" /> Azure OpenAI resource setup: deployments &amp; model versions</label></li>
+              <li><label><input type="checkbox" data-id="ai-2" /> Chat Completions API: messages array, roles &amp; parameters</label></li>
+              <li><label><input type="checkbox" data-id="ai-3" /> Azure.AI.OpenAI .NET SDK — ChatClient, EmbeddingClient</label></li>
+              <li><label><input type="checkbox" data-id="ai-4" /> Streaming responses with IAsyncEnumerable&lt;T&gt;</label></li>
+              <li><label><input type="checkbox" data-id="ai-5" /> Function calling / tool use in chat completions</label></li>
+              <li><label><input type="checkbox" data-id="ai-6" /> Structured outputs with JSON schema enforcement</label></li>
+              <li><label><input type="checkbox" data-id="ai-7" /> Token counting, rate limits &amp; quota management</label></li>
+              <li><label><input type="checkbox" data-id="ai-8" /> GPT-4o, GPT-4 Turbo, o3 — model selection trade-offs</label></li>
+            </ul>
+            <h4>Prompt Engineering</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-9" /> System prompt design &amp; persona definition</label></li>
+              <li><label><input type="checkbox" data-id="ai-10" /> Few-shot prompting &amp; chain-of-thought techniques</label></li>
+              <li><label><input type="checkbox" data-id="ai-11" /> Prompt injection attacks &amp; mitigation strategies</label></li>
+              <li><label><input type="checkbox" data-id="ai-12" /> Temperature, top-p, frequency &amp; presence penalty tuning</label></li>
+              <li><label><input type="checkbox" data-id="ai-13" /> Context window management &amp; conversation history trimming</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Semantic Kernel -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>⚙ Semantic Kernel (SK)</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Core SDK</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-14" /> Kernel setup, DI integration &amp; service configuration</label></li>
+              <li><label><input type="checkbox" data-id="ai-15" /> Plugins: native functions &amp; prompt functions</label></li>
+              <li><label><input type="checkbox" data-id="ai-16" /> KernelFunction attribute &amp; function metadata</label></li>
+              <li><label><input type="checkbox" data-id="ai-17" /> Filters: function invocation &amp; prompt rendering filters</label></li>
+              <li><label><input type="checkbox" data-id="ai-18" /> IChatCompletionService &amp; ITextGenerationService</label></li>
+            </ul>
+            <h4>Memory &amp; RAG</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-19" /> Text embeddings: what they are &amp; when to use them</label></li>
+              <li><label><input type="checkbox" data-id="ai-20" /> Vector stores: Azure AI Search, Qdrant, in-memory</label></li>
+              <li><label><input type="checkbox" data-id="ai-21" /> Retrieval-Augmented Generation (RAG) pipeline design</label></li>
+              <li><label><input type="checkbox" data-id="ai-22" /> Chunking strategies: fixed, sentence, semantic</label></li>
+              <li><label><input type="checkbox" data-id="ai-23" /> Hybrid search: vector + keyword (BM25) with RRF fusion</label></li>
+              <li><label><input type="checkbox" data-id="ai-24" /> VectorizedSearch and GetAsync from IVectorizedSearch&lt;T&gt;</label></li>
+            </ul>
+            <h4>Agents &amp; Orchestration</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-25" /> ChatCompletionAgent — single agent patterns</label></li>
+              <li><label><input type="checkbox" data-id="ai-26" /> AgentGroupChat — multi-agent collaboration</label></li>
+              <li><label><input type="checkbox" data-id="ai-27" /> Planner strategies: FunctionChoiceBehavior.Auto</label></li>
+              <li><label><input type="checkbox" data-id="ai-28" /> Process framework for stateful multi-step workflows</label></li>
+              <li><label><input type="checkbox" data-id="ai-29" /> OpenAI Assistants API integration via SK</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Azure AI Services -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🔷 Azure AI Services</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Vision &amp; Document Intelligence</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-30" /> Azure AI Vision: image analysis, object detection, OCR</label></li>
+              <li><label><input type="checkbox" data-id="ai-31" /> Azure Document Intelligence (Form Recognizer): prebuilt &amp; custom models</label></li>
+              <li><label><input type="checkbox" data-id="ai-32" /> Face API: detection, verification &amp; compliance considerations</label></li>
+              <li><label><input type="checkbox" data-id="ai-33" /> Video Indexer for audio/video transcription &amp; insights</label></li>
+            </ul>
+            <h4>Language &amp; Speech</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-34" /> Azure AI Language: sentiment, NER, key phrase extraction</label></li>
+              <li><label><input type="checkbox" data-id="ai-35" /> Conversational Language Understanding (CLU)</label></li>
+              <li><label><input type="checkbox" data-id="ai-36" /> Azure AI Translator: real-time &amp; batch translation</label></li>
+              <li><label><input type="checkbox" data-id="ai-37" /> Azure Speech Services: STT, TTS &amp; real-time transcription</label></li>
+              <li><label><input type="checkbox" data-id="ai-38" /> Custom Neural Voice for branded TTS</label></li>
+            </ul>
+            <h4>Search &amp; Knowledge</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-39" /> Azure AI Search: indexes, indexers &amp; skillsets</label></li>
+              <li><label><input type="checkbox" data-id="ai-40" /> Semantic ranking &amp; vector search configuration</label></li>
+              <li><label><input type="checkbox" data-id="ai-41" /> Integrated vectorization with Azure OpenAI embeddings</label></li>
+              <li><label><input type="checkbox" data-id="ai-42" /> Azure AI Search .NET SDK — SearchClient&lt;T&gt;</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ML.NET -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📈 ML.NET &amp; Custom Models</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>ML.NET Core Concepts</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-43" /> MLContext, IDataView &amp; schema definition</label></li>
+              <li><label><input type="checkbox" data-id="ai-44" /> Data loading: CSV, database, in-memory collections</label></li>
+              <li><label><input type="checkbox" data-id="ai-45" /> Feature engineering: OneHotEncoding, Normalization, Concatenation</label></li>
+              <li><label><input type="checkbox" data-id="ai-46" /> Training pipelines: estimator chains</label></li>
+              <li><label><input type="checkbox" data-id="ai-47" /> Model evaluation: metrics for regression, classification, clustering</label></li>
+              <li><label><input type="checkbox" data-id="ai-48" /> Model saving / loading (ZIP) for production serving</label></li>
+            </ul>
+            <h4>ML Tasks</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-49" /> Binary &amp; multiclass classification (SDCA, FastTree)</label></li>
+              <li><label><input type="checkbox" data-id="ai-50" /> Regression for numeric prediction</label></li>
+              <li><label><input type="checkbox" data-id="ai-51" /> Recommendation with Matrix Factorization</label></li>
+              <li><label><input type="checkbox" data-id="ai-52" /> Anomaly detection: time series &amp; spike detection</label></li>
+              <li><label><input type="checkbox" data-id="ai-53" /> Text classification &amp; sentiment analysis pipelines</label></li>
+            </ul>
+            <h4>AutoML &amp; ONNX</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-54" /> ML.NET Model Builder (Visual Studio extension)</label></li>
+              <li><label><input type="checkbox" data-id="ai-55" /> AutoML API for automated algorithm selection</label></li>
+              <li><label><input type="checkbox" data-id="ai-56" /> Exporting ML.NET models to ONNX format</label></li>
+              <li><label><input type="checkbox" data-id="ai-57" /> Running ONNX models via Microsoft.ML.OnnxRuntime</label></li>
+              <li><label><input type="checkbox" data-id="ai-58" /> Integrating Hugging Face models via ONNX in .NET</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Responsible AI -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>⚖ Responsible AI &amp; Safety</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-59" /> Azure AI Content Safety: text &amp; image moderation APIs</label></li>
+              <li><label><input type="checkbox" data-id="ai-60" /> Groundedness detection &amp; hallucination mitigation</label></li>
+              <li><label><input type="checkbox" data-id="ai-61" /> Microsoft Responsible AI principles &amp; Impact Assessment</label></li>
+              <li><label><input type="checkbox" data-id="ai-62" /> Data privacy: PII detection &amp; redaction before LLM calls</label></li>
+              <li><label><input type="checkbox" data-id="ai-63" /> AI fairness: bias evaluation &amp; mitigation strategies</label></li>
+              <li><label><input type="checkbox" data-id="ai-64" /> Logging AI inputs/outputs for audit &amp; compliance</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Use <strong>Semantic Kernel</strong> as your LLM orchestration layer rather than calling OpenAI APIs directly — it provides abstraction, retries, and model portability.</li>
+              <li>Implement <strong>RAG before fine-tuning</strong> — retrieval-augmented generation solves 80% of knowledge-grounding problems at a fraction of the cost.</li>
+              <li>Always pass LLM inputs through <strong>Azure AI Content Safety</strong> for moderation in user-facing applications.</li>
+              <li>Use <strong>streaming responses</strong> (IAsyncEnumerable) for all chat UIs — users perceive streamed output as dramatically faster.</li>
+              <li>Cache <strong>embedding vectors</strong> — generating embeddings costs money and time; cache them in your vector store aggressively.</li>
+              <li>Apply <strong>exponential backoff with jitter</strong> for all Azure OpenAI API calls to handle rate limit (429) responses gracefully.</li>
+              <li>Log all prompts and completions to <strong>Application Insights</strong> with user/session correlation for debugging and cost attribution.</li>
+              <li>Define a <strong>maximum token budget</strong> per request and implement conversation history summarization to avoid context window overflows.</li>
+              <li>Evaluate AI output quality with <strong>Azure AI Evaluation SDK</strong> — treat AI quality like software quality with repeatable measurements.</li>
+              <li>Use <strong>Managed Identity</strong> to authenticate to Azure OpenAI — never ship API keys in application configuration.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /accordion-group -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
          PROJECT IDEAS
     ══════════════════════════════════════════════════════ -->
     <section class="content-section" id="section-projects">
@@ -954,6 +1356,45 @@
             <li>xUnit Tests</li>
           </ul>
           <span class="project-time">⏱ 2–3 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="intermediate">
+          <div class="project-level">Azure ☁</div>
+          <h3>☁ Serverless File Processor</h3>
+          <p>Azure Functions app that processes uploaded files — extracts text, generates thumbnails and stores results in Cosmos DB.</p>
+          <ul>
+            <li>Azure Functions (.NET 8)</li>
+            <li>Blob Storage triggers</li>
+            <li>Azure Cosmos DB output</li>
+            <li>Managed Identity auth</li>
+          </ul>
+          <span class="project-time">⏱ 3–4 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="advanced">
+          <div class="project-level">AI 🤖</div>
+          <h3>🤖 RAG Knowledge Assistant</h3>
+          <p>Enterprise Q&amp;A chatbot that answers questions from your own documents using Semantic Kernel RAG + Azure AI Search.</p>
+          <ul>
+            <li>Semantic Kernel + Azure OpenAI</li>
+            <li>Azure AI Search (vector)</li>
+            <li>Document Intelligence</li>
+            <li>Blazor / React frontend</li>
+          </ul>
+          <span class="project-time">⏱ 6–8 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="advanced">
+          <div class="project-level">AI 🤖</div>
+          <h3>🧠 Intelligent Sales Copilot</h3>
+          <p>Multi-agent system where a sales copilot can query CRM data, draft emails, and summarise deal pipelines autonomously.</p>
+          <ul>
+            <li>Semantic Kernel Agents</li>
+            <li>Azure OpenAI function calling</li>
+            <li>Azure Service Bus</li>
+            <li>Application Insights</li>
+          </ul>
+          <span class="project-time">⏱ 8–10 weeks</span>
         </div>
       </div>
     </section>

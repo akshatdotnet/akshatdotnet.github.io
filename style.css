@@ -956,3 +956,88 @@ mark {
   .content-section { break-inside: avoid; }
   .accordion-body { max-height: none !important; padding: 10px 0 !important; }
 }
+
+/* ── 20. AZURE & AI SECTION VARIANTS ──────────────────────── */
+
+/* Azure badge — blue sky */
+.section-badge--azure {
+  color: #0078d4;
+  background: #0078d418;
+  border-color: #0078d4;
+}
+
+/* AI badge — violet */
+.section-badge--ai {
+  color: #a855f7;
+  background: #a855f718;
+  border-color: #a855f7;
+}
+
+/* Azure section: accent the progress fill */
+#section-azure .spb-fill {
+  background: linear-gradient(90deg, #0078d4, #50e6ff);
+}
+
+/* AI section: accent the progress fill */
+#section-ai .spb-fill {
+  background: linear-gradient(90deg, #a855f7, #ec4899);
+}
+
+/* Info chips inside overview panels */
+.info-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  border-radius: 20px;
+  padding: 3px 12px;
+  border: 1px solid;
+}
+
+.chip--blue   { color: #0078d4; background: #0078d415; border-color: #0078d4; }
+.chip--green  { color: #00b294; background: #00b29415; border-color: #00b294; }
+.chip--purple { color: #a855f7; background: #a855f715; border-color: #a855f7; }
+.chip--orange { color: #ff8c00; background: #ff8c0015; border-color: #ff8c00; }
+
+/* Project card: AI level accent */
+.project-card[data-level="advanced"] .project-level {
+  /* keep existing warn colour for regular advanced */
+}
+/* Differentiate AI project cards with purple top bar */
+.project-card:has(.project-level:contains("AI")) { border-top-color: #a855f7; }
+
+/* Accordion trigger icons per section */
+#section-azure .accordion-trigger[aria-expanded="true"] { color: #0078d4; }
+#section-ai    .accordion-trigger[aria-expanded="true"] { color: #a855f7; }
+
+/* Checklist checked state — azure section uses blue */
+#section-azure .checklist input[type="checkbox"]:checked {
+  background: #0078d4;
+  border-color: #0078d4;
+}
+
+/* Checklist checked state — ai section uses violet */
+#section-ai .checklist input[type="checkbox"]:checked {
+  background: #a855f7;
+  border-color: #a855f7;
+}
+
+/* Best practices left bar colour variants */
+#section-azure .best-practices li { border-left-color: #0078d4; }
+#section-ai    .best-practices li { border-left-color: #a855f7; }
+
+/* Timeline dot for phase 6 */
+.timeline-item[data-phase="6"] .tl-dot {
+  background: #a855f7;
+  box-shadow: 0 0 0 3px #a855f718, 0 0 12px #a855f7;
+}
+.timeline-item[data-phase="6"] .tl-content:hover { border-color: #a855f7; }
+.timeline-item[data-phase="6"] .tl-phase { color: #a855f7; }
+.timeline-item[data-phase="6"] .tl-tags span { color: #0078d4; background: #0078d415; border-color: #0078d4; }
