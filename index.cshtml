@@ -1,0 +1,1867 @@
+﻿@{
+    ViewData["Title"] = ".NET Full-Stack Developer Syllabus";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>.NET Full-Stack Developer Syllabus 2026</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:wght@300;400;500&family=Literata:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+    <style>
+        :root {
+            --clr-bg: #0b0e14;
+            --clr-surface: #13181f;
+            --clr-surface2: #1a2130;
+            --clr-border: rgba(255,255,255,0.07);
+            --clr-border2: rgba(255,255,255,0.13);
+            --clr-text: #e8ecf2;
+            --clr-muted: #7a8899;
+            --clr-accent: #00d4ff;
+            --clr-accent2: #7c5cfc;
+            --clr-green: #00e5a0;
+            --clr-amber: #ffc84a;
+            --clr-red: #ff5c5c;
+            --clr-coral: #ff7a5c;
+            --clr-pink: #e879f9;
+            --font-head: 'Syne', sans-serif;
+            --font-mono: 'DM Mono', monospace;
+            --font-body: 'Literata', serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            background: var(--clr-bg);
+            color: var(--clr-text);
+            font-family: var(--font-body);
+            font-size: 15px;
+            line-height: 1.7;
+            overflow-x: hidden
+        }
+
+        ::-webkit-scrollbar {
+            width: 4px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--clr-bg)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--clr-accent2);
+            border-radius: 4px
+        }
+
+        /* BG GRID */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: linear-gradient(rgba(0,212,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,0.03) 1px,transparent 1px);
+            background-size: 48px 48px;
+            pointer-events: none;
+            z-index: 0
+        }
+
+        /* NOISE TEXTURE */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: .4
+        }
+
+        .container-main {
+            position: relative;
+            z-index: 1;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        /* ─── NAVBAR ─── */
+        .site-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(11,14,20,0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--clr-border);
+            padding: 14px 0
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px
+        }
+
+        .nav-logo {
+            font-family: var(--font-head);
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--clr-accent);
+            letter-spacing: -0.5px;
+            text-decoration: none
+        }
+
+            .nav-logo span {
+                color: var(--clr-accent2)
+            }
+
+        .nav-pills {
+            display: flex;
+            gap: 4px;
+            align-items: center
+        }
+
+        .nav-pill {
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-family: var(--font-mono);
+            color: var(--clr-muted);
+            text-decoration: none;
+            border: 1px solid transparent;
+            transition: all .2s;
+            cursor: pointer;
+            background: none
+        }
+
+            .nav-pill:hover, .nav-pill.active {
+                color: var(--clr-accent);
+                border-color: rgba(0,212,255,0.25);
+                background: rgba(0,212,255,0.06)
+            }
+
+        .nav-search {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border2);
+            border-radius: 8px;
+            padding: 7px 14px
+        }
+
+            .nav-search input {
+                background: none;
+                border: none;
+                outline: none;
+                color: var(--clr-text);
+                font-size: 13px;
+                font-family: var(--font-mono);
+                width: 180px
+            }
+
+                .nav-search input::placeholder {
+                    color: var(--clr-muted)
+                }
+
+            .nav-search i {
+                color: var(--clr-muted);
+                font-size: 13px
+            }
+
+        /* ─── HERO ─── */
+        .hero {
+            padding: 80px 0 60px;
+            position: relative
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: .12em;
+            color: var(--clr-accent);
+            background: rgba(0,212,255,0.08);
+            border: 1px solid rgba(0,212,255,0.2);
+            padding: 6px 14px;
+            border-radius: 30px;
+            margin-bottom: 24px;
+            text-transform: uppercase
+        }
+
+            .hero-eyebrow .dot-blink {
+                width: 6px;
+                height: 6px;
+                border-radius: 50%;
+                background: var(--clr-accent);
+                animation: blink 1.4s infinite
+            }
+        @@keyframes blink {
+            0%,100%
+
+        {
+            opacity: 1
+        }
+
+        50% {
+            opacity: .2
+        }
+
+        }
+
+        .hero h1 {
+            font-family: var(--font-head);
+            font-size: clamp(36px,5vw,68px);
+            font-weight: 800;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 18px
+        }
+
+            .hero h1 .line2 {
+                color: var(--clr-accent)
+            }
+
+            .hero h1 .line3 {
+                color: var(--clr-accent2)
+            }
+
+        .hero-sub {
+            font-size: 17px;
+            color: var(--clr-muted);
+            max-width: 580px;
+            margin-bottom: 36px;
+            line-height: 1.65
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+            flex-wrap: wrap
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column
+        }
+
+            .hero-stat .num {
+                font-family: var(--font-head);
+                font-size: 28px;
+                font-weight: 800;
+                color: var(--clr-text);
+                line-height: 1
+            }
+
+            .hero-stat .lbl {
+                font-family: var(--font-mono);
+                font-size: 11px;
+                color: var(--clr-muted);
+                letter-spacing: .06em;
+                margin-top: 4px
+            }
+
+        .hero-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--clr-border2);
+            align-self: center
+        }
+
+        .glow-badge {
+            position: absolute;
+            right: 5%;
+            top: 40%;
+            width: 280px;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border2);
+            border-radius: 16px;
+            padding: 20px;
+            display: none
+        }
+        @@media(min - width:1100px) {
+            .glow-badge
+
+        {
+            display: block
+        }
+
+        }
+
+        .glow-badge::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 16px;
+            background: linear-gradient(135deg,rgba(0,212,255,0.3),rgba(124,92,252,0.3));
+            z-index: -1;
+            filter: blur(8px)
+        }
+
+        .glow-badge .gb-title {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--clr-accent);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 12px
+        }
+
+        .step-mini {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 13px;
+            color: var(--clr-muted)
+        }
+
+            .step-mini .sn {
+                font-family: var(--font-mono);
+                font-size: 10px;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                background: var(--clr-surface2);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--clr-accent);
+                flex-shrink: 0
+            }
+
+        /* ─── FILTER BAR ─── */
+        .filter-section {
+            padding: 32px 0 0;
+            margin-bottom: 28px
+        }
+
+        .filter-label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--clr-muted);
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            margin-bottom: 12px
+        }
+
+        .filter-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            align-items: center
+        }
+
+        .flt-btn {
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            border: 1px solid var(--clr-border2);
+            background: var(--clr-surface);
+            color: var(--clr-muted);
+            cursor: pointer;
+            transition: all .18s;
+            white-space: nowrap
+        }
+
+            .flt-btn:hover {
+                border-color: var(--clr-accent);
+                color: var(--clr-accent)
+            }
+
+            .flt-btn.active {
+                background: rgba(0,212,255,0.1);
+                border-color: var(--clr-accent);
+                color: var(--clr-accent)
+            }
+
+            .flt-btn .count-badge {
+                display: inline-block;
+                background: rgba(0,212,255,0.15);
+                color: var(--clr-accent);
+                font-size: 10px;
+                padding: 1px 6px;
+                border-radius: 10px;
+                margin-left: 6px
+            }
+
+        .sort-select {
+            margin-left: auto;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border2);
+            color: var(--clr-muted);
+            font-family: var(--font-mono);
+            font-size: 12px;
+            padding: 7px 12px;
+            border-radius: 6px;
+            outline: none;
+            cursor: pointer
+        }
+
+            .sort-select:focus {
+                border-color: var(--clr-accent)
+            }
+
+        /* ─── SEARCH BAR ─── */
+        .search-mega {
+            margin-bottom: 24px
+        }
+
+            .search-mega .input-group input {
+                background: var(--clr-surface);
+                border: 1px solid var(--clr-border2);
+                color: var(--clr-text);
+                font-family: var(--font-mono);
+                font-size: 13px;
+                padding: 12px 18px;
+                border-radius: 8px;
+                outline: none;
+                width: 100%
+            }
+
+                .search-mega .input-group input:focus {
+                    border-color: var(--clr-accent);
+                    box-shadow: 0 0 0 3px rgba(0,212,255,0.1)
+                }
+
+                .search-mega .input-group input::placeholder {
+                    color: var(--clr-muted)
+                }
+
+        #search-results-count {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--clr-muted);
+            margin-top: 8px
+        }
+
+        /* ─── MODULE GRID ─── */
+        #modules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(340px,1fr));
+            gap: 16px
+        }
+
+        .module-card {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: border-color .2s,transform .2s;
+            position: relative
+        }
+
+            .module-card:hover {
+                border-color: var(--clr-border2);
+                transform: translateY(-2px)
+            }
+
+            .module-card.essential {
+                border-left: 3px solid var(--clr-accent)
+            }
+
+            .module-card.important {
+                border-left: 3px solid var(--clr-green)
+            }
+
+            .module-card.market {
+                border-left: 3px solid var(--clr-amber)
+            }
+
+        .card-head {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 18px;
+            cursor: pointer;
+            user-select: none
+        }
+
+        .card-icon-wrap {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            background: var(--clr-surface2)
+        }
+
+        .card-meta {
+            flex: 1;
+            min-width: 0
+        }
+
+        .card-title {
+            font-family: var(--font-head);
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 3px
+        }
+
+        .card-sub {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--clr-muted);
+            letter-spacing: .04em
+        }
+
+        .card-badges {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+            margin-top: 6px;
+            flex-wrap: wrap
+        }
+
+        .badge-pill {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding: 3px 9px;
+            border-radius: 20px;
+            font-weight: 500;
+            letter-spacing: .03em
+        }
+
+        .badge-essential {
+            background: rgba(0,212,255,0.1);
+            color: var(--clr-accent);
+            border: 1px solid rgba(0,212,255,0.2)
+        }
+
+        .badge-important {
+            background: rgba(0,229,160,0.1);
+            color: var(--clr-green);
+            border: 1px solid rgba(0,229,160,0.2)
+        }
+
+        .badge-market {
+            background: rgba(255,200,74,0.1);
+            color: var(--clr-amber);
+            border: 1px solid rgba(255,200,74,0.2)
+        }
+
+        .badge-count {
+            background: var(--clr-surface2);
+            color: var(--clr-muted);
+            border: 1px solid var(--clr-border2)
+        }
+
+        .card-toggle {
+            color: var(--clr-muted);
+            font-size: 13px;
+            transition: transform .25s;
+            flex-shrink: 0;
+            margin-top: 3px
+        }
+
+            .card-toggle.open {
+                transform: rotate(180deg)
+            }
+
+        .card-progress {
+            height: 2px;
+            background: var(--clr-surface2);
+            margin: 0 18px
+        }
+
+        .card-progress-fill {
+            height: 100%;
+            border-radius: 2px;
+            transition: width .6s
+        }
+
+        .card-body-wrap {
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height .35s ease
+        }
+
+            .card-body-wrap.open {
+                max-height: 1200px
+            }
+
+        .card-body {
+            padding: 16px 18px 18px
+        }
+
+        .topic-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 5px
+        }
+
+        .topic-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            padding: 8px 10px;
+            border-radius: 6px;
+            background: var(--clr-surface2);
+            border: 1px solid var(--clr-border);
+            transition: border-color .15s;
+            font-size: 13px;
+            color: var(--clr-muted)
+        }
+
+            .topic-item:hover {
+                border-color: var(--clr-border2)
+            }
+
+        .topic-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 7px
+        }
+
+        .topic-text {
+            flex: 1;
+            line-height: 1.5
+        }
+
+        .topic-level {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            margin-top: 2px
+        }
+
+        .lv-beginner {
+            background: rgba(0,229,160,0.1);
+            color: var(--clr-green)
+        }
+
+        .lv-intermediate {
+            background: rgba(0,212,255,0.1);
+            color: var(--clr-accent)
+        }
+
+        .lv-advanced {
+            background: rgba(255,92,92,0.1);
+            color: var(--clr-red)
+        }
+
+        .best-practice-box {
+            margin-top: 12px;
+            padding: 12px 14px;
+            background: rgba(124,92,252,0.08);
+            border: 1px solid rgba(124,92,252,0.2);
+            border-radius: 8px
+        }
+
+        .bp-label {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            color: var(--clr-accent2);
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            margin-bottom: 6px
+        }
+
+        .bp-text {
+            font-size: 12px;
+            color: var(--clr-muted);
+            line-height: 1.6
+        }
+
+            .bp-text li {
+                margin-bottom: 3px;
+                list-style: none;
+                padding-left: 14px;
+                position: relative
+            }
+
+                .bp-text li::before {
+                    content: '›';
+                    position: absolute;
+                    left: 0;
+                    color: var(--clr-accent2)
+                }
+
+        /* ─── LEARNING PATH ─── */
+        .lp-section {
+            padding: 64px 0
+        }
+
+        .section-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: var(--clr-accent2);
+            margin-bottom: 12px
+        }
+
+        .section-title {
+            font-family: var(--font-head);
+            font-size: clamp(24px,4vw,40px);
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 8px
+        }
+
+        .section-sub {
+            font-size: 15px;
+            color: var(--clr-muted);
+            max-width: 560px;
+            margin-bottom: 36px
+        }
+
+        .lp-tabs {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 28px;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border2);
+            border-radius: 8px;
+            padding: 4px;
+            width: fit-content
+        }
+
+        .lp-tab {
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--clr-muted);
+            cursor: pointer;
+            border: none;
+            background: none;
+            transition: all .18s
+        }
+
+            .lp-tab.active {
+                background: var(--clr-surface2);
+                color: var(--clr-text);
+                border: 1px solid var(--clr-border2)
+            }
+
+        .lp-track {
+            display: none
+        }
+
+            .lp-track.active {
+                display: block
+            }
+
+        .path-timeline {
+            position: relative;
+            padding-left: 0
+        }
+
+        .path-step {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 0;
+            position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .4s,transform .4s
+        }
+
+            .path-step.visible {
+                opacity: 1;
+                transform: translateY(0)
+            }
+
+        .path-left {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 52px;
+            flex-shrink: 0
+        }
+
+        .step-num {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-head);
+            font-size: 16px;
+            font-weight: 800;
+            border: 2px solid;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            background: var(--clr-bg)
+        }
+
+        .step-line {
+            flex: 1;
+            width: 2px;
+            min-height: 32px;
+            margin: 4px 0;
+            background: linear-gradient(to bottom,currentColor,transparent)
+        }
+
+        .path-content {
+            flex: 1;
+            padding-bottom: 32px
+        }
+
+        .path-card {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border2);
+            border-radius: 10px;
+            padding: 18px 20px;
+            position: relative;
+            overflow: hidden
+        }
+
+            .path-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 3px;
+                height: 100%;
+                background: currentColor
+            }
+
+        .path-card-title {
+            font-family: var(--font-head);
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 4px
+        }
+
+        .path-card-sub {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--clr-muted);
+            letter-spacing: .04em;
+            margin-bottom: 10px
+        }
+
+        .path-topics {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px
+        }
+
+        .path-topic {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            background: var(--clr-surface2);
+            color: var(--clr-muted);
+            border: 1px solid var(--clr-border)
+        }
+
+        .path-duration {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--clr-muted);
+            display: flex;
+            align-items: center;
+            gap: 6px
+        }
+
+            .path-duration i {
+                color: var(--clr-accent)
+            }
+
+        .path-resources {
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--clr-border)
+        }
+
+            .path-resources .res-label {
+                font-family: var(--font-mono);
+                font-size: 10px;
+                color: var(--clr-accent2);
+                letter-spacing: .08em;
+                margin-bottom: 6px
+            }
+
+        .res-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px
+        }
+
+        .res-link {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 3px 10px;
+            border-radius: 4px;
+            background: rgba(124,92,252,0.08);
+            border: 1px solid rgba(124,92,252,0.2);
+            color: var(--clr-accent2);
+            text-decoration: none;
+            transition: all .15s
+        }
+
+            .res-link:hover {
+                background: rgba(124,92,252,0.18);
+                color: var(--clr-accent2)
+            }
+
+        .duration-total {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            padding: 10px 18px;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border2);
+            border-radius: 8px;
+            color: var(--clr-muted);
+            margin-top: 4px
+        }
+
+            .duration-total strong {
+                color: var(--clr-accent)
+            }
+
+        /* ─── PROGRESS TRACKER ─── */
+        .tracker-section {
+            padding: 48px 0
+        }
+
+        .tracker-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+            gap: 12px
+        }
+
+        .tracker-card {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 10px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all .18s;
+            position: relative;
+            overflow: hidden
+        }
+
+            .tracker-card.completed {
+                border-color: rgba(0,229,160,0.4);
+                background: rgba(0,229,160,0.04)
+            }
+
+                .tracker-card.completed .tc-icon {
+                    color: var(--clr-green)
+                }
+
+            .tracker-card:hover {
+                border-color: var(--clr-border2)
+            }
+
+        .tc-check {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid var(--clr-border2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            color: transparent;
+            transition: all .2s
+        }
+
+        .tracker-card.completed .tc-check {
+            background: var(--clr-green);
+            border-color: var(--clr-green);
+            color: white
+        }
+
+        .tc-icon {
+            font-size: 22px;
+            margin-bottom: 8px;
+            display: block
+        }
+
+        .tc-title {
+            font-family: var(--font-head);
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--clr-text);
+            margin-bottom: 4px
+        }
+
+        .tc-count {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--clr-muted)
+        }
+
+        .overall-progress {
+            margin-top: 24px;
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border2);
+            border-radius: 12px;
+            padding: 24px
+        }
+
+        .op-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px
+        }
+
+        .op-title {
+            font-family: var(--font-head);
+            font-size: 18px;
+            font-weight: 700
+        }
+
+        .op-pct {
+            font-family: var(--font-head);
+            font-size: 36px;
+            font-weight: 800;
+            color: var(--clr-accent)
+        }
+
+        .progress-track {
+            height: 8px;
+            background: var(--clr-surface2);
+            border-radius: 4px;
+            overflow: hidden
+        }
+
+        .progress-fill-main {
+            height: 100%;
+            background: linear-gradient(90deg,var(--clr-accent2),var(--clr-accent));
+            border-radius: 4px;
+            transition: width .6s ease;
+            width: 0%
+        }
+
+        .op-labels {
+            display: flex;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--clr-muted);
+            margin-top: 8px
+        }
+
+        .reset-btn {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            padding: 6px 14px;
+            background: none;
+            border: 1px solid var(--clr-border2);
+            border-radius: 6px;
+            color: var(--clr-muted);
+            cursor: pointer;
+            transition: all .18s
+        }
+
+            .reset-btn:hover {
+                border-color: var(--clr-red);
+                color: var(--clr-red)
+            }
+
+        /* ─── BEST PRACTICES CHEATSHEET ─── */
+        .bp-section {
+            padding: 48px 0 80px
+        }
+
+        .bp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill,minmax(280px,1fr));
+            gap: 16px
+        }
+
+        .bp-card {
+            background: var(--clr-surface);
+            border: 1px solid var(--clr-border);
+            border-radius: 12px;
+            padding: 20px;
+            transition: border-color .2s
+        }
+
+            .bp-card:hover {
+                border-color: var(--clr-border2)
+            }
+
+        .bp-card-icon {
+            font-size: 24px;
+            margin-bottom: 12px
+        }
+
+        .bp-card-title {
+            font-family: var(--font-head);
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--clr-text)
+        }
+
+        .bp-card-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 6px
+        }
+
+            .bp-card-list li {
+                font-size: 13px;
+                color: var(--clr-muted);
+                padding-left: 16px;
+                position: relative;
+                line-height: 1.5
+            }
+
+                .bp-card-list li::before {
+                    content: '→';
+                    position: absolute;
+                    left: 0;
+                    color: var(--clr-accent);
+                    font-size: 11px;
+                    top: 3px
+                }
+
+        .bp-card.accent1 {
+            border-top: 2px solid var(--clr-accent)
+        }
+
+        .bp-card.accent2 {
+            border-top: 2px solid var(--clr-accent2)
+        }
+
+        .bp-card.accent3 {
+            border-top: 2px solid var(--clr-green)
+        }
+
+        .bp-card.accent4 {
+            border-top: 2px solid var(--clr-amber)
+        }
+
+        .bp-card.accent5 {
+            border-top: 2px solid var(--clr-coral)
+        }
+
+        .bp-card.accent6 {
+            border-top: 2px solid var(--clr-pink)
+        }
+
+        /* ─── FOOTER ─── */
+        footer {
+            border-top: 1px solid var(--clr-border);
+            padding: 24px 0;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--clr-muted)
+        }
+
+            footer strong {
+                color: var(--clr-accent)
+            }
+
+        /* ─── UTILITY ─── */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--clr-muted);
+            font-family: var(--font-mono);
+            font-size: 14px;
+            display: none
+        }
+
+            .no-results i {
+                font-size: 40px;
+                margin-bottom: 12px;
+                display: block;
+                color: var(--clr-border2)
+            }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg,transparent,var(--clr-border2),transparent);
+            margin: 0 0 48px
+        }
+
+        @@media(max - width:768px) {
+            .nav-pills
+
+        {
+            display: none
+        }
+
+        .nav-search input {
+            width: 120px
+        }
+
+        #modules-grid {
+            grid-template-columns: 1fr
+        }
+
+        .hero h1 {
+            letter-spacing: -1px
+        }
+
+        .hero-stats {
+            gap: 20px
+        }
+
+        .glow-badge {
+            display: none
+        }
+
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="site-nav">
+        <div class="nav-inner">
+            <a class="nav-logo" href="#">.NET<span>Stack</span></a>
+            <div class="nav-pills">
+                <a class="nav-pill active" href="#syllabus">Syllabus</a>
+                <a class="nav-pill" href="#learning-path">Learning Path</a>
+                <a class="nav-pill" href="#tracker">Progress</a>
+                <a class="nav-pill" href="#best-practices">Best Practices</a>
+            </div>
+            <div class="nav-search">
+                <i class="bi bi-search"></i>
+                <input type="text" id="global-search" placeholder="Search topics..." />
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <div class="container-main">
+        <section class="hero">
+            <div class="hero-eyebrow"><span class="dot-blink"></span>2026 Market-Aligned Curriculum</div>
+            <h1>.NET Full-Stack<br /><span class="line2">Developer</span><br /><span class="line3">Syllabus</span></h1>
+            <p class="hero-sub">Complete roadmap covering C#, SQL, LINQ, EF Core, ASP.NET Core, Web API, MVC, Azure, Docker and more — with industry best practices and a structured learning path.</p>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="num" id="stat-modules">18</span><span class="lbl">Modules</span></div>
+                <div class="hero-divider"></div>
+                <div class="hero-stat"><span class="num" id="stat-topics">160+</span><span class="lbl">Topics</span></div>
+                <div class="hero-divider"></div>
+                <div class="hero-stat"><span class="num">12–18</span><span class="lbl">Months</span></div>
+                <div class="hero-divider"></div>
+                <div class="hero-stat"><span class="num">3</span><span class="lbl">Skill Levels</span></div>
+            </div>
+
+            <!-- floating badge -->
+            <div class="glow-badge">
+                <div class="gb-title">Suggested Order</div>
+                <div class="step-mini"><span class="sn">1</span>C# Fundamentals</div>
+                <div class="step-mini"><span class="sn">2</span>SQL & Database Design</div>
+                <div class="step-mini"><span class="sn">3</span>LINQ</div>
+                <div class="step-mini"><span class="sn">4</span>Entity Framework Core</div>
+                <div class="step-mini"><span class="sn">5</span>ASP.NET Core</div>
+                <div class="step-mini"><span class="sn">6</span>Web API</div>
+                <div class="step-mini"><span class="sn">7</span>Auth & Security</div>
+                <div class="step-mini"><span class="sn">8</span>Testing</div>
+                <div class="step-mini"><span class="sn">9</span>Cloud / DevOps</div>
+                <div class="step-mini"><span class="sn">10</span>Architecture</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- ═══════════════ SYLLABUS ═══════════════ -->
+    <div class="container-main" id="syllabus">
+        <div class="section-divider"></div>
+        <div class="section-eyebrow">Core Curriculum</div>
+        <div class="section-title">All Modules</div>
+
+        <!-- Filter -->
+        <div class="filter-section">
+            <div class="filter-label">Filter by category</div>
+            <div class="filter-row" id="filter-btns">
+                <button class="flt-btn active" data-cat="all">All <span class="count-badge" id="cnt-all">18</span></button>
+                <button class="flt-btn" data-cat="core">⚙️ Core <span class="count-badge" id="cnt-core">3</span></button>
+                <button class="flt-btn" data-cat="data">🗄️ Data <span class="count-badge" id="cnt-data">3</span></button>
+                <button class="flt-btn" data-cat="backend">🌐 Backend <span class="count-badge" id="cnt-backend">5</span></button>
+                <button class="flt-btn" data-cat="frontend">💻 Frontend <span class="count-badge" id="cnt-frontend">1</span></button>
+                <button class="flt-btn" data-cat="cloud">☁️ Cloud &amp; DevOps <span class="count-badge" id="cnt-cloud">2</span></button>
+                <button class="flt-btn" data-cat="advanced">🧱 Advanced <span class="count-badge" id="cnt-advanced">4</span></button>
+                <select class="sort-select" id="sort-sel">
+                    <option value="default">Sort: Default</option>
+                    <option value="alpha">A → Z</option>
+                    <option value="topics-desc">Topics: Most</option>
+                    <option value="topics-asc">Topics: Fewest</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="search-mega">
+            <input type="text" id="topic-search" placeholder="🔍  Search any topic, e.g. 'JWT', 'EF Core migrations', 'Docker'…" />
+            <div id="search-results-count"></div>
+        </div>
+
+        <div id="modules-grid"></div>
+        <div class="no-results" id="no-results"><i class="bi bi-search"></i>No modules match your search.</div>
+    </div>
+
+    <!-- ═══════════════ LEARNING PATH ═══════════════ -->
+    <div class="container-main" id="learning-path">
+        <div class="section-divider" style="margin-top:60px"></div>
+        <div class="section-eyebrow">Structured Roadmap</div>
+        <div class="section-title">Learning Path</div>
+        <p class="section-sub">Choose your track. Each phase builds on the last — follow the order for fastest results.</p>
+
+        <div class="lp-tabs">
+            <button class="lp-tab active" data-track="standard">Standard (12 mo)</button>
+            <button class="lp-tab" data-track="fast">Fast-Track (6 mo)</button>
+            <button class="lp-tab" data-track="senior">Senior (18 mo)</button>
+        </div>
+
+        <div id="lp-standard" class="lp-track active"></div>
+        <div id="lp-fast" class="lp-track"></div>
+        <div id="lp-senior" class="lp-track"></div>
+    </div>
+
+    <!-- ═══════════════ PROGRESS TRACKER ═══════════════ -->
+    <div class="container-main" id="tracker">
+        <div class="section-divider" style="margin-top:60px"></div>
+        <div class="section-eyebrow">Track Progress</div>
+        <div class="section-title">Your Progress</div>
+        <p class="section-sub">Click a module to mark it complete. Progress is saved in your browser.</p>
+
+        <div class="overall-progress" style="margin-bottom:24px">
+            <div class="op-top">
+                <div>
+                    <div class="op-title">Overall Completion</div>
+                    <div id="op-label" style="font-family:var(--font-mono);font-size:12px;color:var(--clr-muted);margin-top:2px">0 of 18 modules completed</div>
+                </div>
+                <div style="display:flex;align-items:center;gap:12px">
+                    <div class="op-pct" id="op-pct">0%</div>
+                    <button class="reset-btn" id="reset-btn">Reset</button>
+                </div>
+            </div>
+            <div class="progress-track"><div class="progress-fill-main" id="progress-fill-main"></div></div>
+            <div class="op-labels"><span>Beginner</span><span>Intermediate</span><span>Advanced</span><span>Expert</span></div>
+        </div>
+
+        <div class="tracker-grid" id="tracker-grid"></div>
+    </div>
+
+    <!-- ═══════════════ BEST PRACTICES ═══════════════ -->
+    <div class="container-main" id="best-practices">
+        <div class="section-divider" style="margin-top:60px"></div>
+        <div class="section-eyebrow">Industry Standards</div>
+        <div class="section-title">Best Practices Cheatsheet</div>
+        <p class="section-sub">Principles, patterns and habits that separate good developers from great ones.</p>
+        <div class="bp-grid" id="bp-grid"></div>
+    </div>
+
+    <footer>
+        <div class="container-main">
+            Built for <strong>.NET Full-Stack Developers</strong> · 2026 Market Curriculum · 18 modules · 160+ topics
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        /* ═══════════════════════════════════════════════
+           DATA
+        ═══════════════════════════════════════════════ */
+        const MODULES = [
+          {id:'cs',cat:'core',icon:'⚙️',title:'C# Language Fundamentals',sub:'Foundation · Essential',badge:'essential',color:'#00d4ff',progress:100,
+           bp:['Use records for immutable DTOs in C# 9+','Always use async/await for I/O-bound operations','Prefer pattern matching over type casting','Use IDisposable + using for resource cleanup'],
+           topics:[
+            {t:'Variables, data types, type conversion',l:'Beginner'},{t:'Control flow — if/else, switch, loops',l:'Beginner'},
+            {t:'Methods, parameters, ref & out keywords',l:'Beginner'},{t:'OOP — Classes, objects, constructors',l:'Beginner'},
+            {t:'Encapsulation, Inheritance, Polymorphism, Abstraction',l:'Beginner'},{t:'Interfaces and abstract classes',l:'Intermediate'},
+            {t:'Generics — List<T>, Dictionary<K,V>, custom generics',l:'Intermediate'},{t:'Delegates, events, Func<>, Action<>, Predicate<>',l:'Intermediate'},
+            {t:'Lambda expressions',l:'Intermediate'},{t:'Exception handling — try/catch/finally, custom exceptions',l:'Intermediate'},
+            {t:'Nullable types, null coalescing, null-conditional operators',l:'Intermediate'},{t:'Async/Await, Task, CancellationToken',l:'Intermediate'},
+            {t:'Records, pattern matching, init-only properties (C# 9-12)',l:'Advanced'},{t:'Span<T>, Memory<T>, performance patterns',l:'Advanced'},
+            {t:'Extension methods, indexers, operator overloading',l:'Intermediate'}]},
+          {id:'oop',cat:'core',icon:'🧩',title:'Design Patterns & OOP Design',sub:'Architecture · Essential',badge:'essential',color:'#00d4ff',progress:95,
+           bp:['Apply SOLID from day one — not as afterthought','Prefer composition over inheritance','Use interfaces to decouple — not concrete classes','Keep methods under 20 lines'],
+           topics:[
+            {t:'SOLID principles in depth',l:'Intermediate'},{t:'Creational — Singleton, Factory, Builder, Prototype',l:'Intermediate'},
+            {t:'Structural — Adapter, Decorator, Facade, Proxy',l:'Intermediate'},{t:'Behavioral — Strategy, Observer, Command, Chain of Responsibility',l:'Intermediate'},
+            {t:'Repository & Unit of Work patterns',l:'Intermediate'},{t:'CQRS — Command Query Responsibility Segregation',l:'Advanced'},
+            {t:'MediatR library & mediator pattern',l:'Advanced'},{t:'DRY, YAGNI, KISS principles',l:'Beginner'}]},
+          {id:'tools',cat:'core',icon:'🛠️',title:'Developer Tools & Practices',sub:'Productivity · Essential',badge:'essential',color:'#00d4ff',progress:100,
+           bp:['Master keyboard shortcuts in VS/Rider — massive speed boost','Use Git Flow or trunk-based development consistently','Write meaningful commit messages (conventional commits)','Review your own PRs before requesting reviews'],
+           topics:[
+            {t:'Visual Studio 2022 / VS Code / JetBrains Rider',l:'Beginner'},{t:'NuGet package management',l:'Beginner'},
+            {t:'Postman / Thunder Client for API testing',l:'Beginner'},{t:'SQL Server Management Studio / Azure Data Studio',l:'Beginner'},
+            {t:'Docker Desktop',l:'Intermediate'},{t:'GitHub Copilot / AI coding assistance',l:'Intermediate'},
+            {t:'Clean code practices — naming, comments, formatting',l:'Beginner'},{t:'Code reviews — PR etiquette and constructive feedback',l:'Intermediate'}]},
+          {id:'sql',cat:'data',icon:'🗄️',title:'SQL & Database Design',sub:'Data Layer · Essential',badge:'essential',color:'#00e5a0',progress:100,
+           bp:['Always use parameterized queries — never string concatenation','Index foreign keys and columns used in WHERE clauses','Use CTEs for readability, not performance magic','Never SELECT * in production code'],
+           topics:[
+            {t:'DDL — CREATE, ALTER, DROP, TRUNCATE',l:'Beginner'},{t:'DML — SELECT, INSERT, UPDATE, DELETE',l:'Beginner'},
+            {t:'Joins — INNER, LEFT, RIGHT, FULL OUTER, CROSS, SELF',l:'Beginner'},{t:'Subqueries, CTEs (WITH clause), recursive CTEs',l:'Intermediate'},
+            {t:'Aggregate functions, GROUP BY, HAVING',l:'Beginner'},{t:'Window functions — ROW_NUMBER, RANK, DENSE_RANK, LEAD, LAG',l:'Intermediate'},
+            {t:'Indexes — clustered, non-clustered, covering, filtered',l:'Intermediate'},{t:'Stored procedures, functions, triggers, views',l:'Intermediate'},
+            {t:'Normalization — 1NF to 3NF, BCNF',l:'Intermediate'},{t:'Transactions — ACID properties, isolation levels',l:'Intermediate'},
+            {t:'Query execution plans & performance tuning',l:'Advanced'},{t:'SQL Server / PostgreSQL specifics',l:'Intermediate'}]},
+          {id:'linq',cat:'data',icon:'🔍',title:'LINQ',sub:'Language Integrated Query · Essential',badge:'essential',color:'#00e5a0',progress:95,
+           bp:['Prefer method syntax — more readable for complex chains','Use IQueryable for DB queries, IEnumerable for in-memory','Avoid .ToList() early — defer execution as long as possible','Use Select before Where when projection reduces size'],
+           topics:[
+            {t:'Method syntax vs query syntax',l:'Beginner'},{t:'Filtering — Where, OfType',l:'Beginner'},
+            {t:'Projection — Select, SelectMany',l:'Beginner'},{t:'Ordering — OrderBy, ThenBy, Reverse',l:'Beginner'},
+            {t:'Grouping — GroupBy, ToLookup',l:'Intermediate'},{t:'Joining — Join, GroupJoin, Zip',l:'Intermediate'},
+            {t:'Aggregation — Count, Sum, Min, Max, Average',l:'Beginner'},{t:'Quantifiers — Any, All, Contains',l:'Beginner'},
+            {t:'Element operations — First, Single, ElementAt, DefaultIfEmpty',l:'Beginner'},{t:'Deferred vs immediate execution',l:'Intermediate'},
+            {t:'IQueryable vs IEnumerable',l:'Intermediate'},{t:'Expression trees fundamentals',l:'Advanced'},
+            {t:'LINQ to XML, LINQ to Objects',l:'Intermediate'}]},
+          {id:'ef',cat:'data',icon:'🏗️',title:'Entity Framework Core',sub:'ORM · Essential',badge:'essential',color:'#00e5a0',progress:95,
+           bp:['Always use AsNoTracking() for read-only queries','Never expose IQueryable outside the repository boundary','Use migration bundles for production deployments','Configure relationships explicitly with Fluent API'],
+           topics:[
+            {t:'Code-First vs Database-First approach',l:'Beginner'},{t:'DbContext, DbSet, connection strings',l:'Beginner'},
+            {t:'Fluent API vs Data Annotations',l:'Intermediate'},{t:'Migrations — Add-Migration, Update-Database, rollback',l:'Intermediate'},
+            {t:'Relationships — One-to-One, One-to-Many, Many-to-Many',l:'Intermediate'},{t:'Eager, Lazy, Explicit loading',l:'Intermediate'},
+            {t:'Tracking vs No-Tracking queries',l:'Intermediate'},{t:'Raw SQL with EF Core (FromSqlRaw, ExecuteSqlRaw)',l:'Intermediate'},
+            {t:'Transactions in EF Core',l:'Intermediate'},{t:'Concurrency handling (RowVersion, timestamps)',l:'Advanced'},
+            {t:'Global query filters',l:'Advanced'},{t:'Owned entity types & value objects',l:'Advanced'},
+            {t:'Performance — compiled queries, split queries, bulk operations',l:'Advanced'},{t:'EF Core interceptors',l:'Advanced'}]},
+          {id:'aspnet',cat:'backend',icon:'🌐',title:'ASP.NET Core',sub:'Web Framework · Essential',badge:'essential',color:'#7c5cfc',progress:100,
+           bp:['Register services with the correct lifetime — especially DbContext as Scoped','Keep middleware order correct: Exception → Auth → Routing → Endpoints','Use IOptions<T> pattern — never inject IConfiguration into services','Validate configuration on startup with .Validate()'],
+           topics:[
+            {t:'Middleware pipeline — custom middleware, request/response',l:'Beginner'},{t:'Dependency Injection — Transient, Scoped, Singleton',l:'Beginner'},
+            {t:'Configuration — appsettings.json, environment variables, secrets',l:'Beginner'},{t:'Environments — Development, Staging, Production',l:'Beginner'},
+            {t:'Logging — Serilog, NLog, ILogger<T>',l:'Intermediate'},{t:'Host builder — WebApplication.CreateBuilder()',l:'Beginner'},
+            {t:'Options pattern — IOptions, IOptionsMonitor, IOptionsSnapshot',l:'Intermediate'},{t:'Health checks',l:'Intermediate'},
+            {t:'Background services — IHostedService, BackgroundService',l:'Intermediate'}]},
+          {id:'webapi',cat:'backend',icon:'🔌',title:'Web API (REST)',sub:'API Development · Essential',badge:'essential',color:'#7c5cfc',progress:100,
+           bp:['Return ProblemDetails for all errors (RFC 7807)','Version APIs from day one — /api/v1/...','Use DTOs always — never expose domain entities','Implement idempotency keys for POST/PUT operations'],
+           topics:[
+            {t:'REST principles, HTTP verbs, status codes',l:'Beginner'},{t:'Controllers vs Minimal APIs',l:'Beginner'},
+            {t:'Route attributes, route constraints, route templates',l:'Beginner'},{t:'Model binding — query string, route, body, form',l:'Beginner'},
+            {t:'Data validation — DataAnnotations, FluentValidation',l:'Intermediate'},{t:'DTOs, AutoMapper, Mapster',l:'Intermediate'},
+            {t:'Action filters, resource filters, exception filters',l:'Intermediate'},{t:'API versioning strategies',l:'Intermediate'},
+            {t:'Pagination, sorting, filtering patterns',l:'Intermediate'},{t:'Swagger/OpenAPI — Swashbuckle, NSwag, Scalar',l:'Intermediate'},
+            {t:'Response caching, output caching',l:'Intermediate'},{t:'Rate limiting (ASP.NET 7+)',l:'Intermediate'},
+            {t:'Global exception handling — ProblemDetails',l:'Intermediate'},{t:'HttpClient, IHttpClientFactory, Polly (retry/circuit-breaker)',l:'Advanced'}]},
+          {id:'mvc',cat:'backend',icon:'🖼️',title:'ASP.NET Core MVC',sub:'Server-Side Rendering · Important',badge:'important',color:'#7c5cfc',progress:85,
+           bp:['Keep controllers thin — business logic goes in services','Use ViewModels — never pass domain models to views','Use Tag Helpers over HTML Helpers — more readable','Prefer Razor Pages for page-centric scenarios'],
+           topics:[
+            {t:'MVC pattern — Model, View, Controller',l:'Beginner'},{t:'Routing — conventional and attribute',l:'Beginner'},
+            {t:'Razor views — layouts, partial views, _ViewStart',l:'Beginner'},{t:'Tag helpers and HTML helpers',l:'Intermediate'},
+            {t:'ViewData, ViewBag, TempData',l:'Beginner'},{t:'Model binding and validation',l:'Intermediate'},
+            {t:'Areas — organizing large MVC apps',l:'Intermediate'},{t:'Razor Pages — page model, handlers',l:'Intermediate'},
+            {t:'View components',l:'Intermediate'}]},
+          {id:'auth',cat:'backend',icon:'🔐',title:'Security & Authentication',sub:'Identity & Auth · Essential',badge:'essential',color:'#7c5cfc',progress:90,
+           bp:['Never store passwords in plain text — use ASP.NET Core Identity','Short-lived access tokens (15 min) + refresh token rotation','Apply principle of least privilege to all roles','Use HTTPS everywhere — enforce with HSTS'],
+           topics:[
+            {t:'JWT — claims, signing, validation, refresh tokens',l:'Intermediate'},{t:'OAuth 2.0 & OpenID Connect concepts',l:'Intermediate'},
+            {t:'ASP.NET Core Identity',l:'Intermediate'},{t:'Role-based and policy-based authorization',l:'Intermediate'},
+            {t:'Resource-based authorization',l:'Advanced'},{t:'Keycloak / Duende IdentityServer / Auth0 integration',l:'Advanced'},
+            {t:'CORS configuration',l:'Intermediate'},{t:'HTTPS enforcement, HSTS',l:'Intermediate'},
+            {t:'Anti-forgery tokens (CSRF protection)',l:'Intermediate'},{t:'OWASP Top 10 — SQL injection, XSS, CSRF, etc.',l:'Advanced'},
+            {t:'Secret management — Azure Key Vault, AWS Secrets Manager',l:'Advanced'}]},
+          {id:'caching',cat:'backend',icon:'⚡',title:'Caching & Performance',sub:'Optimization · Important',badge:'important',color:'#7c5cfc',progress:85,
+           bp:['Cache at the right layer — avoid over-caching early','Use cache-aside pattern — check cache first, then DB','Set explicit expiry times — never infinite TTL','Profile before optimizing — measure, don\'t guess'],
+           topics:[
+            {t:'In-memory caching — IMemoryCache',l:'Intermediate'},{t:'Distributed caching — Redis with StackExchange.Redis',l:'Intermediate'},
+            {t:'IDistributedCache interface',l:'Intermediate'},{t:'Cache-aside, read-through, write-through patterns',l:'Advanced'},
+            {t:'Output caching (ASP.NET 7+)',l:'Intermediate'},{t:'Response compression — Brotli, Gzip',l:'Intermediate'},
+            {t:'BenchmarkDotNet — profiling & benchmarking',l:'Advanced'},{t:'Memory profiling — dotMemory, dotTrace',l:'Advanced'}]},
+          {id:'signalr',cat:'backend',icon:'📡',title:'Real-Time & Messaging',sub:'SignalR & Brokers · Market Demand',badge:'market',color:'#7c5cfc',progress:75,
+           bp:['Use SignalR groups for targeted broadcasts','Handle connection drops gracefully with reconnection logic','Prefer MassTransit for RabbitMQ abstraction','Use outbox pattern to guarantee message delivery'],
+           topics:[
+            {t:'SignalR — hubs, groups, connection lifecycle',l:'Intermediate'},{t:'SignalR with JS client and .NET client',l:'Intermediate'},
+            {t:'RabbitMQ basics — queues, exchanges, routing keys',l:'Advanced'},{t:'MassTransit over RabbitMQ / Azure Service Bus',l:'Advanced'},
+            {t:'Azure Service Bus — queues & topics',l:'Advanced'},{t:'Event-driven architecture patterns',l:'Advanced'}]},
+          {id:'fe',cat:'frontend',icon:'💻',title:'Frontend Essentials',sub:'Web UI · Important',badge:'important',color:'#00e5a0',progress:70,
+           bp:['TypeScript over JavaScript — always, from day one','Keep API calls in a service layer — not in components','Use Blazor for .NET teams who prefer one language','Validate on both client AND server — never trust the client'],
+           topics:[
+            {t:'HTML5, CSS3, Flexbox, Grid',l:'Beginner'},{t:'JavaScript ES6+ — async/await, destructuring, modules',l:'Intermediate'},
+            {t:'TypeScript fundamentals',l:'Intermediate'},{t:'Angular or React basics (choose one)',l:'Intermediate'},
+            {t:'Consuming REST APIs with Axios/Fetch',l:'Intermediate'},{t:'Bootstrap / Tailwind CSS',l:'Beginner'},
+            {t:'Blazor WebAssembly / Blazor Server',l:'Intermediate'}]},
+          {id:'testing',cat:'advanced',icon:'🧪',title:'Testing',sub:'Quality Assurance · Essential',badge:'essential',color:'#ff5c5c',progress:90,
+           bp:['Follow AAA pattern: Arrange → Act → Assert','Test behaviour, not implementation details','Use Testcontainers for real DB integration tests','Aim for 80% coverage — 100% is often counterproductive'],
+           topics:[
+            {t:'Unit testing — xUnit, NUnit, MSTest',l:'Intermediate'},{t:'Mocking — Moq, NSubstitute',l:'Intermediate'},
+            {t:'Integration testing — WebApplicationFactory',l:'Intermediate'},{t:'Testcontainers for .NET (real DB in tests)',l:'Advanced'},
+            {t:'FluentAssertions',l:'Intermediate'},{t:'Code coverage — Coverlet',l:'Intermediate'},
+            {t:'TDD basics — red/green/refactor',l:'Intermediate'},{t:'API testing — Postman, RestSharp',l:'Beginner'},
+            {t:'Load testing — NBomber, k6',l:'Advanced'}]},
+          {id:'micro',cat:'advanced',icon:'🧱',title:'Microservices & Architecture',sub:'Distributed Systems · Market Demand',badge:'market',color:'#ff5c5c',progress:80,
+           bp:['Design for failure — every service will fail eventually','Use asynchronous communication between services by default','Each microservice owns its own database — no shared DB','Implement distributed tracing from day one (OpenTelemetry)'],
+           topics:[
+            {t:'Monolith vs Microservices trade-offs',l:'Intermediate'},{t:'API Gateway — Ocelot, YARP, Azure API Management',l:'Advanced'},
+            {t:'Service discovery — Consul',l:'Advanced'},{t:'Saga pattern — choreography vs orchestration',l:'Advanced'},
+            {t:'Outbox pattern for reliable messaging',l:'Advanced'},{t:'gRPC with ASP.NET Core',l:'Advanced'},
+            {t:'Health checks & distributed tracing (OpenTelemetry)',l:'Advanced'},{t:'Sidecar pattern, service mesh basics',l:'Advanced'}]},
+          {id:'patterns',cat:'advanced',icon:'🏛️',title:'Software Architecture',sub:'System Design · Market Demand',badge:'market',color:'#ff5c5c',progress:85,
+           bp:['Start simple — add complexity only when needed','Document architectural decisions (ADRs)','Make the architecture visible — diagrams as code (C4 model)','Separate concerns ruthlessly — business logic never in controllers'],
+           topics:[
+            {t:'Clean Architecture (Onion / Hexagonal)',l:'Advanced'},{t:'Domain-Driven Design — entities, aggregates, value objects',l:'Advanced'},
+            {t:'Vertical Slice Architecture',l:'Advanced'},{t:'Event Sourcing',l:'Advanced'},
+            {t:'System design fundamentals — CAP theorem, scalability',l:'Advanced'},{t:'API design best practices — idempotency, versioning',l:'Intermediate'}]},
+          {id:'cloud',cat:'cloud',icon:'☁️',title:'Azure / AWS Cloud',sub:'Cloud Services · Market Demand',badge:'market',color:'#ffc84a',progress:80,
+           bp:['Use managed services over self-hosted where possible','Tag all resources for cost management','Use infrastructure as code from the start','Monitor costs — cloud bills can surprise you'],
+           topics:[
+            {t:'Azure App Service deployment',l:'Intermediate'},{t:'Azure SQL Database & Cosmos DB',l:'Intermediate'},
+            {t:'Azure Storage — Blob, Queue, Table',l:'Intermediate'},{t:'Azure Functions (serverless)',l:'Intermediate'},
+            {t:'Azure Key Vault for secrets',l:'Intermediate'},{t:'Application Insights & monitoring',l:'Intermediate'},
+            {t:'AWS EC2, S3, RDS, Lambda basics',l:'Intermediate'},{t:'Cloud-native 12-factor app principles',l:'Intermediate'}]},
+          {id:'devops',cat:'cloud',icon:'🚀',title:'DevOps & CI/CD',sub:'Pipeline & Containers · Market Demand',badge:'market',color:'#ffc84a',progress:80,
+           bp:['Automate everything — if you do it twice, script it','Fail builds on quality gate failures — never merge broken code','Use multi-stage Docker builds to minimize image size','Store no secrets in code — ever'],
+           topics:[
+            {t:'Git — branching strategies, GitFlow, trunk-based',l:'Beginner'},{t:'GitHub Actions — build, test, deploy workflows',l:'Intermediate'},
+            {t:'Azure DevOps — pipelines, repos, boards',l:'Intermediate'},{t:'Docker — Dockerfiles, multi-stage builds for .NET',l:'Intermediate'},
+            {t:'Docker Compose — local multi-container dev',l:'Intermediate'},{t:'Kubernetes basics — pods, services, deployments, Helm',l:'Advanced'},
+            {t:'SonarCloud / SonarQube — code quality gates',l:'Intermediate'},{t:'Infrastructure as Code — Terraform basics',l:'Advanced'}]}
+        ];
+
+        /* ─── LEARNING PATHS ─── */
+        const PATHS = {
+          standard:[
+            {n:1,title:'C# Language Fundamentals',sub:'Build a solid OOP foundation',color:'#00d4ff',duration:'6–8 weeks',
+             topics:['OOP concepts','Generics','Async/Await','Delegates & Events','Exception handling'],
+             resources:['Microsoft Learn: C#','C# in Depth — Jon Skeet','dotnet.microsoft.com']},
+            {n:2,title:'SQL & Database Design',sub:'Understand relational databases',color:'#00e5a0',duration:'4–6 weeks',
+             topics:['Joins & subqueries','Window functions','Indexes & tuning','Stored procedures','ACID transactions'],
+             resources:['Mode SQL Tutorial','SQLBolt','Use The Index, Luke!']},
+            {n:3,title:'LINQ',sub:'Compose powerful data queries',color:'#00e5a0',duration:'2–3 weeks',
+             topics:['Method & query syntax','Deferred execution','IQueryable vs IEnumerable','GroupBy & Join'],
+             resources:['LINQ in Action','101 LINQ Samples — Microsoft']},
+            {n:4,title:'Entity Framework Core',sub:'ORM for .NET applications',color:'#00e5a0',duration:'4–5 weeks',
+             topics:['Code-First + Migrations','Fluent API','Relationships','Tracking vs No-Tracking','Performance tips'],
+             resources:['EF Core Docs','EF Core in Action — Jon Smith']},
+            {n:5,title:'ASP.NET Core',sub:'Framework fundamentals',color:'#7c5cfc',duration:'3–4 weeks',
+             topics:['Middleware pipeline','Dependency Injection','Configuration','Logging','Background services'],
+             resources:['ASP.NET Core Docs','Pro ASP.NET Core — Adam Freeman']},
+            {n:6,title:'Web API (REST)',sub:'Build production APIs',color:'#7c5cfc',duration:'4–5 weeks',
+             topics:['REST principles','Validation','DTOs + AutoMapper','Swagger','Pagination','Rate limiting'],
+             resources:['REST API Design Rulebook','Minimal APIs — Microsoft Docs']},
+            {n:7,title:'Security & Authentication',sub:'Secure your applications',color:'#7c5cfc',duration:'3–4 weeks',
+             topics:['JWT tokens','OAuth 2.0','ASP.NET Core Identity','OWASP Top 10','Role-based auth'],
+             resources:['OWASP.org','OAuth 2.0 Simplified — Aaron Parecki']},
+            {n:8,title:'Testing',sub:'Quality from the start',color:'#ff5c5c',duration:'3–4 weeks',
+             topics:['xUnit + Moq','Integration tests','Testcontainers','FluentAssertions','Code coverage'],
+             resources:['Unit Testing Principles — Vladimir Khorikov','xUnit docs']},
+            {n:9,title:'Cloud & DevOps',sub:'Deploy and operate',color:'#ffc84a',duration:'5–6 weeks',
+             topics:['Docker + Docker Compose','GitHub Actions CI/CD','Azure App Service','Azure SQL','Kubernetes intro'],
+             resources:['Docker for .NET Devs — Microsoft','AZ-204 — Azure Developer']},
+            {n:10,title:'Architecture & Advanced Patterns',sub:'Think at system scale',color:'#ff7a5c',duration:'5–6 weeks',
+             topics:['Clean Architecture','CQRS + MediatR','DDD basics','Microservices intro','Event-driven patterns'],
+             resources:['Clean Architecture — Robert Martin','DDD — Eric Evans (Blue Book)']},
+          ],
+          fast:[
+            {n:1,title:'C# Essentials (Crash Course)',sub:'Core OOP + Async only',color:'#00d4ff',duration:'2–3 weeks',
+             topics:['OOP','Async/Await','Generics','LINQ basics'],resources:['Microsoft Learn: C# fundamentals']},
+            {n:2,title:'SQL + EF Core Combined',sub:'Data layer fast track',color:'#00e5a0',duration:'3–4 weeks',
+             topics:['SQL Joins & queries','EF Core Code-First','Migrations','Relationships'],resources:['EF Core Quick Start']},
+            {n:3,title:'ASP.NET Core + Web API',sub:'Build APIs immediately',color:'#7c5cfc',duration:'3–4 weeks',
+             topics:['DI & Middleware','REST + Validation','DTOs','Swagger'],resources:['Microsoft Docs — Minimal APIs']},
+            {n:4,title:'Auth + Testing',sub:'Production readiness',color:'#ff5c5c',duration:'2–3 weeks',
+             topics:['JWT Auth','Role-based auth','xUnit + Moq','Integration tests'],resources:['JWT.io','xUnit docs']},
+            {n:5,title:'Docker + CI/CD',sub:'Ship it',color:'#ffc84a',duration:'2 weeks',
+             topics:['Docker','GitHub Actions','Azure App Service'],resources:['Docker Docs','GitHub Actions Docs']},
+          ],
+          senior:[
+            {n:1,title:'Advanced C# & Performance',sub:'Language mastery',color:'#00d4ff',duration:'6–8 weeks',
+             topics:['Span<T>','Memory<T>','Expression trees','Source generators','BenchmarkDotNet'],resources:['Writing High-Performance .NET Code — Ben Watson']},
+            {n:2,title:'DDD & Clean Architecture',sub:'Architect like a principal',color:'#ff7a5c',duration:'8–10 weeks',
+             topics:['Bounded contexts','Aggregates','Repositories','CQRS','Event sourcing'],resources:['DDD — Eric Evans','Implementing DDD — Vaughn Vernon']},
+            {n:3,title:'Microservices at Scale',sub:'Distributed systems depth',color:'#ff5c5c',duration:'8–10 weeks',
+             topics:['Saga / Outbox patterns','API Gateway','Service mesh','gRPC','Distributed tracing'],resources:['Building Microservices — Sam Newman']},
+            {n:4,title:'Advanced Security',sub:'Threat modeling & zero trust',color:'#7c5cfc',duration:'4–5 weeks',
+             topics:['OWASP ASVS','Zero-trust architecture','Penetration testing basics','Secrets rotation'],resources:['OWASP ASVS','Security Engineering — Ross Anderson']},
+            {n:5,title:'Observability & SRE',sub:'Keep systems alive',color:'#ffc84a',duration:'4–5 weeks',
+             topics:['OpenTelemetry','Prometheus + Grafana','Distributed tracing','SLOs / SLAs / SLIs','Incident response'],resources:['SRE Book — Google','Distributed Systems Observability']},
+            {n:6,title:'Cloud Architecture & IaC',sub:'Infrastructure mastery',color:'#ffc84a',duration:'6–8 weeks',
+             topics:['Terraform','Kubernetes + Helm','Azure Well-Architected','Cost optimization','Multi-region design'],resources:['AZ-305 — Azure Architect','Terraform: Up & Running']},
+          ]
+        };
+
+        /* ─── BEST PRACTICES DATA ─── */
+        const BP_CARDS = [
+          {icon:'🏗️',title:'C# Code Quality',accent:'accent1',items:['Use records for immutable data (C# 9+)','Prefer pattern matching over type-casting chains','Enable nullable reference types (<Nullable>enable</Nullable>)','Use primary constructors (C# 12) to reduce boilerplate','Avoid static state — it breaks testability']},
+          {icon:'🗄️',title:'Database & SQL',accent:'accent2',items:['Never SELECT * — always specify columns','Use parameterized queries everywhere (prevent SQL injection)','Index foreign keys and frequently filtered columns','Avoid N+1 queries — use Include() or explicit joins','Run EXPLAIN/execution plan before deploying slow queries']},
+          {icon:'🔌',title:'API Design',accent:'accent3',items:['Return ProblemDetails (RFC 7807) for all errors','Version APIs from v1 — /api/v1/resource','Use HTTP status codes correctly — 201 for create, 204 for delete','Implement idempotency keys for unsafe operations','Document everything with OpenAPI / Swagger']},
+          {icon:'🔐',title:'Security',accent:'accent4',items:['Short-lived JWTs (15 min) + refresh token rotation','Hash passwords with BCrypt — never MD5/SHA1','Apply least-privilege principle to all service accounts','Rotate secrets regularly — use Key Vault, not appsettings','Validate input on both client AND server']},
+          {icon:'🧪',title:'Testing Strategy',accent:'accent5',items:['Follow AAA: Arrange → Act → Assert','Test behavior, not implementation details','Use Testcontainers for real-DB integration tests','Maintain 80%+ coverage on business logic','Run tests in CI — block merges on failure']},
+          {icon:'🚀',title:'DevOps & Deployment',accent:'accent6',items:['Use multi-stage Docker builds (tiny production images)','Never store secrets in code or Git — ever','Automate: if you do it twice, write a script','Use feature flags for zero-downtime releases','Tag everything — Docker images, releases, resources']},
+          {icon:'⚡',title:'Performance',accent:'accent1',items:['Profile before optimizing — measure, don\'t guess','Use AsNoTracking() for read-only EF Core queries','Cache at the correct layer: browser → CDN → app → DB','Use connection pooling for DB connections','Use ValueTask for hot paths that rarely await']},
+          {icon:'🏛️',title:'Architecture',accent:'accent2',items:['Start simple — add complexity only when pain is real','Separate concerns: business logic never in controllers','Use dependency inversion — depend on abstractions','Document architecture decisions (ADRs)','Make your architecture visible — C4 model diagrams']},
+          {icon:'🤝',title:'Team & Process',accent:'accent3',items:['Review your own PR before requesting a review','Write commit messages that explain WHY, not WHAT','Keep PRs small and focused — easier to review','Document the "why" in comments, not the "what"','Communicate early when blocked — don\'t wait']},
+        ];
+
+        /* ═══════════════════════════════════════════════
+           BUILD MODULES
+        ═══════════════════════════════════════════════ */
+        function buildModules(list){
+          const grid = $('#modules-grid').empty();
+          if(!list.length){$('#no-results').show();return;}
+          $('#no-results').hide();
+          list.forEach(m=>{
+            const topicsHtml = m.topics.map(t=>`
+              <li class="topic-item">
+                <span class="topic-dot" style="background:${m.color}"></span>
+                <span class="topic-text">${t.t}</span>
+                <span class="topic-level lv-${t.l.toLowerCase()}">${t.l}</span>
+              </li>`).join('');
+            const bpHtml = m.bp?`
+              <div class="best-practice-box">
+                <div class="bp-label">Best Practices</div>
+                <ul class="bp-text">${m.bp.map(b=>`<li>${b}</li>`).join('')}</ul>
+              </div>`:'' ;
+            const badgeClass = `badge-${m.badge}`;
+            const badgeLabel = m.badge==='essential'?'Essential':m.badge==='important'?'Important':'Market Demand';
+            const card = $(`
+              <div class="module-card ${m.badge}" data-cat="${m.cat}" data-id="${m.id}">
+                <div class="card-head" role="button">
+                  <div class="card-icon-wrap">${m.icon}</div>
+                  <div class="card-meta">
+                    <div class="card-title">${m.title}</div>
+                    <div class="card-sub">${m.cat.toUpperCase()}</div>
+                    <div class="card-badges">
+                      <span class="badge-pill ${badgeClass}">${badgeLabel}</span>
+                      <span class="badge-pill badge-count">${m.topics.length} topics</span>
+                    </div>
+                  </div>
+                  <i class="bi bi-chevron-down card-toggle"></i>
+                </div>
+                <div class="card-progress">
+                  <div class="card-progress-fill" style="width:${m.progress}%;background:${m.color}"></div>
+                </div>
+                <div class="card-body-wrap">
+                  <div class="card-body">
+                    <ul class="topic-list">${topicsHtml}</ul>
+                    ${bpHtml}
+                  </div>
+                </div>
+              </div>`);
+            card.find('.card-head').on('click',function(){
+              const body = card.find('.card-body-wrap');
+              const tog = card.find('.card-toggle');
+              body.toggleClass('open');
+              tog.toggleClass('open');
+            });
+            grid.append(card);
+          });
+        }
+
+        /* ═══════════════════════════════════════════════
+           FILTER + SORT
+        ═══════════════════════════════════════════════ */
+        let activeFilter='all', activeSort='default', searchVal='';
+        function applyFilters(){
+          let list = [...MODULES];
+          if(activeFilter!=='all') list = list.filter(m=>m.cat===activeFilter);
+          if(searchVal){
+            const q=searchVal.toLowerCase();
+            list = list.filter(m=>
+              m.title.toLowerCase().includes(q)||
+              m.sub.toLowerCase().includes(q)||
+              m.topics.some(t=>t.t.toLowerCase().includes(q))
+            );
+          }
+          if(activeSort==='alpha') list.sort((a,b)=>a.title.localeCompare(b.title));
+          else if(activeSort==='topics-desc') list.sort((a,b)=>b.topics.length-a.topics.length);
+          else if(activeSort==='topics-asc') list.sort((a,b)=>a.topics.length-b.topics.length);
+          buildModules(list);
+          $('#search-results-count').text(searchVal?`${list.length} module(s) match "${searchVal}"` :'');
+          $('#stat-modules').text(list.length);
+        }
+
+        $('#filter-btns').on('click','.flt-btn',function(){
+          $('#filter-btns .flt-btn').removeClass('active');
+          $(this).addClass('active');
+          activeFilter=$(this).data('cat');
+          applyFilters();
+        });
+        $('#sort-sel').on('change',function(){activeSort=$(this).val();applyFilters();});
+        $('#topic-search').on('input',function(){searchVal=$(this).val();applyFilters();});
+        $('#global-search').on('input',function(){
+          searchVal=$(this).val();
+          $('#topic-search').val(searchVal);
+          applyFilters();
+          if(searchVal) $('html,body').animate({scrollTop:$('#syllabus').offset().top-80},400);
+        });
+
+        /* ═══════════════════════════════════════════════
+           LEARNING PATH
+        ═══════════════════════════════════════════════ */
+        function buildPath(steps, containerId){
+          const $c = $(`#${containerId}`).empty();
+          const colors = steps.map(s=>s.color);
+          $c.append(`<div class="duration-total"><i class="bi bi-clock" style="color:var(--clr-accent)"></i> Total estimated duration: <strong>${steps.reduce((a,s)=>{const m=s.duration.match(/\d+/g);return a+(parseInt(m[m.length-1])||0)},0)} weeks</strong></div><br/>`);
+          const timeline = $('<div class="path-timeline"></div>');
+          steps.forEach((s,i)=>{
+            const resHtml = s.resources.map(r=>`<a class="res-link" href="#" onclick="return false">${r}</a>`).join('');
+            const topicsHtml = s.topics.map(t=>`<span class="path-topic">${t}</span>`).join('');
+            const step = $(`
+              <div class="path-step" style="transition-delay:${i*0.08}s">
+                <div class="path-left">
+                  <div class="step-num" style="color:${s.color};border-color:${s.color}">${s.n}</div>
+                  ${i<steps.length-1?`<div class="step-line" style="color:${s.color}"></div>`:''}
+                </div>
+                <div class="path-content">
+                  <div class="path-card" style="color:${s.color}">
+                    <div class="path-card-title" style="color:${s.color}">${s.title}</div>
+                    <div class="path-card-sub">${s.sub}</div>
+                    <div class="path-topics">${topicsHtml}</div>
+                    <div class="path-duration"><i class="bi bi-clock"></i>${s.duration}</div>
+                    <div class="path-resources">
+                      <div class="res-label">Resources</div>
+                      <div class="res-links">${resHtml}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>`);
+            timeline.append(step);
+          });
+          $c.append(timeline);
+        }
+
+        $('.lp-tab').on('click',function(){
+          $('.lp-tab').removeClass('active');
+          $(this).addClass('active');
+          const track=$(this).data('track');
+          $('.lp-track').removeClass('active');
+          $(`#lp-${track}`).addClass('active');
+          animatePathSteps();
+        });
+
+        function animatePathSteps(){
+          $('.path-step').each(function(i){
+            const el=this;
+            setTimeout(()=>$(el).addClass('visible'),i*80);
+          });
+        }
+
+        buildPath(PATHS.standard,'lp-standard');
+        buildPath(PATHS.fast,'lp-fast');
+        buildPath(PATHS.senior,'lp-senior');
+
+        /* ═══════════════════════════════════════════════
+           PROGRESS TRACKER
+        ═══════════════════════════════════════════════ */
+        const STORAGE_KEY='dotnet_syllabus_progress';
+        function loadProgress(){return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');}
+        function saveProgress(arr){localStorage.setItem(STORAGE_KEY,JSON.stringify(arr));}
+
+        function buildTracker(){
+          const completed=loadProgress();
+          const $g=$('#tracker-grid').empty();
+          MODULES.forEach(m=>{
+            const done=completed.includes(m.id);
+            const card=$(`
+              <div class="tracker-card ${done?'completed':''}" data-id="${m.id}">
+                <div class="tc-check"><i class="bi bi-check"></i></div>
+                <span class="tc-icon">${m.icon}</span>
+                <div class="tc-title">${m.title}</div>
+                <div class="tc-count">${m.topics.length} topics</div>
+              </div>`);
+            card.on('click',function(){
+              const arr=loadProgress();
+              const idx=arr.indexOf(m.id);
+              if(idx>-1) arr.splice(idx,1); else arr.push(m.id);
+              saveProgress(arr);
+              buildTracker();
+            });
+            $g.append(card);
+          });
+          updateOverallProgress();
+        }
+
+        function updateOverallProgress(){
+          const arr=loadProgress();
+          const pct=Math.round((arr.length/MODULES.length)*100);
+          $('#op-pct').text(pct+'%');
+          $('#progress-fill-main').css('width',pct+'%');
+          $('#op-label').text(`${arr.length} of ${MODULES.length} modules completed`);
+        }
+
+        $('#reset-btn').on('click',function(){
+          if(confirm('Reset all progress?')){saveProgress([]);buildTracker();}
+        });
+
+        buildTracker();
+
+        /* ═══════════════════════════════════════════════
+           BEST PRACTICES CARDS
+        ═══════════════════════════════════════════════ */
+        function buildBP(){
+          const $g=$('#bp-grid').empty();
+          BP_CARDS.forEach(b=>{
+            const liHtml=b.items.map(i=>`<li>${i}</li>`).join('');
+            $g.append(`
+              <div class="bp-card ${b.accent}">
+                <div class="bp-card-icon">${b.icon}</div>
+                <div class="bp-card-title">${b.title}</div>
+                <ul class="bp-card-list">${liHtml}</ul>
+              </div>`);
+          });
+        }
+        buildBP();
+
+        /* ═══════════════════════════════════════════════
+           NAV SCROLL SPY
+        ═══════════════════════════════════════════════ */
+        $(window).on('scroll',function(){
+          const sections=['syllabus','learning-path','tracker','best-practices'];
+          let active='syllabus';
+          sections.forEach(id=>{
+            const el=$('#'+id);
+            if(el.length&&$(window).scrollTop()>=el.offset().top-120) active=id;
+          });
+          $('.nav-pill').removeClass('active');
+          $(`.nav-pill[href="#${active}"]`).addClass('active');
+        });
+
+        /* ═══════════════════════════════════════════════
+           INIT
+        ═══════════════════════════════════════════════ */
+        applyFilters();
+        setTimeout(animatePathSteps,300);
+
+        // Animate path on tab switch
+        $('.lp-tab').on('click',function(){
+          setTimeout(animatePathSteps,50);
+        });
+
+        // Count badges
+        const cats=['core','data','backend','frontend','cloud','advanced'];
+        cats.forEach(c=>{
+          const n=MODULES.filter(m=>m.cat===c).length;
+          $(`#cnt-${c}`).text(n);
+        });
+        $('#cnt-all').text(MODULES.length);
+
+        // Count total topics
+        const total=MODULES.reduce((a,m)=>a+m.topics.length,0);
+        $('#stat-topics').text(total+'+');
+    </script>
+</body>
+</html>
