@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Complete .NET Core Developer Roadmap & Syllabus – interactive, trackable, modern." />
+  <title>.NET Core Developer Roadmap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="stylev2.css" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HEADER / TOP NAV
+═══════════════════════════════════════════════════════════ -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">⬡</span>
+      <span class="brand-name">.NET<em>Core</em> Roadmap</span>
+    </div>
+
+    <div class="header-actions">
+      <!-- Search -->
+      <div class="search-wrap" role="search">
+        <label for="search-input" class="sr-only">Search topics</label>
+        <span class="search-icon" aria-hidden="true">⌕</span>
+        <input id="search-input" type="search" placeholder="Search topics…" autocomplete="off" />
+        <kbd class="search-shortcut" aria-hidden="true">Ctrl K</kbd>
+      </div>
+
+      <!-- Progress pill -->
+      <button class="progress-pill" id="progress-pill" aria-label="View overall progress" title="Overall progress">
+        <span class="pill-bar"><span class="pill-fill" id="pill-fill"></span></span>
+        <span class="pill-label" id="pill-label">0%</span>
+      </button>
+
+      <!-- Dark / Light toggle -->
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+        <span class="toggle-icon" id="toggle-icon">☀</span>
+      </button>
+
+      <!-- Hamburger (mobile) -->
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="sidebar">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════
+     LAYOUT WRAPPER
+═══════════════════════════════════════════════════════════ -->
+<div class="layout">
+
+  <!-- ─── SIDEBAR ─────────────────────────────────────── -->
+  <nav class="sidebar" id="sidebar" role="navigation" aria-label="Section navigation">
+    <p class="sidebar-label">SECTIONS</p>
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li><a href="#section-intro"     class="nav-link" data-section="intro">🗺 Roadmap Overview</a></li>
+      <li><a href="#section-csharp"    class="nav-link" data-section="csharp">① C# Fundamentals</a></li>
+      <li><a href="#section-sql"       class="nav-link" data-section="sql">② SQL &amp; Databases</a></li>
+      <li><a href="#section-dotnet"    class="nav-link" data-section="dotnet">③ .NET Core</a></li>
+      <li><a href="#section-mvc"       class="nav-link" data-section="mvc">④ ASP.NET Core MVC</a></li>
+      <li><a href="#section-webapi"    class="nav-link" data-section="webapi">⑤ Web API</a></li>
+      <li><a href="#section-linq"      class="nav-link" data-section="linq">⑥ LINQ</a></li>
+      <li><a href="#section-ef"        class="nav-link" data-section="ef">⑦ Entity Framework Core</a></li>
+      <li><a href="#section-testing"   class="nav-link" data-section="testing">⑧ Testing</a></li>
+      <li><a href="#section-devops"    class="nav-link" data-section="devops">⑨ DevOps</a></li>
+      <li><a href="#section-advanced"  class="nav-link" data-section="advanced">⑩ Advanced Topics</a></li>
+      <li><a href="#section-azure"     class="nav-link" data-section="azure">☁ Azure Cloud Services</a></li>
+      <li><a href="#section-ai"        class="nav-link" data-section="ai">🤖 AI &amp; ML with .NET</a></li>
+      <li><a href="#section-projects"  class="nav-link" data-section="projects">🚀 Project Ideas</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <button class="btn-outline" id="download-btn" aria-label="Download progress summary">
+        ⬇ Export Progress
+      </button>
+      <button class="btn-outline danger" id="reset-btn" aria-label="Reset all progress">
+        ↺ Reset
+      </button>
+    </div>
+  </nav>
+
+  <!-- ─── MAIN CONTENT ──────────────────────────────────── -->
+  <main class="main-content" id="main-content" role="main">
+
+    <!-- No-results message -->
+    <div class="no-results" id="no-results" hidden aria-live="polite">
+      <span>🔍</span>
+      <p>No topics match "<span id="no-results-query"></span>"</p>
+    </div>
+
+    <!-- ══════════════════════════════════════════════════════
+         INTRO / ROADMAP OVERVIEW
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-intro">
+      <div class="section-header">
+        <div class="section-badge">START</div>
+        <h2 class="section-title">Roadmap Overview</h2>
+        <p class="section-sub">Your complete, structured path to becoming a proficient .NET Core developer.</p>
+      </div>
+
+      <!-- Timeline / Roadmap visual -->
+      <div class="timeline" aria-label="Learning timeline">
+        <div class="timeline-item" data-phase="1">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-phase">Phase 1 · Weeks 1–4</span>
+            <h3>Foundation</h3>
+            <p>C# language fundamentals, OOP principles, SQL &amp; relational databases.</p>
+            <div class="tl-tags"><span>C#</span><span>SQL</span><span>OOP</span></div>
+          </div>
+        </div>
+        <div class="timeline-item" data-phase="2">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-phase">Phase 2 · Weeks 5–8</span>
+            <h3>Core Ecosystem</h3>
+            <p>.NET Core runtime, CLI, dependency injection, configuration &amp; middleware.</p>
+            <div class="tl-tags"><span>.NET Core</span><span>DI</span><span>Middleware</span></div>
+          </div>
+        </div>
+        <div class="timeline-item" data-phase="3">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-phase">Phase 3 · Weeks 9–14</span>
+            <h3>Web Development</h3>
+            <p>ASP.NET Core MVC, RESTful Web APIs, LINQ &amp; Entity Framework Core.</p>
+            <div class="tl-tags"><span>MVC</span><span>Web API</span><span>EF Core</span><span>LINQ</span></div>
+          </div>
+        </div>
+        <div class="timeline-item" data-phase="4">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-phase">Phase 4 · Weeks 15–18</span>
+            <h3>Quality &amp; Operations</h3>
+            <p>Unit &amp; integration testing, CI/CD, Docker, Azure fundamentals.</p>
+            <div class="tl-tags"><span>xUnit</span><span>CI/CD</span><span>Docker</span></div>
+          </div>
+        </div>
+        <div class="timeline-item" data-phase="5">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-phase">Phase 5 · Weeks 19–24</span>
+            <h3>Advanced &amp; Architecture</h3>
+            <p>Microservices, SignalR, gRPC, caching, security, performance tuning.</p>
+            <div class="tl-tags"><span>Microservices</span><span>gRPC</span><span>Security</span></div>
+          </div>
+        </div>
+        <div class="timeline-item" data-phase="6">
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <span class="tl-phase">Phase 6 · Weeks 25–32</span>
+            <h3>Azure Cloud &amp; AI</h3>
+            <p>Azure PaaS services, serverless, AI/ML integration with Azure OpenAI, Cognitive Services &amp; ML.NET.</p>
+            <div class="tl-tags"><span>Azure</span><span>OpenAI</span><span>ML.NET</span><span>Serverless</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Overall Stats -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-num" id="stat-total">0</span>
+          <span class="stat-label">Total Topics</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num accent" id="stat-done">0</span>
+          <span class="stat-label">Completed</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="stat-pct">0%</span>
+          <span class="stat-label">Progress</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-num" id="stat-remain">0</span>
+          <span class="stat-label">Remaining</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         C# FUNDAMENTALS
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-csharp" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">01</div>
+        <h2 class="section-title">C# Fundamentals</h2>
+        <p class="section-sub">The bedrock of all .NET development — master the language before the framework.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-csharp"></div></div>
+      </div>
+
+      <div class="accordion-group">
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>C# is a statically-typed, object-oriented language developed by Microsoft. It is the primary language for .NET applications. A strong C# foundation is essential before diving into any .NET framework.</p>
+            <p>Estimated time: <strong>3–4 weeks</strong> for beginners, <strong>1 week</strong> review for intermediate developers.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Language Basics</h4>
+            <ul class="checklist" data-section="csharp">
+              <li><label><input type="checkbox" data-id="cs-1" /> Data types, variables &amp; constants</label></li>
+              <li><label><input type="checkbox" data-id="cs-2" /> Operators &amp; expressions</label></li>
+              <li><label><input type="checkbox" data-id="cs-3" /> Control flow: if/else, switch, loops</label></li>
+              <li><label><input type="checkbox" data-id="cs-4" /> Methods, parameters, overloading</label></li>
+              <li><label><input type="checkbox" data-id="cs-5" /> Arrays, Lists, Dictionaries, HashSets</label></li>
+              <li><label><input type="checkbox" data-id="cs-6" /> String manipulation &amp; interpolation</label></li>
+              <li><label><input type="checkbox" data-id="cs-7" /> Nullable types &amp; null-coalescing operators</label></li>
+            </ul>
+            <h4>Object-Oriented Programming</h4>
+            <ul class="checklist" data-section="csharp">
+              <li><label><input type="checkbox" data-id="cs-8" /> Classes, objects, constructors</label></li>
+              <li><label><input type="checkbox" data-id="cs-9" /> Encapsulation &amp; access modifiers</label></li>
+              <li><label><input type="checkbox" data-id="cs-10" /> Inheritance &amp; polymorphism</label></li>
+              <li><label><input type="checkbox" data-id="cs-11" /> Abstract classes &amp; interfaces</label></li>
+              <li><label><input type="checkbox" data-id="cs-12" /> SOLID principles</label></li>
+              <li><label><input type="checkbox" data-id="cs-13" /> Static vs instance members</label></li>
+            </ul>
+            <h4>Advanced C# Features</h4>
+            <ul class="checklist" data-section="csharp">
+              <li><label><input type="checkbox" data-id="cs-14" /> Generics &amp; constraints</label></li>
+              <li><label><input type="checkbox" data-id="cs-15" /> Delegates, events &amp; lambda expressions</label></li>
+              <li><label><input type="checkbox" data-id="cs-16" /> async/await &amp; Task Parallel Library</label></li>
+              <li><label><input type="checkbox" data-id="cs-17" /> Exception handling &amp; custom exceptions</label></li>
+              <li><label><input type="checkbox" data-id="cs-18" /> Extension methods</label></li>
+              <li><label><input type="checkbox" data-id="cs-19" /> Records, tuples &amp; pattern matching (C# 9+)</label></li>
+              <li><label><input type="checkbox" data-id="cs-20" /> Span&lt;T&gt;, Memory&lt;T&gt; &amp; ref types</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Follow <strong>C# Coding Conventions</strong> (Microsoft docs) consistently across the codebase.</li>
+              <li>Prefer <strong>var</strong> for local variable declarations when the type is obvious.</li>
+              <li>Use <strong>readonly</strong> for fields that don't change after construction.</li>
+              <li>Always use <strong>using</strong> statements or declarations for IDisposable resources.</li>
+              <li>Avoid magic strings/numbers — extract into named constants or enums.</li>
+              <li>Prefer <strong>composition over inheritance</strong> for flexibility.</li>
+              <li>Write <strong>async all the way</strong> — avoid mixing sync/async code.</li>
+              <li>Use <strong>ConfigureAwait(false)</strong> in library code to avoid deadlocks.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         SQL & DATABASES
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-sql" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">02</div>
+        <h2 class="section-title">SQL &amp; Databases</h2>
+        <p class="section-sub">Relational databases are the backbone of most enterprise applications.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-sql"></div></div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>Understanding SQL and relational database design is critical for any backend developer. You'll work with SQL Server primarily, though the concepts transfer to PostgreSQL, MySQL and others.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>SQL Fundamentals</h4>
+            <ul class="checklist" data-section="sql">
+              <li><label><input type="checkbox" data-id="sql-1" /> SELECT, INSERT, UPDATE, DELETE (CRUD)</label></li>
+              <li><label><input type="checkbox" data-id="sql-2" /> WHERE, ORDER BY, GROUP BY, HAVING</label></li>
+              <li><label><input type="checkbox" data-id="sql-3" /> JOINs: INNER, LEFT, RIGHT, FULL, CROSS</label></li>
+              <li><label><input type="checkbox" data-id="sql-4" /> Subqueries &amp; CTEs (WITH clause)</label></li>
+              <li><label><input type="checkbox" data-id="sql-5" /> Aggregate functions: COUNT, SUM, AVG, MIN, MAX</label></li>
+              <li><label><input type="checkbox" data-id="sql-6" /> Window functions: ROW_NUMBER, RANK, PARTITION BY</label></li>
+            </ul>
+            <h4>Database Design</h4>
+            <ul class="checklist" data-section="sql">
+              <li><label><input type="checkbox" data-id="sql-7" /> Normalization (1NF, 2NF, 3NF, BCNF)</label></li>
+              <li><label><input type="checkbox" data-id="sql-8" /> Primary &amp; foreign keys, constraints</label></li>
+              <li><label><input type="checkbox" data-id="sql-9" /> Indexes: clustered, non-clustered, covering</label></li>
+              <li><label><input type="checkbox" data-id="sql-10" /> Stored procedures &amp; views</label></li>
+              <li><label><input type="checkbox" data-id="sql-11" /> Transactions &amp; ACID properties</label></li>
+              <li><label><input type="checkbox" data-id="sql-12" /> ER diagrams &amp; schema design</label></li>
+            </ul>
+            <h4>SQL Server Specific</h4>
+            <ul class="checklist" data-section="sql">
+              <li><label><input type="checkbox" data-id="sql-13" /> T-SQL syntax &amp; features</label></li>
+              <li><label><input type="checkbox" data-id="sql-14" /> Execution plans &amp; query optimization</label></li>
+              <li><label><input type="checkbox" data-id="sql-15" /> SQL Server Management Studio (SSMS)</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Always use <strong>parameterized queries</strong> to prevent SQL injection.</li>
+              <li>Index columns used in WHERE clauses and JOIN conditions.</li>
+              <li>Use <strong>transactions</strong> for multi-step operations that must be atomic.</li>
+              <li>Avoid SELECT * — list only required columns for performance.</li>
+              <li>Use CTEs for readability when subqueries become complex.</li>
+              <li>Regularly analyse execution plans to identify slow queries.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         .NET CORE
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-dotnet" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">03</div>
+        <h2 class="section-title">.NET Core</h2>
+        <p class="section-sub">Cross-platform, high-performance runtime and framework ecosystem.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-dotnet"></div></div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>.NET Core (now simply ".NET 8+") is a free, open-source, cross-platform successor to .NET Framework. Understanding the runtime model, CLI tooling, and the host/configuration system is fundamental.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Runtime &amp; Tooling</h4>
+            <ul class="checklist" data-section="dotnet">
+              <li><label><input type="checkbox" data-id="dn-1" /> .NET SDK vs Runtime, versioning strategy</label></li>
+              <li><label><input type="checkbox" data-id="dn-2" /> .NET CLI: dotnet new, build, run, publish, test</label></li>
+              <li><label><input type="checkbox" data-id="dn-3" /> Project file (.csproj) structure &amp; MSBuild basics</label></li>
+              <li><label><input type="checkbox" data-id="dn-4" /> NuGet package management</label></li>
+              <li><label><input type="checkbox" data-id="dn-5" /> Global tools &amp; local tools</label></li>
+            </ul>
+            <h4>Application Model</h4>
+            <ul class="checklist" data-section="dotnet">
+              <li><label><input type="checkbox" data-id="dn-6" /> Generic Host (IHost, IHostBuilder)</label></li>
+              <li><label><input type="checkbox" data-id="dn-7" /> Dependency Injection (DI) container &amp; lifetimes</label></li>
+              <li><label><input type="checkbox" data-id="dn-8" /> Configuration system (appsettings, env vars, secrets)</label></li>
+              <li><label><input type="checkbox" data-id="dn-9" /> Options pattern (IOptions, IOptionsMonitor)</label></li>
+              <li><label><input type="checkbox" data-id="dn-10" /> Logging with ILogger &amp; Serilog/NLog</label></li>
+              <li><label><input type="checkbox" data-id="dn-11" /> Background services (IHostedService, BackgroundService)</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Use <strong>Dependency Injection</strong> for all services — avoid static state and service locators.</li>
+              <li>Choose the correct <strong>service lifetime</strong>: Singleton → Scoped → Transient.</li>
+              <li>Store sensitive config in <strong>User Secrets</strong> (dev) or Azure Key Vault (prod).</li>
+              <li>Structured logging with contextual properties, not string concatenation.</li>
+              <li>Pin your SDK version using <strong>global.json</strong> for reproducible builds.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         ASP.NET CORE MVC
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-mvc" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">04</div>
+        <h2 class="section-title">ASP.NET Core MVC</h2>
+        <p class="section-sub">Model-View-Controller pattern for full-stack web application development.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-mvc"></div></div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>ASP.NET Core MVC provides a pattern-based way to build dynamic websites. The framework handles routing, model binding, validation, view rendering (Razor), and filter pipelines.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="mvc">
+              <li><label><input type="checkbox" data-id="mvc-1" /> MVC pattern &amp; request pipeline</label></li>
+              <li><label><input type="checkbox" data-id="mvc-2" /> Routing: conventional &amp; attribute routing</label></li>
+              <li><label><input type="checkbox" data-id="mvc-3" /> Controllers &amp; action methods</label></li>
+              <li><label><input type="checkbox" data-id="mvc-4" /> Model binding &amp; validation (DataAnnotations, FluentValidation)</label></li>
+              <li><label><input type="checkbox" data-id="mvc-5" /> Razor views, layouts &amp; partial views</label></li>
+              <li><label><input type="checkbox" data-id="mvc-6" /> Tag Helpers &amp; HTML Helpers</label></li>
+              <li><label><input type="checkbox" data-id="mvc-7" /> ViewModels &amp; DTOs</label></li>
+              <li><label><input type="checkbox" data-id="mvc-8" /> Filters: action, result, exception, authorization</label></li>
+              <li><label><input type="checkbox" data-id="mvc-9" /> Session, TempData &amp; ViewBag</label></li>
+              <li><label><input type="checkbox" data-id="mvc-10" /> Static files &amp; bundling</label></li>
+              <li><label><input type="checkbox" data-id="mvc-11" /> Areas for large application structure</label></li>
+              <li><label><input type="checkbox" data-id="mvc-12" /> Authentication with ASP.NET Core Identity</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Keep controllers <strong>thin</strong> — delegate business logic to services.</li>
+              <li>Always use <strong>ViewModels</strong>, never expose domain entities directly to views.</li>
+              <li>Validate input server-side regardless of client-side validation.</li>
+              <li>Use <strong>PRG pattern</strong> (Post-Redirect-Get) to prevent duplicate form submissions.</li>
+              <li>Use <strong>Areas</strong> to organise large applications by feature domain.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         WEB API
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-webapi" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">05</div>
+        <h2 class="section-title">Web API</h2>
+        <p class="section-sub">Build RESTful and HTTP services that power modern frontends and mobile apps.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-webapi"></div></div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>ASP.NET Core Web API allows you to build HTTP services following REST principles. You'll learn API design, serialisation, versioning, authentication, and documentation with Swagger/OpenAPI.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>REST Principles &amp; Design</h4>
+            <ul class="checklist" data-section="webapi">
+              <li><label><input type="checkbox" data-id="api-1" /> REST constraints &amp; HTTP methods</label></li>
+              <li><label><input type="checkbox" data-id="api-2" /> Status codes &amp; HTTP semantics</label></li>
+              <li><label><input type="checkbox" data-id="api-3" /> Resource naming &amp; URI design</label></li>
+              <li><label><input type="checkbox" data-id="api-4" /> Content negotiation (JSON / XML)</label></li>
+            </ul>
+            <h4>Implementation</h4>
+            <ul class="checklist" data-section="webapi">
+              <li><label><input type="checkbox" data-id="api-5" /> ApiController attribute &amp; minimal APIs</label></li>
+              <li><label><input type="checkbox" data-id="api-6" /> Model binding: route, query string, body</label></li>
+              <li><label><input type="checkbox" data-id="api-7" /> Problem Details (RFC 7807) error responses</label></li>
+              <li><label><input type="checkbox" data-id="api-8" /> Pagination, filtering &amp; sorting</label></li>
+              <li><label><input type="checkbox" data-id="api-9" /> API versioning strategies</label></li>
+              <li><label><input type="checkbox" data-id="api-10" /> Swagger / OpenAPI documentation</label></li>
+            </ul>
+            <h4>Security &amp; Performance</h4>
+            <ul class="checklist" data-section="webapi">
+              <li><label><input type="checkbox" data-id="api-11" /> JWT authentication &amp; refresh tokens</label></li>
+              <li><label><input type="checkbox" data-id="api-12" /> OAuth 2.0 &amp; OpenID Connect</label></li>
+              <li><label><input type="checkbox" data-id="api-13" /> CORS configuration</label></li>
+              <li><label><input type="checkbox" data-id="api-14" /> Rate limiting &amp; throttling</label></li>
+              <li><label><input type="checkbox" data-id="api-15" /> Response caching &amp; ETags</label></li>
+              <li><label><input type="checkbox" data-id="api-16" /> HTTPS enforcement &amp; HSTS</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Return <strong>Problem Details</strong> for all error responses (RFC 7807).</li>
+              <li>Version APIs from the start — never break existing consumers.</li>
+              <li>Use <strong>FluentValidation</strong> for complex validation logic.</li>
+              <li>Document all endpoints with Swagger — treat it as a contract.</li>
+              <li>Implement <strong>idempotency keys</strong> for POST endpoints that create resources.</li>
+              <li>Always set appropriate <strong>Cache-Control</strong> headers.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         LINQ
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-linq" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">06</div>
+        <h2 class="section-title">LINQ</h2>
+        <p class="section-sub">Language Integrated Query — expressive data querying built into C#.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-linq"></div></div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>LINQ provides a uniform query syntax for collections, databases (via EF Core), XML, and more. Mastering LINQ dramatically increases code readability and expressiveness.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="linq">
+              <li><label><input type="checkbox" data-id="linq-1" /> Query syntax vs method (fluent) syntax</label></li>
+              <li><label><input type="checkbox" data-id="linq-2" /> Deferred vs immediate execution</label></li>
+              <li><label><input type="checkbox" data-id="linq-3" /> Where, Select, SelectMany</label></li>
+              <li><label><input type="checkbox" data-id="linq-4" /> OrderBy, ThenBy, Reverse</label></li>
+              <li><label><input type="checkbox" data-id="linq-5" /> GroupBy &amp; ToLookup</label></li>
+              <li><label><input type="checkbox" data-id="linq-6" /> Join, GroupJoin</label></li>
+              <li><label><input type="checkbox" data-id="linq-7" /> Aggregate, Sum, Count, Min, Max, Average</label></li>
+              <li><label><input type="checkbox" data-id="linq-8" /> First, FirstOrDefault, Single, Any, All</label></li>
+              <li><label><input type="checkbox" data-id="linq-9" /> Take, Skip, TakeWhile, SkipWhile</label></li>
+              <li><label><input type="checkbox" data-id="linq-10" /> LINQ to Objects vs LINQ to SQL (IQueryable)</label></li>
+              <li><label><input type="checkbox" data-id="linq-11" /> Expression trees &amp; custom providers</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Understand when queries are <strong>deferred</strong> — avoid unintentional multiple enumerations.</li>
+              <li>Use <strong>AsNoTracking()</strong> in EF Core for read-only queries.</li>
+              <li>Project to DTOs with <strong>Select()</strong> to avoid over-fetching data.</li>
+              <li>Prefer <strong>FirstOrDefault</strong> over <strong>First</strong> when null is an expected outcome.</li>
+              <li>Profile generated SQL in EF Core — LINQ doesn't always produce optimal queries.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         ENTITY FRAMEWORK CORE
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-ef" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">07</div>
+        <h2 class="section-title">Entity Framework Core</h2>
+        <p class="section-sub">Modern ORM for .NET — map C# objects to relational database tables.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-ef"></div></div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>EF Core is a lightweight, extensible ORM enabling .NET developers to work with databases using .NET objects, eliminating most data-access code. It supports Code-First and Database-First workflows.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Core Concepts</h4>
+            <ul class="checklist" data-section="ef">
+              <li><label><input type="checkbox" data-id="ef-1" /> DbContext &amp; DbSet configuration</label></li>
+              <li><label><input type="checkbox" data-id="ef-2" /> Entity mapping: conventions, annotations, Fluent API</label></li>
+              <li><label><input type="checkbox" data-id="ef-3" /> Relationships: one-to-one, one-to-many, many-to-many</label></li>
+              <li><label><input type="checkbox" data-id="ef-4" /> Migrations: Add-Migration, Update-Database</label></li>
+              <li><label><input type="checkbox" data-id="ef-5" /> Seeding data with HasData</label></li>
+            </ul>
+            <h4>Querying &amp; Persistence</h4>
+            <ul class="checklist" data-section="ef">
+              <li><label><input type="checkbox" data-id="ef-6" /> CRUD operations with EF Core</label></li>
+              <li><label><input type="checkbox" data-id="ef-7" /> Eager, lazy &amp; explicit loading</label></li>
+              <li><label><input type="checkbox" data-id="ef-8" /> Tracking vs no-tracking queries</label></li>
+              <li><label><input type="checkbox" data-id="ef-9" /> Raw SQL &amp; stored procedures via EF</label></li>
+              <li><label><input type="checkbox" data-id="ef-10" /> Transactions &amp; concurrency tokens</label></li>
+            </ul>
+            <h4>Advanced</h4>
+            <ul class="checklist" data-section="ef">
+              <li><label><input type="checkbox" data-id="ef-11" /> Owned entities &amp; value objects</label></li>
+              <li><label><input type="checkbox" data-id="ef-12" /> Global query filters</label></li>
+              <li><label><input type="checkbox" data-id="ef-13" /> Interceptors &amp; change tracking events</label></li>
+              <li><label><input type="checkbox" data-id="ef-14" /> Repository &amp; Unit of Work patterns</label></li>
+              <li><label><input type="checkbox" data-id="ef-15" /> Performance: split queries, compiled queries</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Use <strong>AsNoTracking()</strong> for all read-only queries to boost performance.</li>
+              <li>Never expose <strong>DbContext</strong> directly from controllers — wrap in repositories or services.</li>
+              <li>Always check <strong>generated SQL</strong> using logging or EF profiler.</li>
+              <li>Use <strong>explicit loading</strong> instead of lazy loading in web applications.</li>
+              <li>Implement <strong>optimistic concurrency</strong> with row version tokens for multi-user scenarios.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         TESTING
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-testing" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">08</div>
+        <h2 class="section-title">Testing</h2>
+        <p class="section-sub">Ensure correctness, reliability and confidence in your .NET applications.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-testing"></div></div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>Testing is a first-class concern in modern .NET development. The ecosystem offers mature tools: xUnit for unit tests, Moq for mocking, and WebApplicationFactory for integration tests.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Unit Testing</h4>
+            <ul class="checklist" data-section="testing">
+              <li><label><input type="checkbox" data-id="test-1" /> xUnit, NUnit &amp; MSTest frameworks</label></li>
+              <li><label><input type="checkbox" data-id="test-2" /> AAA pattern: Arrange, Act, Assert</label></li>
+              <li><label><input type="checkbox" data-id="test-3" /> Mocking with Moq or NSubstitute</label></li>
+              <li><label><input type="checkbox" data-id="test-4" /> Test data builders &amp; object mothers</label></li>
+              <li><label><input type="checkbox" data-id="test-5" /> Parameterised tests (Theory, InlineData)</label></li>
+              <li><label><input type="checkbox" data-id="test-6" /> FluentAssertions for readable assertions</label></li>
+            </ul>
+            <h4>Integration &amp; E2E Testing</h4>
+            <ul class="checklist" data-section="testing">
+              <li><label><input type="checkbox" data-id="test-7" /> WebApplicationFactory for API integration tests</label></li>
+              <li><label><input type="checkbox" data-id="test-8" /> In-memory &amp; SQLite databases for test isolation</label></li>
+              <li><label><input type="checkbox" data-id="test-9" /> Testcontainers for real database tests</label></li>
+              <li><label><input type="checkbox" data-id="test-10" /> Contract testing with Pact</label></li>
+              <li><label><input type="checkbox" data-id="test-11" /> Playwright / Selenium for E2E UI testing</label></li>
+            </ul>
+            <h4>Quality Metrics</h4>
+            <ul class="checklist" data-section="testing">
+              <li><label><input type="checkbox" data-id="test-12" /> Code coverage with Coverlet</label></li>
+              <li><label><input type="checkbox" data-id="test-13" /> Mutation testing with Stryker.NET</label></li>
+              <li><label><input type="checkbox" data-id="test-14" /> Load &amp; performance testing with k6 or NBomber</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Follow the <strong>testing pyramid</strong>: many unit tests, fewer integration, fewest E2E.</li>
+              <li>Tests should be <strong>FIRST</strong>: Fast, Isolated, Repeatable, Self-validating, Timely.</li>
+              <li>Never test implementation details — test <strong>observable behaviour</strong>.</li>
+              <li>Aim for meaningful coverage, not 100% for the sake of it.</li>
+              <li>Run tests in <strong>CI on every PR</strong> — don't merge broken builds.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         DEVOPS
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-devops" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">09</div>
+        <h2 class="section-title">DevOps</h2>
+        <p class="section-sub">Ship faster, safer, and more reliably with modern DevOps practices.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-devops"></div></div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>DevOps bridges development and operations. For .NET Core developers, this means containerisation with Docker, CI/CD with GitHub Actions or Azure DevOps, and cloud deployment on Azure.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Source Control</h4>
+            <ul class="checklist" data-section="devops">
+              <li><label><input type="checkbox" data-id="ops-1" /> Git fundamentals: branching, merging, rebasing</label></li>
+              <li><label><input type="checkbox" data-id="ops-2" /> Git flow &amp; trunk-based development</label></li>
+              <li><label><input type="checkbox" data-id="ops-3" /> Conventional commits &amp; semantic versioning</label></li>
+            </ul>
+            <h4>CI/CD</h4>
+            <ul class="checklist" data-section="devops">
+              <li><label><input type="checkbox" data-id="ops-4" /> GitHub Actions: workflows, jobs &amp; steps</label></li>
+              <li><label><input type="checkbox" data-id="ops-5" /> Azure DevOps Pipelines (YAML)</label></li>
+              <li><label><input type="checkbox" data-id="ops-6" /> Build, test, publish &amp; deploy stages</label></li>
+              <li><label><input type="checkbox" data-id="ops-7" /> Artifact management &amp; versioning</label></li>
+            </ul>
+            <h4>Containerisation</h4>
+            <ul class="checklist" data-section="devops">
+              <li><label><input type="checkbox" data-id="ops-8" /> Docker: images, containers, volumes, networks</label></li>
+              <li><label><input type="checkbox" data-id="ops-9" /> Multi-stage Dockerfiles for .NET apps</label></li>
+              <li><label><input type="checkbox" data-id="ops-10" /> Docker Compose for local development</label></li>
+              <li><label><input type="checkbox" data-id="ops-11" /> Kubernetes basics: pods, services, deployments</label></li>
+            </ul>
+            <h4>Cloud (Azure)</h4>
+            <ul class="checklist" data-section="devops">
+              <li><label><input type="checkbox" data-id="ops-12" /> Azure App Service deployment</label></li>
+              <li><label><input type="checkbox" data-id="ops-13" /> Azure Container Registry &amp; AKS</label></li>
+              <li><label><input type="checkbox" data-id="ops-14" /> Azure SQL Database &amp; managed identity</label></li>
+              <li><label><input type="checkbox" data-id="ops-15" /> Application Insights &amp; monitoring</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Use <strong>multi-stage Docker builds</strong> to keep production images minimal.</li>
+              <li>Never store secrets in container images or source control — use secret stores.</li>
+              <li>Use <strong>health checks</strong> (/health endpoint) in all ASP.NET Core apps.</li>
+              <li>Implement <strong>blue/green or canary deployments</strong> for zero-downtime releases.</li>
+              <li>Tag all deployments with the commit SHA for full traceability.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         ADVANCED TOPICS
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-advanced" data-searchable>
+      <div class="section-header">
+        <div class="section-badge">10</div>
+        <h2 class="section-title">Advanced Topics</h2>
+        <p class="section-sub">Level up from mid-level to senior with architectural patterns and performance.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-advanced"></div></div>
+      </div>
+
+      <div class="accordion-group">
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>Advanced topics cover architectural patterns, real-time communication, distributed systems, security hardening, and performance engineering — the skills that distinguish senior .NET engineers.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📋 Syllabus</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Architecture</h4>
+            <ul class="checklist" data-section="advanced">
+              <li><label><input type="checkbox" data-id="adv-1" /> Clean Architecture &amp; Onion Architecture</label></li>
+              <li><label><input type="checkbox" data-id="adv-2" /> Domain-Driven Design (DDD) concepts</label></li>
+              <li><label><input type="checkbox" data-id="adv-3" /> CQRS &amp; MediatR library</label></li>
+              <li><label><input type="checkbox" data-id="adv-4" /> Event Sourcing fundamentals</label></li>
+              <li><label><input type="checkbox" data-id="adv-5" /> Microservices architecture &amp; boundaries</label></li>
+              <li><label><input type="checkbox" data-id="adv-6" /> API Gateway pattern (YARP, Ocelot)</label></li>
+            </ul>
+            <h4>Communication &amp; Messaging</h4>
+            <ul class="checklist" data-section="advanced">
+              <li><label><input type="checkbox" data-id="adv-7" /> SignalR for real-time communication</label></li>
+              <li><label><input type="checkbox" data-id="adv-8" /> gRPC with Protobuf</label></li>
+              <li><label><input type="checkbox" data-id="adv-9" /> Message brokers: RabbitMQ, Azure Service Bus</label></li>
+              <li><label><input type="checkbox" data-id="adv-10" /> MassTransit for messaging abstraction</label></li>
+            </ul>
+            <h4>Performance &amp; Caching</h4>
+            <ul class="checklist" data-section="advanced">
+              <li><label><input type="checkbox" data-id="adv-11" /> In-memory caching (IMemoryCache)</label></li>
+              <li><label><input type="checkbox" data-id="adv-12" /> Distributed caching with Redis</label></li>
+              <li><label><input type="checkbox" data-id="adv-13" /> Output caching &amp; response compression</label></li>
+              <li><label><input type="checkbox" data-id="adv-14" /> BenchmarkDotNet for micro-benchmarking</label></li>
+              <li><label><input type="checkbox" data-id="adv-15" /> Memory profiling &amp; GC tuning</label></li>
+            </ul>
+            <h4>Security</h4>
+            <ul class="checklist" data-section="advanced">
+              <li><label><input type="checkbox" data-id="adv-16" /> OWASP Top 10 for .NET apps</label></li>
+              <li><label><input type="checkbox" data-id="adv-17" /> Data protection API &amp; key management</label></li>
+              <li><label><input type="checkbox" data-id="adv-18" /> Role-based &amp; policy-based authorization</label></li>
+              <li><label><input type="checkbox" data-id="adv-19" /> Anti-forgery tokens &amp; CSRF protection</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Apply <strong>Clean Architecture</strong> from the start — it's hard to retrofit.</li>
+              <li>Use <strong>MediatR</strong> to decouple request handling from controllers.</li>
+              <li>Cache at the right layer — not everything needs Redis.</li>
+              <li>Design microservices around <strong>business capabilities</strong>, not technical layers.</li>
+              <li>Treat security as a <strong>first-class requirement</strong>, not an afterthought.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         AZURE CLOUD SERVICES
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-azure" data-searchable>
+      <div class="section-header">
+        <div class="section-badge section-badge--azure">☁ CLOUD</div>
+        <h2 class="section-title">Azure Cloud Services</h2>
+        <p class="section-sub">Deploy, scale, and operate production .NET applications on Microsoft Azure — the cloud platform built for the .NET ecosystem.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-azure"></div></div>
+      </div>
+
+      <div class="accordion-group">
+
+        <!-- Overview -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>Azure is Microsoft's cloud platform with 200+ services spanning compute, storage, databases, networking, AI, and DevOps. For .NET Core developers, Azure is the most natural deployment target — with deep SDK integration, managed identity support, and first-class tooling in Visual Studio and the .NET CLI.</p>
+            <p>Estimated time: <strong>4–6 weeks</strong> to reach practical proficiency. The <strong>AZ-900</strong> (Fundamentals) certification is an excellent starting goal, followed by <strong>AZ-204</strong> (Developer Associate).</p>
+            <div class="info-chips">
+              <span class="chip chip--blue">AZ-900 Foundation</span>
+              <span class="chip chip--blue">AZ-204 Developer</span>
+              <span class="chip chip--purple">AZ-400 DevOps</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Compute & Hosting -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🖥 Compute &amp; Hosting</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Azure App Service</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-1" /> App Service plans, pricing tiers &amp; scaling</label></li>
+              <li><label><input type="checkbox" data-id="az-2" /> Deploying .NET Core apps via ZIP, Git, GitHub Actions</label></li>
+              <li><label><input type="checkbox" data-id="az-3" /> Deployment slots (staging, production) &amp; slot swapping</label></li>
+              <li><label><input type="checkbox" data-id="az-4" /> Custom domains, SSL/TLS certificates &amp; HTTPS enforcement</label></li>
+              <li><label><input type="checkbox" data-id="az-5" /> Auto-scaling rules: schedule-based &amp; metric-based</label></li>
+              <li><label><input type="checkbox" data-id="az-6" /> App Service Environment (ASE) for isolated workloads</label></li>
+            </ul>
+            <h4>Azure Functions (Serverless)</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-7" /> Consumption, Premium &amp; Dedicated hosting plans</label></li>
+              <li><label><input type="checkbox" data-id="az-8" /> Triggers: HTTP, Timer, Blob, Queue, Service Bus, Event Grid</label></li>
+              <li><label><input type="checkbox" data-id="az-9" /> Input &amp; output bindings for zero-plumbing integrations</label></li>
+              <li><label><input type="checkbox" data-id="az-10" /> Durable Functions: orchestrations, activities &amp; fan-out</label></li>
+              <li><label><input type="checkbox" data-id="az-11" /> Isolated worker model for .NET 8 Functions</label></li>
+              <li><label><input type="checkbox" data-id="az-12" /> Cold start mitigation strategies</label></li>
+            </ul>
+            <h4>Azure Container Apps &amp; AKS</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-13" /> Azure Container Registry (ACR) — push &amp; pull images</label></li>
+              <li><label><input type="checkbox" data-id="az-14" /> Azure Container Apps: scaling rules, revisions &amp; traffic splitting</label></li>
+              <li><label><input type="checkbox" data-id="az-15" /> Azure Kubernetes Service (AKS) cluster setup &amp; node pools</label></li>
+              <li><label><input type="checkbox" data-id="az-16" /> KEDA (event-driven autoscaling) with AKS</label></li>
+              <li><label><input type="checkbox" data-id="az-17" /> Helm charts for .NET microservice deployments</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Storage & Databases -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🗄 Storage &amp; Databases</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Azure SQL &amp; Cosmos DB</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-18" /> Azure SQL Database: elastic pools, serverless tier</label></li>
+              <li><label><input type="checkbox" data-id="az-19" /> Managed Identity auth to Azure SQL (no passwords)</label></li>
+              <li><label><input type="checkbox" data-id="az-20" /> Geo-replication &amp; failover groups for HA</label></li>
+              <li><label><input type="checkbox" data-id="az-21" /> Azure Cosmos DB: partitioning, consistency levels</label></li>
+              <li><label><input type="checkbox" data-id="az-22" /> Cosmos DB .NET SDK v3 — CRUD &amp; LINQ queries</label></li>
+              <li><label><input type="checkbox" data-id="az-23" /> Change feed for event-driven architectures</label></li>
+            </ul>
+            <h4>Azure Storage</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-24" /> Blob Storage: containers, access tiers (Hot/Cool/Archive)</label></li>
+              <li><label><input type="checkbox" data-id="az-25" /> Azure Storage SDK for .NET (BlobServiceClient)</label></li>
+              <li><label><input type="checkbox" data-id="az-26" /> Shared Access Signatures (SAS) &amp; stored access policies</label></li>
+              <li><label><input type="checkbox" data-id="az-27" /> Azure Queue Storage for lightweight messaging</label></li>
+              <li><label><input type="checkbox" data-id="az-28" /> Azure Table Storage for structured NoSQL data</label></li>
+              <li><label><input type="checkbox" data-id="az-29" /> Azure Files &amp; File Sync</label></li>
+            </ul>
+            <h4>Caching &amp; Redis</h4>
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-30" /> Azure Cache for Redis: tiers &amp; cluster mode</label></li>
+              <li><label><input type="checkbox" data-id="az-31" /> StackExchange.Redis in .NET — connection multiplexer</label></li>
+              <li><label><input type="checkbox" data-id="az-32" /> Distributed session &amp; response caching patterns</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Messaging & Integration -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📨 Messaging &amp; Integration</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-33" /> Azure Service Bus: queues, topics &amp; subscriptions</label></li>
+              <li><label><input type="checkbox" data-id="az-34" /> Service Bus .NET SDK — send/receive/settle messages</label></li>
+              <li><label><input type="checkbox" data-id="az-35" /> Dead-letter queues &amp; message deferral strategies</label></li>
+              <li><label><input type="checkbox" data-id="az-36" /> Azure Event Hubs: partitions, consumer groups, Kafka protocol</label></li>
+              <li><label><input type="checkbox" data-id="az-37" /> Azure Event Grid: event routing, subscriptions &amp; filters</label></li>
+              <li><label><input type="checkbox" data-id="az-38" /> Azure Logic Apps for low-code workflow orchestration</label></li>
+              <li><label><input type="checkbox" data-id="az-39" /> Azure API Management (APIM): policies, rate limiting, portal</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Security & Identity -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🔐 Security &amp; Identity</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-40" /> Microsoft Entra ID (Azure AD): tenants, app registrations</label></li>
+              <li><label><input type="checkbox" data-id="az-41" /> OAuth 2.0 &amp; OIDC flows with MSAL.NET</label></li>
+              <li><label><input type="checkbox" data-id="az-42" /> Managed Identity (system-assigned &amp; user-assigned)</label></li>
+              <li><label><input type="checkbox" data-id="az-43" /> Azure Key Vault: secrets, keys &amp; certificate management</label></li>
+              <li><label><input type="checkbox" data-id="az-44" /> Key Vault references in App Service / Functions</label></li>
+              <li><label><input type="checkbox" data-id="az-45" /> Azure Defender &amp; Microsoft Sentinel basics</label></li>
+              <li><label><input type="checkbox" data-id="az-46" /> Role-Based Access Control (RBAC) in Azure</label></li>
+              <li><label><input type="checkbox" data-id="az-47" /> Virtual Network (VNet) integration &amp; Private Endpoints</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Monitoring & Observability -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📊 Monitoring &amp; Observability</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-48" /> Application Insights SDK integration in .NET</label></li>
+              <li><label><input type="checkbox" data-id="az-49" /> Distributed tracing with TraceId &amp; SpanId correlation</label></li>
+              <li><label><input type="checkbox" data-id="az-50" /> Custom metrics, events &amp; dependencies tracking</label></li>
+              <li><label><input type="checkbox" data-id="az-51" /> Azure Monitor: alerts, action groups &amp; dashboards</label></li>
+              <li><label><input type="checkbox" data-id="az-52" /> Log Analytics Workspace &amp; KQL queries</label></li>
+              <li><label><input type="checkbox" data-id="az-53" /> Azure Managed Grafana for visualization</label></li>
+              <li><label><input type="checkbox" data-id="az-54" /> OpenTelemetry with Azure Monitor exporter</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Infrastructure as Code -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🏗 Infrastructure as Code</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="azure">
+              <li><label><input type="checkbox" data-id="az-55" /> Azure CLI &amp; PowerShell for resource management</label></li>
+              <li><label><input type="checkbox" data-id="az-56" /> ARM templates: structure, parameters &amp; deployment</label></li>
+              <li><label><input type="checkbox" data-id="az-57" /> Bicep: modules, scopes &amp; what-if deployments</label></li>
+              <li><label><input type="checkbox" data-id="az-58" /> Terraform with AzureRM provider</label></li>
+              <li><label><input type="checkbox" data-id="az-59" /> Azure Developer CLI (azd) for end-to-end app deployment</label></li>
+              <li><label><input type="checkbox" data-id="az-60" /> Azure Resource Manager (ARM) RBAC &amp; policy governance</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Always use <strong>Managed Identity</strong> instead of connection strings or API keys for service-to-service auth — eliminates secret sprawl entirely.</li>
+              <li>Store all secrets in <strong>Azure Key Vault</strong> and reference them via Key Vault references, never hardcode in configuration files.</li>
+              <li>Use <strong>deployment slots</strong> with slot-swap for zero-downtime production deployments and instant rollback capability.</li>
+              <li>Tag all Azure resources with <code>Environment</code>, <code>CostCenter</code>, and <code>Owner</code> tags for governance and cost tracking.</li>
+              <li>Apply the <strong>principle of least privilege</strong> — assign only the RBAC roles required; avoid Owner/Contributor at subscription scope.</li>
+              <li>Use <strong>VNet integration</strong> and Private Endpoints to keep traffic off the public internet for sensitive services.</li>
+              <li>Enable <strong>Application Insights</strong> from day one — retro-fitting observability is significantly harder than adding it upfront.</li>
+              <li>Use <strong>Bicep or Terraform</strong> for all infrastructure — manual portal changes in production are a reliability anti-pattern.</li>
+              <li>Set up <strong>budget alerts</strong> in Azure Cost Management to avoid surprise bills during development and testing.</li>
+              <li>Always configure <strong>geo-redundant backups</strong> for production databases and test restoration periodically.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /accordion-group -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         AI & ML WITH .NET
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-ai" data-searchable>
+      <div class="section-header">
+        <div class="section-badge section-badge--ai">🤖 AI</div>
+        <h2 class="section-title">AI &amp; ML with .NET</h2>
+        <p class="section-sub">Integrate large language models, cognitive services, and machine learning directly into your .NET applications.</p>
+        <div class="section-progress-bar"><div class="spb-fill" id="prog-ai"></div></div>
+      </div>
+
+      <div class="accordion-group">
+
+        <!-- Overview -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="true">
+            <span>📖 Overview</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body open">
+            <p>AI is no longer a specialist domain — it's an expected skill for modern .NET developers. The ecosystem spans three tiers: <strong>Azure OpenAI / Azure AI Services</strong> (cloud APIs), <strong>Semantic Kernel</strong> (orchestration framework for LLM apps), and <strong>ML.NET</strong> (custom on-premise/embedded ML).</p>
+            <p>Estimated time: <strong>4–8 weeks</strong> depending on prior ML background. Start with Azure OpenAI integrations, then move to Semantic Kernel for agent orchestration, and ML.NET for custom model scenarios.</p>
+            <div class="info-chips">
+              <span class="chip chip--green">Azure OpenAI</span>
+              <span class="chip chip--green">Semantic Kernel</span>
+              <span class="chip chip--purple">ML.NET</span>
+              <span class="chip chip--orange">AI-102 Cert</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Azure OpenAI & LLMs -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🧠 Azure OpenAI &amp; Large Language Models</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Azure OpenAI Service</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-1" /> Azure OpenAI resource setup: deployments &amp; model versions</label></li>
+              <li><label><input type="checkbox" data-id="ai-2" /> Chat Completions API: messages array, roles &amp; parameters</label></li>
+              <li><label><input type="checkbox" data-id="ai-3" /> Azure.AI.OpenAI .NET SDK — ChatClient, EmbeddingClient</label></li>
+              <li><label><input type="checkbox" data-id="ai-4" /> Streaming responses with IAsyncEnumerable&lt;T&gt;</label></li>
+              <li><label><input type="checkbox" data-id="ai-5" /> Function calling / tool use in chat completions</label></li>
+              <li><label><input type="checkbox" data-id="ai-6" /> Structured outputs with JSON schema enforcement</label></li>
+              <li><label><input type="checkbox" data-id="ai-7" /> Token counting, rate limits &amp; quota management</label></li>
+              <li><label><input type="checkbox" data-id="ai-8" /> GPT-4o, GPT-4 Turbo, o3 — model selection trade-offs</label></li>
+            </ul>
+            <h4>Prompt Engineering</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-9" /> System prompt design &amp; persona definition</label></li>
+              <li><label><input type="checkbox" data-id="ai-10" /> Few-shot prompting &amp; chain-of-thought techniques</label></li>
+              <li><label><input type="checkbox" data-id="ai-11" /> Prompt injection attacks &amp; mitigation strategies</label></li>
+              <li><label><input type="checkbox" data-id="ai-12" /> Temperature, top-p, frequency &amp; presence penalty tuning</label></li>
+              <li><label><input type="checkbox" data-id="ai-13" /> Context window management &amp; conversation history trimming</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Semantic Kernel -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>⚙ Semantic Kernel (SK)</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Core SDK</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-14" /> Kernel setup, DI integration &amp; service configuration</label></li>
+              <li><label><input type="checkbox" data-id="ai-15" /> Plugins: native functions &amp; prompt functions</label></li>
+              <li><label><input type="checkbox" data-id="ai-16" /> KernelFunction attribute &amp; function metadata</label></li>
+              <li><label><input type="checkbox" data-id="ai-17" /> Filters: function invocation &amp; prompt rendering filters</label></li>
+              <li><label><input type="checkbox" data-id="ai-18" /> IChatCompletionService &amp; ITextGenerationService</label></li>
+            </ul>
+            <h4>Memory &amp; RAG</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-19" /> Text embeddings: what they are &amp; when to use them</label></li>
+              <li><label><input type="checkbox" data-id="ai-20" /> Vector stores: Azure AI Search, Qdrant, in-memory</label></li>
+              <li><label><input type="checkbox" data-id="ai-21" /> Retrieval-Augmented Generation (RAG) pipeline design</label></li>
+              <li><label><input type="checkbox" data-id="ai-22" /> Chunking strategies: fixed, sentence, semantic</label></li>
+              <li><label><input type="checkbox" data-id="ai-23" /> Hybrid search: vector + keyword (BM25) with RRF fusion</label></li>
+              <li><label><input type="checkbox" data-id="ai-24" /> VectorizedSearch and GetAsync from IVectorizedSearch&lt;T&gt;</label></li>
+            </ul>
+            <h4>Agents &amp; Orchestration</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-25" /> ChatCompletionAgent — single agent patterns</label></li>
+              <li><label><input type="checkbox" data-id="ai-26" /> AgentGroupChat — multi-agent collaboration</label></li>
+              <li><label><input type="checkbox" data-id="ai-27" /> Planner strategies: FunctionChoiceBehavior.Auto</label></li>
+              <li><label><input type="checkbox" data-id="ai-28" /> Process framework for stateful multi-step workflows</label></li>
+              <li><label><input type="checkbox" data-id="ai-29" /> OpenAI Assistants API integration via SK</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Azure AI Services -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>🔷 Azure AI Services</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>Vision &amp; Document Intelligence</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-30" /> Azure AI Vision: image analysis, object detection, OCR</label></li>
+              <li><label><input type="checkbox" data-id="ai-31" /> Azure Document Intelligence (Form Recognizer): prebuilt &amp; custom models</label></li>
+              <li><label><input type="checkbox" data-id="ai-32" /> Face API: detection, verification &amp; compliance considerations</label></li>
+              <li><label><input type="checkbox" data-id="ai-33" /> Video Indexer for audio/video transcription &amp; insights</label></li>
+            </ul>
+            <h4>Language &amp; Speech</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-34" /> Azure AI Language: sentiment, NER, key phrase extraction</label></li>
+              <li><label><input type="checkbox" data-id="ai-35" /> Conversational Language Understanding (CLU)</label></li>
+              <li><label><input type="checkbox" data-id="ai-36" /> Azure AI Translator: real-time &amp; batch translation</label></li>
+              <li><label><input type="checkbox" data-id="ai-37" /> Azure Speech Services: STT, TTS &amp; real-time transcription</label></li>
+              <li><label><input type="checkbox" data-id="ai-38" /> Custom Neural Voice for branded TTS</label></li>
+            </ul>
+            <h4>Search &amp; Knowledge</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-39" /> Azure AI Search: indexes, indexers &amp; skillsets</label></li>
+              <li><label><input type="checkbox" data-id="ai-40" /> Semantic ranking &amp; vector search configuration</label></li>
+              <li><label><input type="checkbox" data-id="ai-41" /> Integrated vectorization with Azure OpenAI embeddings</label></li>
+              <li><label><input type="checkbox" data-id="ai-42" /> Azure AI Search .NET SDK — SearchClient&lt;T&gt;</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ML.NET -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>📈 ML.NET &amp; Custom Models</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <h4>ML.NET Core Concepts</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-43" /> MLContext, IDataView &amp; schema definition</label></li>
+              <li><label><input type="checkbox" data-id="ai-44" /> Data loading: CSV, database, in-memory collections</label></li>
+              <li><label><input type="checkbox" data-id="ai-45" /> Feature engineering: OneHotEncoding, Normalization, Concatenation</label></li>
+              <li><label><input type="checkbox" data-id="ai-46" /> Training pipelines: estimator chains</label></li>
+              <li><label><input type="checkbox" data-id="ai-47" /> Model evaluation: metrics for regression, classification, clustering</label></li>
+              <li><label><input type="checkbox" data-id="ai-48" /> Model saving / loading (ZIP) for production serving</label></li>
+            </ul>
+            <h4>ML Tasks</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-49" /> Binary &amp; multiclass classification (SDCA, FastTree)</label></li>
+              <li><label><input type="checkbox" data-id="ai-50" /> Regression for numeric prediction</label></li>
+              <li><label><input type="checkbox" data-id="ai-51" /> Recommendation with Matrix Factorization</label></li>
+              <li><label><input type="checkbox" data-id="ai-52" /> Anomaly detection: time series &amp; spike detection</label></li>
+              <li><label><input type="checkbox" data-id="ai-53" /> Text classification &amp; sentiment analysis pipelines</label></li>
+            </ul>
+            <h4>AutoML &amp; ONNX</h4>
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-54" /> ML.NET Model Builder (Visual Studio extension)</label></li>
+              <li><label><input type="checkbox" data-id="ai-55" /> AutoML API for automated algorithm selection</label></li>
+              <li><label><input type="checkbox" data-id="ai-56" /> Exporting ML.NET models to ONNX format</label></li>
+              <li><label><input type="checkbox" data-id="ai-57" /> Running ONNX models via Microsoft.ML.OnnxRuntime</label></li>
+              <li><label><input type="checkbox" data-id="ai-58" /> Integrating Hugging Face models via ONNX in .NET</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Responsible AI -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>⚖ Responsible AI &amp; Safety</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="checklist" data-section="ai">
+              <li><label><input type="checkbox" data-id="ai-59" /> Azure AI Content Safety: text &amp; image moderation APIs</label></li>
+              <li><label><input type="checkbox" data-id="ai-60" /> Groundedness detection &amp; hallucination mitigation</label></li>
+              <li><label><input type="checkbox" data-id="ai-61" /> Microsoft Responsible AI principles &amp; Impact Assessment</label></li>
+              <li><label><input type="checkbox" data-id="ai-62" /> Data privacy: PII detection &amp; redaction before LLM calls</label></li>
+              <li><label><input type="checkbox" data-id="ai-63" /> AI fairness: bias evaluation &amp; mitigation strategies</label></li>
+              <li><label><input type="checkbox" data-id="ai-64" /> Logging AI inputs/outputs for audit &amp; compliance</label></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Best Practices -->
+        <div class="accordion-item">
+          <button class="accordion-trigger" aria-expanded="false">
+            <span>✅ Best Practices</span><span class="chevron">▾</span>
+          </button>
+          <div class="accordion-body">
+            <ul class="best-practices">
+              <li>Use <strong>Semantic Kernel</strong> as your LLM orchestration layer rather than calling OpenAI APIs directly — it provides abstraction, retries, and model portability.</li>
+              <li>Implement <strong>RAG before fine-tuning</strong> — retrieval-augmented generation solves 80% of knowledge-grounding problems at a fraction of the cost.</li>
+              <li>Always pass LLM inputs through <strong>Azure AI Content Safety</strong> for moderation in user-facing applications.</li>
+              <li>Use <strong>streaming responses</strong> (IAsyncEnumerable) for all chat UIs — users perceive streamed output as dramatically faster.</li>
+              <li>Cache <strong>embedding vectors</strong> — generating embeddings costs money and time; cache them in your vector store aggressively.</li>
+              <li>Apply <strong>exponential backoff with jitter</strong> for all Azure OpenAI API calls to handle rate limit (429) responses gracefully.</li>
+              <li>Log all prompts and completions to <strong>Application Insights</strong> with user/session correlation for debugging and cost attribution.</li>
+              <li>Define a <strong>maximum token budget</strong> per request and implement conversation history summarization to avoid context window overflows.</li>
+              <li>Evaluate AI output quality with <strong>Azure AI Evaluation SDK</strong> — treat AI quality like software quality with repeatable measurements.</li>
+              <li>Use <strong>Managed Identity</strong> to authenticate to Azure OpenAI — never ship API keys in application configuration.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- /accordion-group -->
+    </section>
+
+    <!-- ══════════════════════════════════════════════════════
+         PROJECT IDEAS
+    ══════════════════════════════════════════════════════ -->
+    <section class="content-section" id="section-projects">
+      <div class="section-header">
+        <div class="section-badge">★</div>
+        <h2 class="section-title">Project Ideas</h2>
+        <p class="section-sub">Apply what you learn — practical projects cement knowledge faster than tutorials.</p>
+      </div>
+
+      <div class="projects-grid">
+        <div class="project-card" data-level="beginner">
+          <div class="project-level">Beginner</div>
+          <h3>📝 Task Manager API</h3>
+          <p>RESTful CRUD API for managing tasks with user authentication, EF Core, and SQL Server.</p>
+          <ul>
+            <li>C#, ASP.NET Core Web API</li>
+            <li>EF Core + SQL Server</li>
+            <li>JWT Authentication</li>
+            <li>Swagger Documentation</li>
+          </ul>
+          <span class="project-time">⏱ 2–3 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="intermediate">
+          <div class="project-level">Intermediate</div>
+          <h3>🛒 E-Commerce Platform</h3>
+          <p>Full-stack MVC e-commerce site with product catalog, cart, orders and payment integration.</p>
+          <ul>
+            <li>ASP.NET Core MVC</li>
+            <li>ASP.NET Core Identity</li>
+            <li>EF Core + Migrations</li>
+            <li>Stripe / PayU integration</li>
+          </ul>
+          <span class="project-time">⏱ 4–6 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="intermediate">
+          <div class="project-level">Intermediate</div>
+          <h3>💬 Real-Time Chat App</h3>
+          <p>Multi-room chat application with live messaging using SignalR and Redis backplane.</p>
+          <ul>
+            <li>ASP.NET Core + SignalR</li>
+            <li>Redis (backplane)</li>
+            <li>React frontend</li>
+            <li>JWT + WebSockets</li>
+          </ul>
+          <span class="project-time">⏱ 3–4 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="advanced">
+          <div class="project-level">Advanced</div>
+          <h3>🏗 Microservices SaaS</h3>
+          <p>Multi-tenant SaaS with separate services for Users, Orders, Notifications and API Gateway.</p>
+          <ul>
+            <li>Clean Architecture</li>
+            <li>CQRS + MediatR</li>
+            <li>RabbitMQ / MassTransit</li>
+            <li>Docker + Kubernetes</li>
+          </ul>
+          <span class="project-time">⏱ 8–12 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="advanced">
+          <div class="project-level">Advanced</div>
+          <h3>📊 Analytics Dashboard</h3>
+          <p>High-throughput data ingestion API with real-time dashboard using SignalR and TimescaleDB.</p>
+          <ul>
+            <li>Minimal APIs + gRPC</li>
+            <li>TimescaleDB / InfluxDB</li>
+            <li>Redis caching</li>
+            <li>Grafana integration</li>
+          </ul>
+          <span class="project-time">⏱ 6–8 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="beginner">
+          <div class="project-level">Beginner</div>
+          <h3>📚 Library Management</h3>
+          <p>MVC web app for managing a library: books, authors, borrowers and loan tracking.</p>
+          <ul>
+            <li>ASP.NET Core MVC</li>
+            <li>EF Core + LINQ</li>
+            <li>Razor Views</li>
+            <li>xUnit Tests</li>
+          </ul>
+          <span class="project-time">⏱ 2–3 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="intermediate">
+          <div class="project-level">Azure ☁</div>
+          <h3>☁ Serverless File Processor</h3>
+          <p>Azure Functions app that processes uploaded files — extracts text, generates thumbnails and stores results in Cosmos DB.</p>
+          <ul>
+            <li>Azure Functions (.NET 8)</li>
+            <li>Blob Storage triggers</li>
+            <li>Azure Cosmos DB output</li>
+            <li>Managed Identity auth</li>
+          </ul>
+          <span class="project-time">⏱ 3–4 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="advanced">
+          <div class="project-level">AI 🤖</div>
+          <h3>🤖 RAG Knowledge Assistant</h3>
+          <p>Enterprise Q&amp;A chatbot that answers questions from your own documents using Semantic Kernel RAG + Azure AI Search.</p>
+          <ul>
+            <li>Semantic Kernel + Azure OpenAI</li>
+            <li>Azure AI Search (vector)</li>
+            <li>Document Intelligence</li>
+            <li>Blazor / React frontend</li>
+          </ul>
+          <span class="project-time">⏱ 6–8 weeks</span>
+        </div>
+
+        <div class="project-card" data-level="advanced">
+          <div class="project-level">AI 🤖</div>
+          <h3>🧠 Intelligent Sales Copilot</h3>
+          <p>Multi-agent system where a sales copilot can query CRM data, draft emails, and summarise deal pipelines autonomously.</p>
+          <ul>
+            <li>Semantic Kernel Agents</li>
+            <li>Azure OpenAI function calling</li>
+            <li>Azure Service Bus</li>
+            <li>Application Insights</li>
+          </ul>
+          <span class="project-time">⏱ 8–10 weeks</span>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Progress Modal -->
+<div class="modal-overlay" id="progress-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="Close modal">✕</button>
+    <h2 id="modal-title">Your Progress Summary</h2>
+    <div id="modal-content"></div>
+    <div class="modal-actions">
+      <button class="btn-primary" id="download-pdf">⬇ Download as Text</button>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay for mobile sidebar -->
+<div class="sidebar-overlay" id="sidebar-overlay" hidden></div>
+
+<script src="scriptv2.js"></script>
+</body>
+</html>
