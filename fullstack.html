@@ -1,0 +1,2852 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Full-Stack Production Blueprint – Complete .NET 10, Angular 18, React 18, Azure, Docker, Kubernetes learning roadmap for production developers.">
+<title>Full-Stack Production Blueprint</title>
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;800&family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+<!-- Prism.js -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════
+   CSS VARIABLES
+═══════════════════════════════════════════════ */
+:root {
+  --bg-primary: #080c14;
+  --bg-secondary: #0d1117;
+  --bg-card: rgba(15,20,35,0.85);
+  --bg-sidebar: rgba(8,12,22,0.97);
+  --glass: rgba(255,255,255,0.04);
+  --glass-border: rgba(255,255,255,0.08);
+  --neon-blue: #00d4ff;
+  --neon-purple: #a855f7;
+  --neon-green: #00ff88;
+  --neon-orange: #ff6b35;
+  --neon-pink: #ff2d78;
+  --accent: #00d4ff;
+  --text-primary: #e8eaf6;
+  --text-secondary: #8892a4;
+  --text-muted: #4a5568;
+  --sidebar-width: 280px;
+  --header-height: 60px;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --font-code: 'JetBrains Mono', monospace;
+  --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+  --shadow-neon: 0 0 20px rgba(0,212,255,0.3);
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.5);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+
+[data-theme="light"] {
+  --bg-primary: #f0f4f8;
+  --bg-secondary: #ffffff;
+  --bg-card: rgba(255,255,255,0.92);
+  --bg-sidebar: rgba(240,244,248,0.98);
+  --glass: rgba(0,0,0,0.03);
+  --glass-border: rgba(0,0,0,0.1);
+  --text-primary: #1a202c;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --shadow-card: 0 8px 32px rgba(0,0,0,0.1);
+}
+
+[data-theme="read"] {
+  --bg-primary: #1a1410;
+  --bg-secondary: #221c16;
+  --bg-card: rgba(34,28,22,0.92);
+  --bg-sidebar: rgba(26,20,16,0.98);
+  --glass: rgba(255,220,180,0.04);
+  --glass-border: rgba(255,220,180,0.08);
+  --accent: #f6ad55;
+  --neon-blue: #f6ad55;
+  --text-primary: #fef3e2;
+  --text-secondary: #c8a882;
+  --text-muted: #8b7355;
+}
+
+/* ═══════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow-x: hidden;
+  transition: var(--transition);
+}
+::selection { background: var(--accent); color: #000; }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+/* ═══════════════════════════════════════════════
+   THEME TOGGLE BAR
+═══════════════════════════════════════════════ */
+.theme-bar {
+  position: fixed;
+  top: 12px;
+  right: 16px;
+  z-index: 9999;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.theme-btn {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  padding: 6px 14px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-family: var(--font-code);
+  cursor: pointer;
+  transition: var(--transition);
+  backdrop-filter: blur(12px);
+  letter-spacing: 0.5px;
+  font-weight: 600;
+}
+.theme-btn:hover, .theme-btn.active {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(0,212,255,0.4);
+}
+.theme-btn i { margin-right: 4px; }
+
+/* ═══════════════════════════════════════════════
+   SIDEBAR
+═══════════════════════════════════════════════ */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--glass-border);
+  overflow-y: auto;
+  z-index: 1000;
+  padding: 0;
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+  backdrop-filter: blur(20px);
+}
+.sidebar-header {
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--glass-border);
+  background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(168,85,247,0.08));
+  position: sticky; top: 0; z-index: 10;
+}
+.sidebar-brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 16px;
+  color: var(--accent);
+  text-decoration: none;
+  display: flex; align-items: center; gap: 10px;
+  letter-spacing: -0.3px;
+}
+.sidebar-brand .logo-icon {
+  width: 32px; height: 32px;
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #fff; flex-shrink: 0;
+}
+.sidebar-search {
+  margin-top: 12px;
+  position: relative;
+}
+.sidebar-search input {
+  width: 100%;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 8px 12px 8px 34px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: var(--font-body);
+  transition: var(--transition);
+}
+.sidebar-search input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+}
+.sidebar-search .search-icon {
+  position: absolute; left: 10px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-muted); font-size: 11px;
+}
+.sidebar-nav { padding: 12px 0; }
+.nav-section-label {
+  padding: 10px 20px 4px;
+  font-size: 10px;
+  font-family: var(--font-code);
+  color: var(--text-muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 20px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  transition: var(--transition);
+  border-left: 2px solid transparent;
+  position: relative;
+  font-weight: 500;
+}
+.sidebar-link:hover, .sidebar-link.active {
+  color: var(--accent);
+  border-left-color: var(--accent);
+  background: linear-gradient(90deg, rgba(0,212,255,0.08), transparent);
+}
+.sidebar-link i { width: 16px; text-align: center; font-size: 12px; opacity: 0.8; }
+.sidebar-link .badge-pill {
+  margin-left: auto;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: 10px;
+  padding: 1px 6px;
+  border-radius: 10px;
+  font-family: var(--font-code);
+}
+.sidebar-progress {
+  padding: 16px 20px;
+  border-top: 1px solid var(--glass-border);
+  position: sticky; bottom: 0;
+  background: var(--bg-sidebar);
+}
+.progress-label {
+  display: flex; justify-content: space-between;
+  font-size: 11px; color: var(--text-muted);
+  margin-bottom: 6px; font-family: var(--font-code);
+}
+.progress-bar-track {
+  height: 4px;
+  background: var(--glass);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 2px;
+  width: 0%;
+  transition: width 0.5s ease;
+}
+
+/* ═══════════════════════════════════════════════
+   MAIN CONTENT
+═══════════════════════════════════════════════ */
+.main-content {
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  padding: 0;
+  transition: margin-left 0.35s cubic-bezier(0.4,0,0.2,1);
+}
+.mobile-header {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  background: var(--bg-sidebar);
+  border-bottom: 1px solid var(--glass-border);
+  align-items: center;
+  padding: 0 16px;
+  z-index: 999;
+  backdrop-filter: blur(20px);
+}
+.hamburger {
+  background: none; border: none;
+  color: var(--text-primary); font-size: 18px;
+  cursor: pointer; padding: 8px;
+  margin-right: 12px;
+}
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+.hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 60px 60px 60px;
+  background: radial-gradient(ellipse at 20% 50%, rgba(0,212,255,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(168,85,247,0.08) 0%, transparent 60%),
+              var(--bg-primary);
+}
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.3);
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-family: var(--font-code);
+  color: var(--accent);
+  margin-bottom: 28px;
+  animation: pulse-glow 2.5s ease-in-out infinite;
+}
+@keyframes pulse-glow {
+  0%,100% { box-shadow: 0 0 8px rgba(0,212,255,0.2); }
+  50% { box-shadow: 0 0 20px rgba(0,212,255,0.5); }
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 20px;
+  letter-spacing: -1.5px;
+}
+.hero h1 .line-accent {
+  background: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 50%, var(--neon-pink) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero p {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 600px;
+  margin-bottom: 36px;
+}
+.hero-btns { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-neon {
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  color: #000; font-weight: 700;
+  padding: 12px 28px; border-radius: 10px;
+  font-size: 14px; border: none;
+  font-family: var(--font-body);
+  cursor: pointer; transition: var(--transition);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-neon:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,212,255,0.4); color: #000; }
+.btn-ghost {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 12px 28px; border-radius: 10px;
+  font-size: 14px; font-family: var(--font-body);
+  cursor: pointer; transition: var(--transition);
+  text-decoration: none; display: inline-flex; align-items: center; gap: 8px;
+  backdrop-filter: blur(8px);
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.hero-stats {
+  display: flex; gap: 40px; flex-wrap: wrap;
+}
+.hero-stat { text-align: left; }
+.hero-stat .stat-num {
+  font-family: var(--font-display);
+  font-size: 2rem; font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.hero-stat .stat-label {
+  font-size: 12px; color: var(--text-muted);
+  font-family: var(--font-code);
+  margin-top: 2px;
+}
+.hero-visual {
+  position: absolute; right: 5%;
+  top: 50%; transform: translateY(-50%);
+  width: 420px;
+  opacity: 0.9;
+}
+.tech-orbit {
+  position: relative; width: 380px; height: 380px;
+  display: flex; align-items: center; justify-content: center;
+}
+.orbit-center {
+  width: 90px; height: 90px;
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  border-radius: 20px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 36px; color: #fff;
+  box-shadow: 0 0 40px rgba(0,212,255,0.4);
+  z-index: 2; position: relative;
+}
+.orbit-ring {
+  position: absolute;
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  animation: spin linear infinite;
+}
+.orbit-ring-1 { width: 180px; height: 180px; animation-duration: 8s; }
+.orbit-ring-2 { width: 280px; height: 280px; animation-duration: 14s; animation-direction: reverse; }
+.orbit-ring-3 { width: 370px; height: 370px; animation-duration: 20s; }
+@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.orbit-dot {
+  position: absolute;
+  width: 42px; height: 42px;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 700;
+  font-family: var(--font-code);
+  backdrop-filter: blur(8px);
+}
+.od-1 { top: 0; left: 50%; transform: translate(-50%,-50%); color: var(--neon-blue); }
+.od-2 { bottom: 0; left: 50%; transform: translate(-50%,50%); color: var(--neon-green); }
+.od-3 { left: 0; top: 50%; transform: translate(-50%,-50%); color: var(--neon-purple); }
+.od-4 { right: 0; top: 50%; transform: translate(50%,-50%); color: var(--neon-orange); }
+.od-5 { top: 10%; right: 10%; color: var(--neon-pink); }
+.od-6 { bottom: 10%; left: 10%; color: var(--accent); }
+.od-7 { top: 10%; left: 10%; color: #fbbf24; font-size: 13px; }
+.od-8 { bottom: 10%; right: 10%; color: #34d399; font-size: 13px; }
+
+/* ═══════════════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════════════ */
+section { padding: 80px 60px; scroll-margin-top: 20px; }
+section:nth-child(even) { background: rgba(255,255,255,0.01); }
+.section-header { margin-bottom: 48px; }
+.section-label {
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.section-label::after { content: ''; flex: 0 0 40px; height: 1px; background: var(--accent); opacity: 0.4; }
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+.section-subtitle { color: var(--text-secondary); font-size: 15px; margin-top: 8px; line-height: 1.6; }
+
+/* ═══════════════════════════════════════════════
+   CARDS - GLASS
+═══════════════════════════════════════════════ */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(16px);
+  transition: var(--transition);
+  overflow: hidden;
+}
+.glass-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card), 0 0 30px rgba(0,212,255,0.1);
+}
+.card-header-styled {
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid var(--glass-border);
+  display: flex; align-items: center; gap: 12px;
+}
+.card-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.ci-blue { background: rgba(0,212,255,0.15); color: var(--neon-blue); }
+.ci-purple { background: rgba(168,85,247,0.15); color: var(--neon-purple); }
+.ci-green { background: rgba(0,255,136,0.15); color: var(--neon-green); }
+.ci-orange { background: rgba(255,107,53,0.15); color: var(--neon-orange); }
+.ci-pink { background: rgba(255,45,120,0.15); color: var(--neon-pink); }
+.ci-yellow { background: rgba(251,191,36,0.15); color: #fbbf24; }
+.card-title-sm {
+  font-family: var(--font-display);
+  font-size: 15px; font-weight: 700;
+  margin-bottom: 2px;
+}
+.card-body-styled { padding: 20px 24px; }
+
+/* ═══════════════════════════════════════════════
+   TECH LEVEL BADGES
+═══════════════════════════════════════════════ */
+.level-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 3px 10px; border-radius: 20px;
+  font-size: 10px; font-family: var(--font-code);
+  font-weight: 600; letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+.level-beginner { background: rgba(0,255,136,0.12); color: var(--neon-green); border: 1px solid rgba(0,255,136,0.25); }
+.level-intermediate { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+.level-advanced { background: rgba(255,107,53,0.12); color: var(--neon-orange); border: 1px solid rgba(255,107,53,0.25); }
+.level-expert { background: rgba(255,45,120,0.12); color: var(--neon-pink); border: 1px solid rgba(255,45,120,0.25); }
+
+/* ═══════════════════════════════════════════════
+   ACCORDION / MODULES
+═══════════════════════════════════════════════ */
+.module-accordion { margin-bottom: 12px; }
+.module-btn {
+  width: 100%;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  color: var(--text-primary);
+  padding: 18px 24px;
+  display: flex; align-items: center; gap: 14px;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: var(--transition);
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 14px; font-weight: 600;
+  backdrop-filter: blur(8px);
+}
+.module-btn:hover {
+  border-color: var(--accent);
+  background: rgba(0,212,255,0.05);
+}
+.module-btn.active {
+  border-color: var(--accent);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  background: linear-gradient(90deg, rgba(0,212,255,0.08), rgba(168,85,247,0.05));
+}
+.module-num {
+  width: 30px; height: 30px;
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  color: #000; border-radius: 8px;
+  font-size: 12px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-code); flex-shrink: 0;
+}
+.module-chevron { margin-left: auto; transition: transform 0.3s ease; color: var(--text-muted); }
+.module-btn.active .module-chevron { transform: rotate(180deg); }
+.module-body {
+  display: none;
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-top: none;
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+  padding: 24px;
+  backdrop-filter: blur(8px);
+}
+.module-tabs { margin-bottom: 20px; }
+.module-tabs .nav-link {
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 12px;
+  font-family: var(--font-code);
+  padding: 6px 14px;
+  margin-right: 4px;
+  transition: var(--transition);
+}
+.module-tabs .nav-link.active {
+  background: rgba(0,212,255,0.1);
+  border-color: rgba(0,212,255,0.3);
+  color: var(--accent);
+}
+.module-tabs .nav-link:hover { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════
+   CODE BLOCKS
+═══════════════════════════════════════════════ */
+.code-block-wrapper {
+  position: relative;
+  margin: 12px 0;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--glass-border);
+}
+.code-header {
+  display: flex; align-items: center;
+  background: #0d1117;
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  gap: 6px;
+}
+.code-header .dots { display: flex; gap: 5px; }
+.code-header .dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green { background: #28c840; }
+.code-lang {
+  margin-left: 8px;
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 1px;
+}
+.copy-btn {
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  padding: 3px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  font-family: var(--font-code);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+.copy-btn.copied { border-color: var(--neon-green); color: var(--neon-green); }
+.code-block-wrapper pre[class*="language-"] {
+  margin: 0 !important;
+  border-radius: 0 !important;
+  font-family: var(--font-code) !important;
+  font-size: 12.5px !important;
+  line-height: 1.7 !important;
+  background: #0d1117 !important;
+}
+
+/* ═══════════════════════════════════════════════
+   TIMELINE
+═══════════════════════════════════════════════ */
+.timeline { position: relative; padding-left: 32px; }
+.timeline::before {
+  content: '';
+  position: absolute; left: 8px; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--neon-blue), var(--neon-purple), var(--neon-pink));
+}
+.timeline-item { position: relative; padding-bottom: 36px; }
+.timeline-dot {
+  position: absolute; left: -30px; top: 4px;
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: var(--neon-blue);
+  border: 3px solid var(--bg-primary);
+  box-shadow: 0 0 10px rgba(0,212,255,0.5);
+  transition: var(--transition);
+}
+.timeline-item:nth-child(2) .timeline-dot { background: var(--neon-purple); box-shadow: 0 0 10px rgba(168,85,247,0.5); }
+.timeline-item:nth-child(3) .timeline-dot { background: var(--neon-green); box-shadow: 0 0 10px rgba(0,255,136,0.5); }
+.timeline-item:nth-child(4) .timeline-dot { background: var(--neon-orange); box-shadow: 0 0 10px rgba(255,107,53,0.5); }
+.timeline-phase {
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  margin-bottom: 8px;
+}
+.timeline-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; }
+.timeline-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.tag-pill {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: var(--text-secondary);
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-family: var(--font-code);
+}
+
+/* ═══════════════════════════════════════════════
+   TECH TABS
+═══════════════════════════════════════════════ */
+.tech-tabs-nav {
+  display: flex; gap: 4px; flex-wrap: wrap;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 0;
+}
+.tech-tab-btn {
+  background: none; border: none;
+  color: var(--text-muted);
+  padding: 10px 18px;
+  font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: var(--transition);
+  border-bottom: 2px solid transparent;
+  font-family: var(--font-body);
+  position: relative; top: 1px;
+  display: flex; align-items: center; gap: 6px;
+}
+.tech-tab-btn:hover { color: var(--text-primary); }
+.tech-tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.tech-tab-content { display: none; }
+.tech-tab-content.active { display: block; }
+
+/* ═══════════════════════════════════════════════
+   AZURE ARCHITECTURE DIAGRAM
+═══════════════════════════════════════════════ */
+.arch-diagram {
+  background: rgba(0,0,0,0.3);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.arch-row {
+  display: flex; align-items: center;
+  justify-content: center; gap: 0;
+  flex-wrap: wrap; margin-bottom: 8px;
+}
+.arch-box {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  text-align: center;
+  min-width: 110px;
+  position: relative;
+  transition: var(--transition);
+}
+.arch-box:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(0,212,255,0.2);
+}
+.arch-box i { font-size: 22px; margin-bottom: 6px; display: block; }
+.arch-box span { font-size: 11px; font-family: var(--font-code); color: var(--text-secondary); }
+.arch-arrow {
+  display: flex; align-items: center;
+  color: var(--text-muted); font-size: 14px;
+  padding: 0 6px;
+}
+.arch-section-label {
+  font-size: 10px;
+  font-family: var(--font-code);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+.arch-divider {
+  border: none;
+  border-top: 1px dashed rgba(255,255,255,0.08);
+  margin: 16px 0;
+}
+
+/* ═══════════════════════════════════════════════
+   DEVOPS PIPELINE
+═══════════════════════════════════════════════ */
+.pipeline {
+  display: flex; align-items: stretch;
+  gap: 0; overflow-x: auto;
+  padding-bottom: 8px;
+}
+.pipeline-stage {
+  flex: 1; min-width: 120px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 16px 12px;
+  text-align: center;
+  position: relative;
+  transition: var(--transition);
+}
+.pipeline-stage:not(:last-child)::after {
+  content: '';
+  position: absolute; right: -12px; top: 50%;
+  transform: translateY(-50%);
+  border: 6px solid transparent;
+  border-left-color: var(--accent);
+  z-index: 1;
+}
+.pipeline-stage:not(:last-child) { margin-right: 20px; }
+.pipeline-stage:hover { border-color: var(--accent); background: rgba(0,212,255,0.05); }
+.pipeline-stage i { font-size: 24px; margin-bottom: 8px; display: block; }
+.pipeline-stage .stage-name {
+  font-size: 11px; font-weight: 700;
+  font-family: var(--font-code);
+  text-transform: uppercase; letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.pipeline-stage .stage-tool { font-size: 10px; color: var(--text-muted); }
+.stage-source i { color: var(--neon-blue); }
+.stage-build i { color: var(--neon-purple); }
+.stage-test i { color: var(--neon-green); }
+.stage-package i { color: #fbbf24; }
+.stage-deploy i { color: var(--neon-orange); }
+.stage-monitor i { color: var(--neon-pink); }
+.pipeline-status {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-size: 9px; font-family: var(--font-code);
+  background: rgba(0,255,136,0.12);
+  color: var(--neon-green);
+  padding: 2px 6px; border-radius: 6px; margin-top: 4px;
+}
+.pipeline-status.running {
+  background: rgba(251,191,36,0.12); color: #fbbf24;
+  animation: blink 1s ease-in-out infinite;
+}
+@keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+/* ═══════════════════════════════════════════════
+   PROGRESS TRACKER
+═══════════════════════════════════════════════ */
+.tracker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+.tracker-item {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  padding: 16px;
+  cursor: pointer;
+  transition: var(--transition);
+  user-select: none;
+}
+.tracker-item:hover { border-color: rgba(0,212,255,0.3); }
+.tracker-item.done {
+  background: rgba(0,255,136,0.05);
+  border-color: rgba(0,255,136,0.3);
+}
+.tracker-check {
+  width: 22px; height: 22px;
+  border: 2px solid var(--glass-border);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 8px;
+  transition: var(--transition);
+  font-size: 12px;
+}
+.tracker-item.done .tracker-check {
+  background: var(--neon-green);
+  border-color: var(--neon-green);
+  color: #000;
+}
+.tracker-name { font-size: 13px; font-weight: 600; margin-bottom: 2px; }
+.tracker-sub { font-size: 11px; color: var(--text-muted); font-family: var(--font-code); }
+
+/* ═══════════════════════════════════════════════
+   ROADMAP CARDS
+═══════════════════════════════════════════════ */
+.roadmap-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition);
+  height: 100%;
+}
+.roadmap-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-card), 0 0 30px rgba(0,212,255,0.08);
+  border-color: rgba(0,212,255,0.25);
+}
+.roadmap-card-top {
+  height: 6px;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-purple));
+}
+.roadmap-card.green .roadmap-card-top { background: linear-gradient(90deg, var(--neon-green), #06b6d4); }
+.roadmap-card.orange .roadmap-card-top { background: linear-gradient(90deg, var(--neon-orange), #fbbf24); }
+.roadmap-card.pink .roadmap-card-top { background: linear-gradient(90deg, var(--neon-pink), var(--neon-purple)); }
+.roadmap-card-body { padding: 24px; }
+.roadmap-num {
+  font-family: var(--font-code);
+  font-size: 11px; color: var(--text-muted);
+  margin-bottom: 6px; letter-spacing: 1px;
+}
+.roadmap-title {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  margin-bottom: 10px;
+}
+.roadmap-desc { font-size: 13px; color: var(--text-secondary); line-height: 1.6; margin-bottom: 14px; }
+.roadmap-topics { display: flex; flex-wrap: wrap; gap: 6px; }
+.topic-chip {
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 8px;
+  font-family: var(--font-code);
+  color: var(--text-secondary);
+}
+
+/* ═══════════════════════════════════════════════
+   CHECKLIST / TIPS
+═══════════════════════════════════════════════ */
+.checklist { list-style: none; padding: 0; }
+.checklist li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; color: var(--text-secondary);
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.checklist li:last-child { border-bottom: none; }
+.checklist li i { color: var(--neon-green); margin-top: 3px; flex-shrink: 0; font-size: 11px; }
+.tip-box {
+  background: rgba(0,212,255,0.05);
+  border: 1px solid rgba(0,212,255,0.2);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 12px 0;
+  font-size: 13px; color: var(--text-secondary);
+  line-height: 1.6;
+}
+.tip-box.warning {
+  background: rgba(255,107,53,0.05);
+  border-color: rgba(255,107,53,0.2);
+  border-left-color: var(--neon-orange);
+}
+.tip-box .tip-label {
+  font-size: 10px; font-family: var(--font-code);
+  font-weight: 700; letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent); margin-bottom: 4px;
+}
+.tip-box.warning .tip-label { color: var(--neon-orange); }
+
+/* ═══════════════════════════════════════════════
+   INTERVIEW Q&A
+═══════════════════════════════════════════════ */
+.qa-list { list-style: none; padding: 0; }
+.qa-item { border-bottom: 1px solid var(--glass-border); padding: 12px 0; }
+.qa-question {
+  font-size: 13px; font-weight: 600; color: var(--text-primary);
+  display: flex; align-items: flex-start; gap: 8px; cursor: pointer;
+}
+.qa-question .q-badge {
+  background: rgba(0,212,255,0.1);
+  color: var(--accent);
+  font-size: 10px; font-family: var(--font-code);
+  padding: 1px 6px; border-radius: 4px;
+  flex-shrink: 0; margin-top: 2px;
+}
+.qa-answer {
+  font-size: 12px; color: var(--text-secondary);
+  padding-top: 8px; display: none; line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--glass-border);
+  padding: 60px;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 800;
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 10px;
+}
+.footer-tagline { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+.footer-section-title {
+  font-family: var(--font-code);
+  font-size: 11px; text-transform: uppercase;
+  letter-spacing: 1.5px; color: var(--text-muted);
+  margin-bottom: 14px;
+}
+.footer-links { list-style: none; padding: 0; }
+.footer-links li { margin-bottom: 8px; }
+.footer-links a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 13px;
+  transition: var(--transition);
+}
+.footer-links a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid var(--glass-border);
+  margin-top: 40px; padding-top: 24px;
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 12px;
+  font-size: 12px; color: var(--text-muted);
+  font-family: var(--font-code);
+}
+.learning-path-summary {
+  display: flex; gap: 8px; flex-wrap: wrap;
+}
+.path-step {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11px; color: var(--text-muted); font-family: var(--font-code);
+}
+.path-step::after { content: '→'; color: var(--text-muted); font-size: 10px; }
+.path-step:last-child::after { display: none; }
+.path-step.active { color: var(--accent); }
+
+/* ═══════════════════════════════════════════════
+   SEARCH HIGHLIGHT
+═══════════════════════════════════════════════ */
+.search-highlight { background: rgba(0,212,255,0.25); color: var(--accent); border-radius: 2px; }
+.search-hidden { display: none !important; }
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════ */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 991px) {
+  .sidebar {
+    transform: translateX(-100%);
+    z-index: 1050;
+  }
+  .sidebar.open { transform: translateX(0); }
+  .main-content { margin-left: 0; }
+  .mobile-header { display: flex; }
+  section { padding: 60px 20px; }
+  .hero { padding: 100px 24px 60px; min-height: auto; }
+  .hero-visual { display: none; }
+  .theme-bar { top: auto; bottom: 16px; right: 16px; }
+  .hero-stats { gap: 24px; }
+  footer { padding: 40px 24px; }
+}
+@media (max-width: 576px) {
+  .hero h1 { font-size: 2rem; }
+  .pipeline { flex-direction: column; }
+  .pipeline-stage:not(:last-child)::after { display: none; }
+  .pipeline-stage:not(:last-child) { margin-right: 0; margin-bottom: 12px; }
+}
+
+/* Sidebar overlay */
+.sidebar-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 1040;
+  backdrop-filter: blur(4px);
+}
+.sidebar-overlay.active { display: block; }
+
+/* Counters */
+.counter-display {
+  font-family: var(--font-display);
+  font-size: 2.8rem; font-weight: 800;
+  background: linear-gradient(135deg, var(--neon-blue), var(--neon-purple));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+}
+.counter-card {
+  background: var(--bg-card);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 28px 24px;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: var(--transition);
+}
+.counter-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-4px); }
+.counter-label { font-size: 12px; color: var(--text-muted); font-family: var(--font-code); margin-top: 6px; text-transform: uppercase; letter-spacing: 1px; }
+.counter-sub { font-size: 11px; color: var(--text-secondary); margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<!-- THEME BAR -->
+<div class="theme-bar">
+  <button class="theme-btn active" onclick="setTheme('dark')" title="Dark"><i class="fas fa-moon"></i>Dark</button>
+  <button class="theme-btn" onclick="setTheme('light')" title="Light"><i class="fas fa-sun"></i>Light</button>
+  <button class="theme-btn" onclick="setTheme('read')" title="Read Mode"><i class="fas fa-book-open"></i>Read</button>
+</div>
+
+<!-- SIDEBAR OVERLAY -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar()"></div>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <a href="#hero" class="sidebar-brand">
+      <div class="logo-icon"><i class="fas fa-layer-group"></i></div>
+      FullStack Blueprint
+    </a>
+    <div class="sidebar-search">
+      <i class="fas fa-search search-icon"></i>
+      <input type="text" id="globalSearch" placeholder="Search topics…" autocomplete="off">
+    </div>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Overview</div>
+    <a href="#hero" class="sidebar-link active"><i class="fas fa-home"></i> Home <span class="badge-pill">Start</span></a>
+    <a href="#stats" class="sidebar-link"><i class="fas fa-chart-bar"></i> Statistics</a>
+    <a href="#roadmap" class="sidebar-link"><i class="fas fa-map"></i> Roadmap</a>
+    <a href="#timeline" class="sidebar-link"><i class="fas fa-route"></i> Timeline</a>
+    <div class="nav-section-label">Core Stack</div>
+    <a href="#dotnet" class="sidebar-link"><i class="fas fa-code"></i> .NET 10 <span class="badge-pill">New</span></a>
+    <a href="#aspnet" class="sidebar-link"><i class="fas fa-server"></i> ASP.NET Core</a>
+    <a href="#efcore" class="sidebar-link"><i class="fas fa-database"></i> EF Core + SQL</a>
+    <a href="#architecture" class="sidebar-link"><i class="fas fa-sitemap"></i> Clean Architecture</a>
+    <div class="nav-section-label">Frontend</div>
+    <a href="#angular" class="sidebar-link"><i class="fab fa-angular"></i> Angular 18</a>
+    <a href="#react" class="sidebar-link"><i class="fab fa-react"></i> React 18</a>
+    <div class="nav-section-label">Cloud & DevOps</div>
+    <a href="#azure" class="sidebar-link"><i class="fas fa-cloud"></i> Azure Cloud</a>
+    <a href="#docker" class="sidebar-link"><i class="fab fa-docker"></i> Docker & K8s</a>
+    <a href="#cicd" class="sidebar-link"><i class="fas fa-infinity"></i> CI/CD DevOps</a>
+    <div class="nav-section-label">Advanced</div>
+    <a href="#microservices" class="sidebar-link"><i class="fas fa-network-wired"></i> Microservices</a>
+    <a href="#auth" class="sidebar-link"><i class="fas fa-shield-alt"></i> Auth & Security</a>
+    <a href="#redis" class="sidebar-link"><i class="fas fa-bolt"></i> Redis & SignalR</a>
+    <a href="#testing" class="sidebar-link"><i class="fas fa-vial"></i> Testing</a>
+    <a href="#patterns" class="sidebar-link"><i class="fas fa-puzzle-piece"></i> Design Patterns</a>
+    <a href="#performance" class="sidebar-link"><i class="fas fa-tachometer-alt"></i> Performance</a>
+    <a href="#systemdesign" class="sidebar-link"><i class="fas fa-project-diagram"></i> System Design</a>
+    <a href="#deployment" class="sidebar-link"><i class="fas fa-rocket"></i> Deployment</a>
+    <div class="nav-section-label">Tracker</div>
+    <a href="#progress" class="sidebar-link"><i class="fas fa-tasks"></i> Progress Tracker</a>
+  </nav>
+  <div class="sidebar-progress">
+    <div class="progress-label"><span>Progress</span><span id="progressPct">0%</span></div>
+    <div class="progress-bar-track"><div class="progress-bar-fill" id="progressFill"></div></div>
+  </div>
+</aside>
+
+<!-- MOBILE HEADER -->
+<div class="mobile-header">
+  <button class="hamburger" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+  <span style="font-family:var(--font-display);font-weight:800;font-size:15px;color:var(--accent)">FullStack Blueprint</span>
+</div>
+
+<!-- MAIN CONTENT -->
+<main class="main-content">
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="hero">
+  <div class="hero-grid-bg"></div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-badge"><i class="fas fa-circle" style="font-size:7px;animation:blink 1.5s infinite"></i> Updated for 2025 Production</div>
+    <h1>Full-Stack <span class="line-accent">Production</span><br>Blueprint</h1>
+    <p>A comprehensive, battle-tested learning roadmap covering every layer of modern enterprise software — from .NET 10 APIs to Azure cloud deployments, microservices, and beyond.</p>
+    <div class="hero-btns">
+      <a href="#roadmap" class="btn-neon"><i class="fas fa-map"></i> View Roadmap</a>
+      <a href="#progress" class="btn-ghost"><i class="fas fa-tasks"></i> Track Progress</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-num counter" data-target="21">0</div>
+        <div class="stat-label">Modules</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num counter" data-target="300">0</div>
+        <div class="stat-label">Topics</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num counter" data-target="120">0</div>
+        <div class="stat-label">Code Examples</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num counter" data-target="85">0</div>
+        <div class="stat-label">Interview Q&amp;A</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual d-none d-xl-block">
+    <div class="tech-orbit">
+      <div class="orbit-ring orbit-ring-1">
+        <div class="orbit-dot od-1">.NET</div>
+        <div class="orbit-dot od-2">SQL</div>
+      </div>
+      <div class="orbit-ring orbit-ring-2">
+        <div class="orbit-dot od-3">K8s</div>
+        <div class="orbit-dot od-4">⚛</div>
+      </div>
+      <div class="orbit-ring orbit-ring-3">
+        <div class="orbit-dot od-5">Az</div>
+        <div class="orbit-dot od-6">🐳</div>
+        <div class="orbit-dot od-7">Redis</div>
+        <div class="orbit-dot od-8">gRPC</div>
+      </div>
+      <div class="orbit-center"><i class="fas fa-layer-group"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ STATS ═══════ -->
+<section id="stats">
+  <div class="section-header fade-in-up">
+    <div class="section-label">By the Numbers</div>
+    <h2 class="section-title">What You'll Master</h2>
+    <p class="section-subtitle">From beginner to production expert across the complete modern stack.</p>
+  </div>
+  <div class="row g-4">
+    <div class="col-6 col-md-4 col-xl-2 fade-in-up stagger-1">
+      <div class="counter-card">
+        <div class="counter-display counter" data-target="10">0</div>
+        <div class="counter-label">Technologies</div>
+        <div class="counter-sub">Enterprise Stack</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2 fade-in-up stagger-2">
+      <div class="counter-card">
+        <div class="counter-display counter" data-target="4">0</div>
+        <div class="counter-label">Career Levels</div>
+        <div class="counter-sub">Beginner → Expert</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2 fade-in-up stagger-3">
+      <div class="counter-card">
+        <div class="counter-display counter" data-target="85">0</div>
+        <div class="counter-label">Interview Q&A</div>
+        <div class="counter-sub">Real Questions</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2 fade-in-up stagger-4">
+      <div class="counter-card">
+        <div class="counter-display counter" data-target="120">0</div>
+        <div class="counter-label">Code Samples</div>
+        <div class="counter-sub">Production-Ready</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2 fade-in-up stagger-1">
+      <div class="counter-card">
+        <div class="counter-display counter" data-target="60">0</div>
+        <div class="counter-label">CLI Commands</div>
+        <div class="counter-sub">Copy & Run</div>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2 fade-in-up stagger-2">
+      <div class="counter-card">
+        <div class="counter-display counter" data-target="300">0</div>
+        <div class="counter-label">Topics Covered</div>
+        <div class="counter-sub">Full Syllabus</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ TIMELINE ═══════ -->
+<section id="timeline">
+  <div class="row">
+    <div class="col-lg-5 fade-in-up">
+      <div class="section-label">Learning Path</div>
+      <h2 class="section-title">Your Journey</h2>
+      <p class="section-subtitle">Structured progression from foundations to production deployment.</p>
+      <div class="timeline mt-4">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-phase">Phase 1 · Months 1-3</div>
+          <div class="timeline-title">Foundations</div>
+          <div class="timeline-desc">Build solid fundamentals in C#, .NET 10, ASP.NET Core APIs, SQL Server, and basic Angular/React. Understand Clean Architecture patterns.</div>
+          <div class="timeline-tags">
+            <span class="tag-pill">C# 13</span><span class="tag-pill">.NET 10</span><span class="tag-pill">REST API</span><span class="tag-pill">EF Core</span><span class="tag-pill">SQL Server</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-phase">Phase 2 · Months 4-6</div>
+          <div class="timeline-title">Frontend Mastery</div>
+          <div class="timeline-desc">Deep dive into Angular 18 with signals, React 18 with concurrent features, state management, component patterns, and API integration.</div>
+          <div class="timeline-tags">
+            <span class="tag-pill">Angular 18</span><span class="tag-pill">React 18</span><span class="tag-pill">RxJS</span><span class="tag-pill">Redux Toolkit</span><span class="tag-pill">TypeScript</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-phase">Phase 3 · Months 7-9</div>
+          <div class="timeline-title">Cloud & DevOps</div>
+          <div class="timeline-desc">Azure services, Docker containerization, Kubernetes orchestration, CI/CD pipelines with GitHub Actions and Azure DevOps.</div>
+          <div class="timeline-tags">
+            <span class="tag-pill">Azure</span><span class="tag-pill">Docker</span><span class="tag-pill">K8s</span><span class="tag-pill">GitHub Actions</span><span class="tag-pill">Terraform</span>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-phase">Phase 4 · Months 10-12</div>
+          <div class="timeline-title">Production Expert</div>
+          <div class="timeline-desc">Microservices, distributed systems, performance optimization, security hardening, observability, and production deployment strategies.</div>
+          <div class="timeline-tags">
+            <span class="tag-pill">Microservices</span><span class="tag-pill">Redis</span><span class="tag-pill">SignalR</span><span class="tag-pill">OpenTelemetry</span><span class="tag-pill">Zero-Downtime</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-7 mt-4 mt-lg-0 fade-in-up stagger-2">
+      <div class="section-label">Skill Map</div>
+      <h3 class="section-title" style="font-size:1.6rem;">Roadmap Cards</h3>
+      <div class="row g-3 mt-2" id="roadmap">
+        <div class="col-md-6">
+          <div class="roadmap-card">
+            <div class="roadmap-card-top"></div>
+            <div class="roadmap-card-body">
+              <div class="roadmap-num">01 / BEGINNER</div>
+              <div class="roadmap-title">.NET 10 & C# 13</div>
+              <div class="roadmap-desc">Minimal APIs, native AOT, performance improvements, records, and pattern matching.</div>
+              <div class="roadmap-topics">
+                <span class="topic-chip">Minimal API</span><span class="topic-chip">AOT</span><span class="topic-chip">Records</span><span class="topic-chip">LINQ</span><span class="topic-chip">Async/Await</span>
+              </div>
+              <div class="mt-2"><span class="level-badge level-beginner"><i class="fas fa-circle" style="font-size:6px"></i> Beginner</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="roadmap-card green">
+            <div class="roadmap-card-top"></div>
+            <div class="roadmap-card-body">
+              <div class="roadmap-num">02 / INTERMEDIATE</div>
+              <div class="roadmap-title">Clean Architecture</div>
+              <div class="roadmap-desc">Domain, Application, Infrastructure, Presentation layers with CQRS and MediatR.</div>
+              <div class="roadmap-topics">
+                <span class="topic-chip">DDD</span><span class="topic-chip">CQRS</span><span class="topic-chip">MediatR</span><span class="topic-chip">Repository</span><span class="topic-chip">SOLID</span>
+              </div>
+              <div class="mt-2"><span class="level-badge level-intermediate"><i class="fas fa-circle" style="font-size:6px"></i> Intermediate</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="roadmap-card orange">
+            <div class="roadmap-card-top"></div>
+            <div class="roadmap-card-body">
+              <div class="roadmap-num">03 / ADVANCED</div>
+              <div class="roadmap-title">Azure Cloud Services</div>
+              <div class="roadmap-desc">App Service, AKS, Service Bus, Cosmos DB, Key Vault, API Management, and more.</div>
+              <div class="roadmap-topics">
+                <span class="topic-chip">App Service</span><span class="topic-chip">AKS</span><span class="topic-chip">Service Bus</span><span class="topic-chip">Key Vault</span><span class="topic-chip">CDN</span>
+              </div>
+              <div class="mt-2"><span class="level-badge level-advanced"><i class="fas fa-circle" style="font-size:6px"></i> Advanced</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="roadmap-card pink">
+            <div class="roadmap-card-top"></div>
+            <div class="roadmap-card-body">
+              <div class="roadmap-num">04 / EXPERT</div>
+              <div class="roadmap-title">Production Deployment</div>
+              <div class="roadmap-desc">Zero-downtime deployments, blue-green, canary releases, observability, and SRE practices.</div>
+              <div class="roadmap-topics">
+                <span class="topic-chip">Blue-Green</span><span class="topic-chip">Canary</span><span class="topic-chip">SLO/SLI</span><span class="topic-chip">Grafana</span><span class="topic-chip">PagerDuty</span>
+              </div>
+              <div class="mt-2"><span class="level-badge level-expert"><i class="fas fa-circle" style="font-size:6px"></i> Expert</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MODULES ═══════ -->
+<section id="dotnet">
+  <div class="section-header fade-in-up">
+    <div class="section-label">Module 01</div>
+    <h2 class="section-title"><i class="fas fa-code" style="color:var(--neon-blue);margin-right:10px"></i>.NET 10 & ASP.NET Core</h2>
+    <p class="section-subtitle">Master the latest .NET features and build production-grade Web APIs.</p>
+  </div>
+
+  <!-- DOTNET MODULE -->
+  <div class="module-accordion fade-in-up" id="mod-dotnet1">
+    <button class="module-btn active" onclick="toggleModule(this)">
+      <div class="module-num">01</div>
+      <div>
+        <div style="font-size:14px;font-weight:700">.NET 10 Fundamentals</div>
+        <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-code);margin-top:2px">C# 13 · Minimal APIs · Native AOT · Performance</div>
+      </div>
+      <span class="level-badge level-beginner ms-2">Beginner</span>
+      <i class="fas fa-chevron-down module-chevron"></i>
+    </button>
+    <div class="module-body" style="display:block;">
+      <ul class="module-tabs nav" id="dotnetTab">
+        <li class="nav-item"><a class="nav-link active" href="#" data-tab="theory" data-parent="dotnetTab">Theory</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-tab="cli" data-parent="dotnetTab">CLI</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-tab="structure" data-parent="dotnetTab">Structure</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-tab="interview" data-parent="dotnetTab">Interview Q&A</a></li>
+        <li class="nav-item"><a class="nav-link" href="#" data-tab="tips" data-parent="dotnetTab">Prod Tips</a></li>
+      </ul>
+      <div id="dotnetTab-theory" class="tab-pane active">
+        <div class="row g-4">
+          <div class="col-md-6">
+            <h6 style="font-family:var(--font-code);color:var(--accent);margin-bottom:12px">Key Concepts</h6>
+            <ul class="checklist">
+              <li><i class="fas fa-check-circle"></i> Minimal APIs for lightweight HTTP endpoints without controllers</li>
+              <li><i class="fas fa-check-circle"></i> Native AOT compilation for faster startup and smaller binaries</li>
+              <li><i class="fas fa-check-circle"></i> C# 13 primary constructors, collection expressions, interceptors</li>
+              <li><i class="fas fa-check-circle"></i> Generic Math interfaces for numeric abstractions</li>
+              <li><i class="fas fa-check-circle"></i> Improved LINQ and async stream performance</li>
+              <li><i class="fas fa-check-circle"></i> Built-in OpenAPI support without Swashbuckle</li>
+            </ul>
+          </div>
+          <div class="col-md-6">
+            <div class="tip-box">
+              <div class="tip-label"><i class="fas fa-lightbulb me-1"></i> Pro Tip</div>
+              Use Native AOT for containerized APIs to achieve sub-100ms startup times and reduced memory footprint.
+            </div>
+            <div class="tip-box warning mt-2">
+              <div class="tip-label"><i class="fas fa-exclamation-triangle me-1"></i> Common Mistake</div>
+              Avoid mixing Minimal APIs with controller-based APIs in the same project without a clear architectural reason — it increases complexity.
+            </div>
+          </div>
+        </div>
+        <div class="code-block-wrapper mt-3">
+          <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">CSHARP</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers"><code class="language-csharp">// .NET 10 Minimal API - Production Ready Setup
+var builder = WebApplication.CreateBuilder(args);
+
+// Register services
+builder.Services.AddOpenApi();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer();
+builder.Services.AddAuthorization();
+builder.Services.AddOutputCache(options =>
+    options.AddBasePolicy(b => b.Expire(TimeSpan.FromMinutes(10))));
+
+var app = builder.Build();
+
+if (app.Environment.IsDevelopment())
+    app.MapOpenApi();
+
+app.UseHttpsRedirection();
+app.UseAuthentication();
+app.UseAuthorization();
+app.UseOutputCache();
+
+// Minimal API endpoint group
+var products = app.MapGroup("/api/v1/products")
+    .RequireAuthorization()
+    .WithTags("Products");
+
+products.MapGet("/", async (IProductService svc, CancellationToken ct)
+    => Results.Ok(await svc.GetAllAsync(ct)))
+    .WithName("GetProducts")
+    .CacheOutput();
+
+products.MapPost("/", async (CreateProductRequest req, IProductService svc)
+    => Results.Created($"/api/v1/products/{req.Name}",
+        await svc.CreateAsync(req)))
+    .WithName("CreateProduct");
+
+app.Run();</code></pre>
+        </div>
+      </div>
+      <div id="dotnetTab-cli" class="tab-pane" style="display:none">
+        <h6 style="font-family:var(--font-code);color:var(--accent);margin-bottom:12px">Essential CLI Commands</h6>
+        <div class="code-block-wrapper">
+          <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">BASH</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers"><code class="language-bash"># Create new Web API project with .NET 10
+dotnet new webapi -n MyApi --use-minimal-apis -f net10.0
+
+# Add NuGet packages
+dotnet add package Microsoft.EntityFrameworkCore.SqlServer
+dotnet add package Microsoft.AspNetCore.Authentication.JwtBearer
+dotnet add package FluentValidation.AspNetCore
+dotnet add package Serilog.AspNetCore
+dotnet add package MediatR.Extensions.Microsoft.DependencyInjection
+
+# Build and run
+dotnet build --configuration Release
+dotnet run --launch-profile https
+
+# Publish with Native AOT
+dotnet publish -c Release -r linux-x64 --self-contained
+
+# Run tests with coverage
+dotnet test --collect:"XPlat Code Coverage" --results-directory ./coverage
+
+# Tool management
+dotnet tool install -g dotnet-ef
+dotnet ef migrations add InitialCreate
+dotnet ef database update</code></pre>
+        </div>
+      </div>
+      <div id="dotnetTab-structure" class="tab-pane" style="display:none">
+        <h6 style="font-family:var(--font-code);color:var(--accent);margin-bottom:12px">Clean Architecture Folder Structure</h6>
+        <div class="code-block-wrapper">
+          <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">STRUCTURE</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers"><code class="language-bash">MyApp/
+├── src/
+│   ├── MyApp.Domain/           # Entities, Value Objects, Interfaces
+│   │   ├── Entities/
+│   │   ├── ValueObjects/
+│   │   ├── Events/
+│   │   └── Interfaces/
+│   ├── MyApp.Application/      # Use Cases, Commands, Queries, DTOs
+│   │   ├── Commands/
+│   │   ├── Queries/
+│   │   ├── Behaviours/         # MediatR pipelines
+│   │   ├── DTOs/
+│   │   └── Validators/
+│   ├── MyApp.Infrastructure/   # DB, External Services, Repositories
+│   │   ├── Persistence/
+│   │   ├── Repositories/
+│   │   ├── Services/
+│   │   └── Migrations/
+│   └── MyApp.WebApi/           # Controllers / Minimal API Endpoints
+│       ├── Endpoints/
+│       ├── Middleware/
+│       ├── Filters/
+│       └── Program.cs
+├── tests/
+│   ├── MyApp.UnitTests/
+│   ├── MyApp.IntegrationTests/
+│   └── MyApp.ArchitectureTests/
+├── docker-compose.yml
+└── .github/workflows/</code></pre>
+        </div>
+      </div>
+      <div id="dotnetTab-interview" class="tab-pane" style="display:none">
+        <ul class="qa-list">
+          <li class="qa-item">
+            <div class="qa-question" onclick="toggleQA(this)"><span class="q-badge">Q</span>What is Native AOT in .NET 10 and when should you use it?</div>
+            <div class="qa-answer">Native AOT compiles your application ahead-of-time to a native executable, eliminating the JIT compiler at runtime. Use it for microservices and serverless functions where cold-start latency and memory footprint matter most. Tradeoff: limited reflection support and longer build times.</div>
+          </li>
+          <li class="qa-item">
+            <div class="qa-question" onclick="toggleQA(this)"><span class="q-badge">Q</span>Explain the difference between Minimal APIs and Controller-based APIs.</div>
+            <div class="qa-answer">Minimal APIs are function-based, lower ceremony, and have better performance due to fewer middleware layers. Controller-based APIs offer conventions, filters, model binding, and are better for complex domain scenarios. Choose Minimal APIs for microservices and simple CRUD; controllers for complex domains with extensive cross-cutting concerns.</div>
+          </li>
+          <li class="qa-item">
+            <div class="qa-question" onclick="toggleQA(this)"><span class="q-badge">Q</span>How does Output Cache differ from Response Cache in ASP.NET Core?</div>
+            <div class="qa-answer">Output Cache is server-side and stores the actual rendered output — more flexible, configurable per-endpoint, and supports cache invalidation. Response Cache sets HTTP headers to instruct clients/proxies to cache. Use Output Cache for server-controlled caching; Response Cache for CDN-level caching.</div>
+          </li>
+          <li class="qa-item">
+            <div class="qa-question" onclick="toggleQA(this)"><span class="q-badge">Q</span>What are primary constructors in C# 13?</div>
+            <div class="qa-answer">Primary constructors allow parameters to be declared directly in the class/struct declaration. They are in scope throughout the type body, reducing boilerplate for simple dependency injection patterns. They are particularly useful with records and value objects.</div>
+          </li>
+        </ul>
+      </div>
+      <div id="dotnetTab-tips" class="tab-pane" style="display:none">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <div class="tip-box"><div class="tip-label">✅ Best Practice</div>Always register services with appropriate lifetimes: Singleton for stateless, Scoped for per-request (DB context), Transient for lightweight services.</div>
+            <div class="tip-box mt-2"><div class="tip-label">✅ Performance</div>Use <code>IAsyncEnumerable</code> for streaming large datasets instead of loading all data into memory first.</div>
+          </div>
+          <div class="col-md-6">
+            <div class="tip-box warning"><div class="tip-label">⚠️ Avoid</div>Never inject <code>DbContext</code> as Singleton — it's not thread-safe. Always use Scoped or create a factory.</div>
+            <div class="tip-box warning mt-2"><div class="tip-label">⚠️ Security</div>Never store secrets in appsettings.json. Use Azure Key Vault, environment variables, or .NET User Secrets in development.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EF CORE MODULE -->
+  <div class="module-accordion fade-in-up" id="efcore">
+    <button class="module-btn" onclick="toggleModule(this)">
+      <div class="module-num">02</div>
+      <div>
+        <div style="font-size:14px;font-weight:700">Entity Framework Core 9 + SQL Server</div>
+        <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-code);margin-top:2px">Migrations · Performance · Bulk Operations · Indexes</div>
+      </div>
+      <span class="level-badge level-intermediate ms-2">Intermediate</span>
+      <i class="fas fa-chevron-down module-chevron"></i>
+    </button>
+    <div class="module-body">
+      <div class="row g-4">
+        <div class="col-md-6">
+          <h6 style="font-family:var(--font-code);color:var(--accent);margin-bottom:12px">EF Core Best Practices</h6>
+          <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> Use AsNoTracking() for read-only queries — up to 30% faster</li>
+            <li><i class="fas fa-check-circle"></i> Split queries for collections to avoid cartesian explosion</li>
+            <li><i class="fas fa-check-circle"></i> Use Compiled Queries for hot-path performance</li>
+            <li><i class="fas fa-check-circle"></i> Configure indexes via Fluent API, not Data Annotations</li>
+            <li><i class="fas fa-check-circle"></i> Use value converters for complex types (JSON columns)</li>
+            <li><i class="fas fa-check-circle"></i> Enable query logging only in development</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <div class="code-block-wrapper">
+            <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">CSHARP</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre><code class="language-csharp">// EF Core - Repository Pattern + Spec
+public class ProductRepository(AppDbContext ctx)
+    : IProductRepository
+{
+    public async Task<List<Product>> GetActiveAsync(
+        CancellationToken ct = default)
+        => await ctx.Products
+            .AsNoTracking()
+            .Where(p => p.IsActive && !p.IsDeleted)
+            .OrderBy(p => p.Name)
+            .Select(p => new Product(p.Id, p.Name, p.Price))
+            .ToListAsync(ct);
+
+    // Compiled query for hot paths
+    private static readonly Func<AppDbContext, int, Task<Product?>>
+        GetByIdQuery = EF.CompileAsyncQuery(
+            (AppDbContext db, int id) =>
+                db.Products.FirstOrDefault(p => p.Id == id));
+
+    public Task<Product?> GetByIdAsync(int id)
+        => GetByIdQuery(ctx, id);
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CLEAN ARCH MODULE -->
+  <div class="module-accordion fade-in-up" id="architecture">
+    <button class="module-btn" onclick="toggleModule(this)">
+      <div class="module-num">03</div>
+      <div>
+        <div style="font-size:14px;font-weight:700">Clean Architecture + CQRS + MediatR</div>
+        <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-code);margin-top:2px">DDD · Repository · Unit of Work · Domain Events</div>
+      </div>
+      <span class="level-badge level-advanced ms-2">Advanced</span>
+      <i class="fas fa-chevron-down module-chevron"></i>
+    </button>
+    <div class="module-body">
+      <div class="code-block-wrapper">
+        <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">CSHARP · CQRS Command Handler</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers"><code class="language-csharp">// CQRS Command + Handler with MediatR
+public sealed record CreateOrderCommand(
+    Guid CustomerId,
+    IReadOnlyList<OrderItemDto> Items) : IRequest<Result<Guid>>;
+
+public sealed class CreateOrderCommandHandler(
+    IOrderRepository orders,
+    ICustomerRepository customers,
+    IUnitOfWork uow,
+    IPublisher publisher)
+    : IRequestHandler<CreateOrderCommand, Result<Guid>>
+{
+    public async Task<Result<Guid>> Handle(
+        CreateOrderCommand cmd,
+        CancellationToken ct)
+    {
+        var customer = await customers.GetByIdAsync(cmd.CustomerId, ct);
+        if (customer is null)
+            return Result.Failure<Guid>(CustomerErrors.NotFound);
+
+        var order = Order.Create(customer.Id, cmd.Items);
+        await orders.AddAsync(order, ct);
+        await uow.SaveChangesAsync(ct);
+
+        // Publish domain event
+        await publisher.Publish(
+            new OrderCreatedEvent(order.Id, customer.Email), ct);
+
+        return Result.Success(order.Id);
+    }
+}
+
+// MediatR Pipeline Behaviour for Validation
+public sealed class ValidationBehaviour<TRequest, TResponse>(
+    IEnumerable<IValidator<TRequest>> validators)
+    : IPipelineBehavior<TRequest, TResponse>
+    where TRequest : IRequest<TResponse>
+{
+    public async Task<TResponse> Handle(TRequest request,
+        RequestHandlerDelegate<TResponse> next, CancellationToken ct)
+    {
+        var ctx = new ValidationContext<TRequest>(request);
+        var failures = validators
+            .Select(v => v.Validate(ctx))
+            .SelectMany(r => r.Errors)
+            .Where(f => f is not null)
+            .ToList();
+
+        if (failures.Count != 0)
+            throw new ValidationException(failures);
+
+        return await next();
+    }
+}</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FRONTEND SECTION ═══════ -->
+<section id="angular" style="background:rgba(255,255,255,0.01);">
+  <div class="section-header fade-in-up">
+    <div class="section-label">Module 04-05</div>
+    <h2 class="section-title"><i class="fas fa-laptop-code" style="color:var(--neon-purple);margin-right:10px"></i>Frontend Development</h2>
+  </div>
+
+  <div class="tech-tabs-nav fade-in-up">
+    <button class="tech-tab-btn active" onclick="switchTechTab(this,'angular-tab')"><i class="fab fa-angular" style="color:#dd1b16"></i>Angular 18</button>
+    <button class="tech-tab-btn" onclick="switchTechTab(this,'react-tab')"><i class="fab fa-react" style="color:#61dafb"></i>React 18</button>
+    <button class="tech-tab-btn" onclick="switchTechTab(this,'ts-tab')"><i class="fas fa-code" style="color:#3178c6"></i>TypeScript</button>
+  </div>
+
+  <div id="angular-tab" class="tech-tab-content active">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="glass-card h-100">
+          <div class="card-header-styled">
+            <div class="card-icon ci-pink"><i class="fab fa-angular"></i></div>
+            <div><div class="card-title-sm">Angular 18 — Signals & Control Flow</div><span class="level-badge level-intermediate">Intermediate</span></div>
+          </div>
+          <div class="card-body-styled">
+            <ul class="checklist">
+              <li><i class="fas fa-check-circle"></i> Signals for reactive state (replaces RxJS for simple state)</li>
+              <li><i class="fas fa-check-circle"></i> New built-in control flow: @if, @for, @switch (no NgIf/NgFor)</li>
+              <li><i class="fas fa-check-circle"></i> Deferrable views with @defer for lazy loading</li>
+              <li><i class="fas fa-check-circle"></i> Standalone components as the default (no NgModules needed)</li>
+              <li><i class="fas fa-check-circle"></i> Function-based interceptors and guards</li>
+              <li><i class="fas fa-check-circle"></i> SSR with hydration improvements</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="code-block-wrapper" style="height:100%;">
+          <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">ANGULAR 18 · TYPESCRIPT</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers" style="height:calc(100% - 36px)"><code class="language-typescript">// Angular 18 Standalone Component with Signals
+@Component({
+  selector: 'app-products',
+  standalone: true,
+  imports: [CommonModule, RouterLink],
+  template: `
+    @if (loading()) {
+      <div class="spinner">Loading...</div>
+    } @else {
+      @for (product of products(); track product.id) {
+        <product-card [product]="product" />
+      } @empty {
+        <p>No products found.</p>
+      }
+    }
+
+    @defer (on viewport) {
+      <app-reviews />
+    } @placeholder {
+      <div>Loading reviews...</div>
+    }
+  `
+})
+export class ProductsComponent {
+  private svc = inject(ProductService);
+
+  // Signals for reactive state
+  products = signal<Product[]>([]);
+  loading = signal(true);
+  searchTerm = signal('');
+
+  // Computed signal
+  filtered = computed(() =>
+    this.products().filter(p =>
+      p.name.toLowerCase().includes(this.searchTerm().toLowerCase())
+    )
+  );
+
+  constructor() {
+    // Effect for side effects
+    effect(() => {
+      console.log('Search changed:', this.searchTerm());
+    });
+
+    this.loadProducts();
+  }
+
+  async loadProducts() {
+    const data = await firstValueFrom(this.svc.getAll());
+    this.products.set(data);
+    this.loading.set(false);
+  }
+}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="react-tab" class="tech-tab-content" id="react">
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="glass-card h-100">
+          <div class="card-header-styled">
+            <div class="card-icon ci-blue"><i class="fab fa-react"></i></div>
+            <div><div class="card-title-sm">React 18 — Concurrent Features</div><span class="level-badge level-intermediate">Intermediate</span></div>
+          </div>
+          <div class="card-body-styled">
+            <ul class="checklist">
+              <li><i class="fas fa-check-circle"></i> useTransition for non-urgent state updates</li>
+              <li><i class="fas fa-check-circle"></i> Suspense for data fetching and lazy loading</li>
+              <li><i class="fas fa-check-circle"></i> Server Components (RSC) for zero-bundle UI</li>
+              <li><i class="fas fa-check-circle"></i> use() hook for reading promises and context</li>
+              <li><i class="fas fa-check-circle"></i> useDeferredValue for performance optimization</li>
+              <li><i class="fas fa-check-circle"></i> React Compiler (auto-memoization) in React 19</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="code-block-wrapper">
+          <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">REACT 18 · TSX</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers"><code class="language-tsx">// React 18 - Custom Hook with Concurrent Features
+import { useState, useTransition, useDeferredValue, Suspense } from 'react';
+
+function useProducts() {
+  const [query, setQuery] = useState('');
+  const [isPending, startTransition] = useTransition();
+  const deferredQuery = useDeferredValue(query);
+
+  const updateQuery = (value: string) => {
+    startTransition(() => setQuery(value));
+  };
+
+  return { query: deferredQuery, isPending, updateQuery };
+}
+
+// Server Component (Next.js App Router)
+async function ProductsPage() {
+  // Direct async/await in server component
+  const products = await getProducts();
+
+  return (
+    <div>
+      <Suspense fallback={<ProductsSkeleton />}>
+        <ProductList products={products} />
+      </Suspense>
+    </div>
+  );
+}
+
+// Client Component with Zustand
+const useStore = create<ProductStore>((set) => ({
+  cart: [],
+  addItem: (item) => set((state) => ({
+    cart: [...state.cart, item]
+  })),
+  removeItem: (id) => set((state) => ({
+    cart: state.cart.filter(i => i.id !== id)
+  }))
+}));</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="ts-tab" class="tech-tab-content">
+    <div class="code-block-wrapper">
+      <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">TYPESCRIPT · Advanced Patterns</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers"><code class="language-typescript">// Advanced TypeScript Patterns for Production
+
+// Discriminated Union for API responses
+type ApiResult<T> =
+  | { status: 'success'; data: T; timestamp: Date }
+  | { status: 'error'; error: string; code: number }
+  | { status: 'loading' };
+
+// Generic Repository type
+type Repository<T extends { id: string }> = {
+  findById(id: string): Promise<T | null>;
+  findAll(filter?: Partial<T>): Promise<T[]>;
+  create(data: Omit<T, 'id'>): Promise<T>;
+  update(id: string, data: Partial<T>): Promise<T>;
+  delete(id: string): Promise<void>;
+};
+
+// Utility types for form validation
+type FormErrors<T> = Partial<Record<keyof T, string>>;
+type FormState<T> = {
+  values: T;
+  errors: FormErrors<T>;
+  isDirty: boolean;
+  isSubmitting: boolean;
+};
+
+// Brand types for type-safe IDs
+type Brand<T, B extends string> = T & { readonly __brand: B };
+type UserId = Brand<string, 'UserId'>;
+type ProductId = Brand<string, 'ProductId'>;
+
+// Ensure type safety - this won't compile:
+// const userId: UserId = 'plain-string'; // Error!</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ AZURE SECTION ═══════ -->
+<section id="azure">
+  <div class="section-header fade-in-up">
+    <div class="section-label">Module 06</div>
+    <h2 class="section-title"><i class="fas fa-cloud" style="color:var(--neon-orange);margin-right:10px"></i>Azure Cloud Architecture</h2>
+    <p class="section-subtitle">Design scalable, resilient cloud-native applications on Microsoft Azure.</p>
+  </div>
+  <div class="arch-diagram fade-in-up">
+    <div class="arch-section-label">Client Layer</div>
+    <div class="arch-row">
+      <div class="arch-box"><i class="fas fa-globe" style="color:var(--neon-blue)"></i><span>Browser / PWA</span></div>
+      <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="arch-box"><i class="fas fa-shield-alt" style="color:var(--neon-purple)"></i><span>Azure CDN + WAF</span></div>
+      <div class="arch-arrow"><i class="fas fa-arrow-right"></i></div>
+      <div class="arch-box"><i class="fas fa-traffic-light" style="color:var(--neon-green)"></i><span>API Management</span></div>
+    </div>
+    <div class="arch-divider"></div>
+    <div class="arch-section-label">Application Layer</div>
+    <div class="arch-row">
+      <div class="arch-box"><i class="fab fa-docker" style="color:var(--neon-blue)"></i><span>AKS Cluster</span></div>
+      <div class="arch-arrow"><i class="fas fa-exchange-alt"></i></div>
+      <div class="arch-box"><i class="fas fa-envelope" style="color:#fbbf24"></i><span>Service Bus</span></div>
+      <div class="arch-arrow"><i class="fas fa-exchange-alt"></i></div>
+      <div class="arch-box"><i class="fas fa-function" style="color:var(--neon-green)"></i><span>Azure Functions</span></div>
+    </div>
+    <div class="arch-divider"></div>
+    <div class="arch-section-label">Data Layer</div>
+    <div class="arch-row">
+      <div class="arch-box"><i class="fas fa-database" style="color:var(--neon-blue)"></i><span>Azure SQL</span></div>
+      <div class="arch-arrow"><i class="fas fa-plus" style="font-size:10px"></i></div>
+      <div class="arch-box"><i class="fas fa-bolt" style="color:var(--neon-pink)"></i><span>Redis Cache</span></div>
+      <div class="arch-arrow"><i class="fas fa-plus" style="font-size:10px"></i></div>
+      <div class="arch-box"><i class="fas fa-globe-americas" style="color:var(--neon-orange)"></i><span>Cosmos DB</span></div>
+      <div class="arch-arrow"><i class="fas fa-plus" style="font-size:10px"></i></div>
+      <div class="arch-box"><i class="fas fa-key" style="color:#fbbf24"></i><span>Key Vault</span></div>
+    </div>
+    <div class="arch-divider"></div>
+    <div class="arch-section-label">Observability</div>
+    <div class="arch-row">
+      <div class="arch-box"><i class="fas fa-chart-line" style="color:var(--neon-blue)"></i><span>App Insights</span></div>
+      <div class="arch-arrow"><i class="fas fa-plus" style="font-size:10px"></i></div>
+      <div class="arch-box"><i class="fas fa-search" style="color:var(--neon-purple)"></i><span>Log Analytics</span></div>
+      <div class="arch-arrow"><i class="fas fa-plus" style="font-size:10px"></i></div>
+      <div class="arch-box"><i class="fas fa-bell" style="color:var(--neon-orange)"></i><span>Azure Monitor</span></div>
+    </div>
+  </div>
+  <div class="row g-4 mt-4">
+    <div class="col-md-4 fade-in-up stagger-1">
+      <div class="glass-card h-100">
+        <div class="card-header-styled">
+          <div class="card-icon ci-blue"><i class="fas fa-cloud-upload-alt"></i></div>
+          <div class="card-title-sm">AKS + Kubernetes</div>
+        </div>
+        <div class="card-body-styled">
+          <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> Managed Kubernetes on Azure</li>
+            <li><i class="fas fa-check-circle"></i> Horizontal Pod Autoscaling (HPA)</li>
+            <li><i class="fas fa-check-circle"></i> KEDA for event-driven scaling</li>
+            <li><i class="fas fa-check-circle"></i> Managed Identity for secrets</li>
+            <li><i class="fas fa-check-circle"></i> Ingress with NGINX + cert-manager</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 fade-in-up stagger-2">
+      <div class="glass-card h-100">
+        <div class="card-header-styled">
+          <div class="card-icon ci-yellow"><i class="fas fa-key"></i></div>
+          <div class="card-title-sm">Security Services</div>
+        </div>
+        <div class="card-body-styled">
+          <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> Azure Key Vault for secrets rotation</li>
+            <li><i class="fas fa-check-circle"></i> Managed Identity (no credentials in code)</li>
+            <li><i class="fas fa-check-circle"></i> Azure AD B2C for external auth</li>
+            <li><i class="fas fa-check-circle"></i> Microsoft Defender for Cloud</li>
+            <li><i class="fas fa-check-circle"></i> Private Endpoints for PaaS services</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 fade-in-up stagger-3">
+      <div class="glass-card h-100">
+        <div class="card-header-styled">
+          <div class="card-icon ci-orange"><i class="fas fa-tachometer-alt"></i></div>
+          <div class="card-title-sm">Reliability Patterns</div>
+        </div>
+        <div class="card-body-styled">
+          <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> Multi-region active-active deployments</li>
+            <li><i class="fas fa-check-circle"></i> Traffic Manager for geo-routing</li>
+            <li><i class="fas fa-check-circle"></i> Availability Zones for HA</li>
+            <li><i class="fas fa-check-circle"></i> Azure Front Door for global load balancing</li>
+            <li><i class="fas fa-check-circle"></i> Circuit breaker with Polly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DOCKER & KUBERNETES ═══════ -->
+<section id="docker" style="background:rgba(255,255,255,0.01)">
+  <div class="section-header fade-in-up">
+    <div class="section-label">Module 07</div>
+    <h2 class="section-title"><i class="fab fa-docker" style="color:var(--neon-blue);margin-right:10px"></i>Docker & Kubernetes</h2>
+  </div>
+  <div class="row g-4">
+    <div class="col-lg-6 fade-in-up">
+      <h6 style="font-family:var(--font-code);color:var(--accent);margin-bottom:12px">Production Dockerfile (.NET)</h6>
+      <div class="code-block-wrapper">
+        <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">DOCKERFILE</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers"><code class="language-docker"># Multi-stage production Dockerfile
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
+WORKDIR /src
+
+# Layer caching - copy project files first
+COPY ["src/MyApp.WebApi/MyApp.WebApi.csproj", "src/MyApp.WebApi/"]
+COPY ["src/MyApp.Application/MyApp.Application.csproj", "src/MyApp.Application/"]
+COPY ["src/MyApp.Infrastructure/MyApp.Infrastructure.csproj", "src/MyApp.Infrastructure/"]
+RUN dotnet restore "src/MyApp.WebApi/MyApp.WebApi.csproj"
+
+COPY . .
+WORKDIR "/src/src/MyApp.WebApi"
+RUN dotnet publish -c Release -o /app/publish \
+    --no-restore /p:UseAppHost=false
+
+# Runtime image - minimal footprint
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS final
+WORKDIR /app
+EXPOSE 8080
+ENV ASPNETCORE_URLS=http://+:8080
+ENV ASPNETCORE_ENVIRONMENT=Production
+
+# Non-root user for security
+RUN adduser --disabled-password --gecos '' appuser
+USER appuser
+
+COPY --from=build /app/publish .
+ENTRYPOINT ["dotnet", "MyApp.WebApi.dll"]</code></pre>
+      </div>
+    </div>
+    <div class="col-lg-6 fade-in-up stagger-2">
+      <h6 style="font-family:var(--font-code);color:var(--accent);margin-bottom:12px">Kubernetes Deployment Manifest</h6>
+      <div class="code-block-wrapper">
+        <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">YAML · K8s</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers"><code class="language-yaml">apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-api
+  namespace: production
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: myapp-api
+  template:
+    metadata:
+      labels:
+        app: myapp-api
+    spec:
+      containers:
+        - name: api
+          image: myregistry.azurecr.io/myapp-api:latest
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: 8080
+            initialDelaySeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: 8080
+            initialDelaySeconds: 5
+          env:
+            - name: ConnectionStrings__Default
+              valueFrom:
+                secretKeyRef:
+                  name: app-secrets
+                  key: db-connection</code></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CI/CD ═══════ -->
+<section id="cicd">
+  <div class="section-header fade-in-up">
+    <div class="section-label">Module 08</div>
+    <h2 class="section-title"><i class="fas fa-infinity" style="color:var(--neon-green);margin-right:10px"></i>CI/CD DevOps Pipeline</h2>
+    <p class="section-subtitle">Automate build, test, and deploy with GitHub Actions and Azure DevOps.</p>
+  </div>
+  <div class="pipeline fade-in-up mb-4">
+    <div class="pipeline-stage stage-source">
+      <i class="fab fa-git-alt"></i>
+      <div class="stage-name">Source</div>
+      <div class="stage-tool">GitHub / ADO</div>
+      <div class="pipeline-status"><i class="fas fa-circle" style="font-size:6px"></i> Pushed</div>
+    </div>
+    <div class="pipeline-stage stage-build">
+      <i class="fas fa-hammer"></i>
+      <div class="stage-name">Build</div>
+      <div class="stage-tool">dotnet build</div>
+      <div class="pipeline-status running"><i class="fas fa-circle" style="font-size:6px"></i> Running</div>
+    </div>
+    <div class="pipeline-stage stage-test">
+      <i class="fas fa-vial"></i>
+      <div class="stage-name">Test</div>
+      <div class="stage-tool">xUnit + Coverage</div>
+      <div class="pipeline-status"><i class="fas fa-circle" style="font-size:6px"></i> Queued</div>
+    </div>
+    <div class="pipeline-stage stage-package">
+      <i class="fab fa-docker"></i>
+      <div class="stage-name">Package</div>
+      <div class="stage-tool">Docker Build</div>
+      <div class="pipeline-status"><i class="fas fa-circle" style="font-size:6px"></i> Queued</div>
+    </div>
+    <div class="pipeline-stage stage-deploy">
+      <i class="fas fa-cloud-upload-alt"></i>
+      <div class="stage-name">Deploy</div>
+      <div class="stage-tool">Helm / kubectl</div>
+      <div class="pipeline-status"><i class="fas fa-circle" style="font-size:6px"></i> Queued</div>
+    </div>
+    <div class="pipeline-stage stage-monitor">
+      <i class="fas fa-chart-line"></i>
+      <div class="stage-name">Monitor</div>
+      <div class="stage-tool">App Insights</div>
+      <div class="pipeline-status"><i class="fas fa-circle" style="font-size:6px"></i> Active</div>
+    </div>
+  </div>
+  <div class="code-block-wrapper fade-in-up">
+    <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">YAML · GitHub Actions CI/CD</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre class="line-numbers"><code class="language-yaml">name: CI/CD Production Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+env:
+  REGISTRY: myregistry.azurecr.io
+  IMAGE_NAME: myapp-api
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '10.0.x'
+
+      - name: Restore & Build
+        run: dotnet build --configuration Release --no-restore
+
+      - name: Run Tests
+        run: |
+          dotnet test --no-build \
+            --configuration Release \
+            --collect:"XPlat Code Coverage" \
+            --results-directory ./coverage
+
+      - name: Code Coverage Gate (80%+)
+        uses: codecov/codecov-action@v4
+
+  docker-push:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Login to ACR
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build & Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ github.sha }}
+
+  deploy-production:
+    needs: docker-push
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Deploy to AKS
+        run: |
+          helm upgrade --install myapp-api ./charts/myapp \
+            --set image.tag=${{ github.sha }} \
+            --set replicas=3 \
+            --namespace production \
+            --wait --timeout 5m</code></pre>
+  </div>
+</section>
+
+<!-- ═══════ ADVANCED MODULES ═══════ -->
+<section id="microservices" style="background:rgba(255,255,255,0.01)">
+  <div class="section-header fade-in-up">
+    <div class="section-label">Module 09</div>
+    <h2 class="section-title"><i class="fas fa-network-wired" style="color:var(--neon-pink);margin-right:10px"></i>Microservices & Advanced Topics</h2>
+  </div>
+  <div class="row g-4">
+    <!-- AUTH MODULE -->
+    <div class="col-lg-6 fade-in-up" id="auth">
+      <div class="module-accordion">
+        <button class="module-btn" onclick="toggleModule(this)">
+          <div class="module-num">10</div>
+          <div><div style="font-size:14px;font-weight:700">Authentication & Authorization</div>
+          <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-code)">JWT · OAuth2 · OIDC · Role/Policy Based</div></div>
+          <span class="level-badge level-advanced ms-2">Advanced</span>
+          <i class="fas fa-chevron-down module-chevron"></i>
+        </button>
+        <div class="module-body">
+          <div class="code-block-wrapper">
+            <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">CSHARP · JWT Setup</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre><code class="language-csharp">// JWT Authentication + Policy-Based Authorization
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = config["Jwt:Issuer"],
+            ValidAudience = config["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(config["Jwt:Secret"]!)),
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", p =>
+        p.RequireRole("Admin").RequireClaim("department", "Engineering"));
+
+    options.AddPolicy("CanManageProducts", p =>
+        p.Requirements.Add(new ResourceOwnerRequirement()));
+
+    // Default policy requires authentication
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+});</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- REDIS MODULE -->
+    <div class="col-lg-6 fade-in-up stagger-2" id="redis">
+      <div class="module-accordion">
+        <button class="module-btn" onclick="toggleModule(this)">
+          <div class="module-num">11</div>
+          <div><div style="font-size:14px;font-weight:700">Redis Caching & SignalR</div>
+          <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-code)">Distributed Cache · Pub/Sub · Real-time WebSockets</div></div>
+          <span class="level-badge level-advanced ms-2">Advanced</span>
+          <i class="fas fa-chevron-down module-chevron"></i>
+        </button>
+        <div class="module-body">
+          <div class="code-block-wrapper">
+            <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">CSHARP · Redis + SignalR</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre><code class="language-csharp">// Redis distributed caching pattern
+public class CachedProductService(
+    IProductRepository repo,
+    IDistributedCache cache) : IProductService
+{
+    public async Task<Product?> GetByIdAsync(int id, CancellationToken ct)
+    {
+        var key = $"product:{id}";
+        var cached = await cache.GetStringAsync(key, ct);
+        if (cached is not null)
+            return JsonSerializer.Deserialize<Product>(cached);
+
+        var product = await repo.GetByIdAsync(id, ct);
+        if (product is not null)
+            await cache.SetStringAsync(key,
+                JsonSerializer.Serialize(product),
+                new DistributedCacheEntryOptions
+                {
+                    AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(15),
+                    SlidingExpiration = TimeSpan.FromMinutes(5)
+                }, ct);
+        return product;
+    }
+}
+
+// SignalR Hub for real-time notifications
+public class NotificationHub : Hub
+{
+    public async Task JoinGroup(string group)
+        => await Groups.AddToGroupAsync(Context.ConnectionId, group);
+
+    public async Task SendToGroup(string group, string msg)
+        => await Clients.Group(group).SendAsync("ReceiveMessage", msg);
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TESTING -->
+    <div class="col-lg-6 fade-in-up" id="testing">
+      <div class="module-accordion">
+        <button class="module-btn" onclick="toggleModule(this)">
+          <div class="module-num">12</div>
+          <div><div style="font-size:14px;font-weight:700">Unit & Integration Testing</div>
+          <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-code)">xUnit · Moq · FluentAssertions · TestContainers</div></div>
+          <span class="level-badge level-advanced ms-2">Advanced</span>
+          <i class="fas fa-chevron-down module-chevron"></i>
+        </button>
+        <div class="module-body">
+          <div class="code-block-wrapper">
+            <div class="code-header"><div class="dots"><div class="dot dot-red"></div><div class="dot dot-yellow"></div><div class="dot dot-green"></div></div><span class="code-lang">CSHARP · xUnit + TestContainers</span><button class="copy-btn" onclick="copyCode(this)"><i class="fas fa-copy me-1"></i>Copy</button></div>
+<pre><code class="language-csharp">// Integration Test with TestContainers
+public class ProductApiTests : IAsyncLifetime
+{
+    private readonly MsSqlContainer _db = new MsSqlBuilder()
+        .WithImage("mcr.microsoft.com/mssql/server:2022-latest")
+        .Build();
+
+    private HttpClient _client = null!;
+
+    public async Task InitializeAsync()
+    {
+        await _db.StartAsync();
+        var factory = new WebApplicationFactory<Program>()
+            .WithWebHostBuilder(b => b.ConfigureServices(s =>
+                s.AddDbContext<AppDbContext>(o =>
+                    o.UseSqlServer(_db.GetConnectionString()))));
+        _client = factory.CreateClient();
+    }
+
+    [Fact]
+    public async Task GetProducts_ReturnsOk_WhenAuthenticated()
+    {
+        var response = await _client.GetAsync("/api/v1/products");
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        var products = await response.Content
+            .ReadFromJsonAsync<List<ProductDto>>();
+        products.Should().NotBeNull().And.BeEmpty();
+    }
+
+    public Task DisposeAsync() => _db.DisposeAsync().AsTask();
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- PATTERNS -->
+    <div class="col-lg-6 fade-in-up stagger-2" id="patterns">
+      <div class="module-accordion">
+        <button class="module-btn" onclick="toggleModule(this)">
+          <div class="module-num">13</div>
+          <div><div style="font-size:14px;font-weight:700">Design Patterns</div>
+          <div style="font-size:11px;color:var(--text-muted);font-family:var(--font-code)">Creational · Structural · Behavioral · Enterprise</div></div>
+          <span class="level-badge level-expert ms-2">Expert</span>
+          <i class="fas fa-chevron-down module-chevron"></i>
+        </button>
+        <div class="module-body">
+          <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> <strong>CQRS</strong> — Separate read and write models for scalability</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Saga</strong> — Distributed transactions across microservices</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Outbox Pattern</strong> — Reliable message publishing with DB atomicity</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Circuit Breaker</strong> — Fail fast and recover from external failures</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Decorator</strong> — Cross-cutting concerns without modifying core logic</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Strategy</strong> — Swap algorithms at runtime (pricing, discounts)</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Observer/Event</strong> — Loose coupling via domain events</li>
+            <li><i class="fas fa-check-circle"></i> <strong>Specification</strong> — Encapsulate query logic as reusable objects</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PERFORMANCE & SYSTEM DESIGN ═══════ -->
+<section id="performance">
+  <div class="section-header fade-in-up">
+    <div class="section-label">Module 14-15</div>
+    <h2 class="section-title"><i class="fas fa-tachometer-alt" style="color:var(--neon-orange);margin-right:10px"></i>Performance & System Design</h2>
+  </div>
+  <div class="row g-4">
+    <div class="col-lg-8 fade-in-up">
+      <div class="glass-card">
+        <div class="card-header-styled">
+          <div class="card-icon ci-orange"><i class="fas fa-bolt"></i></div>
+          <div class="card-title-sm">Performance Optimization Checklist</div>
+        </div>
+        <div class="card-body-styled">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <h6 style="font-size:12px;font-family:var(--font-code);color:var(--accent);margin-bottom:8px">API Level</h6>
+              <ul class="checklist">
+                <li><i class="fas fa-check-circle"></i> Response compression (Brotli > Gzip)</li>
+                <li><i class="fas fa-check-circle"></i> Output Caching with cache tags</li>
+                <li><i class="fas fa-check-circle"></i> Async all the way down — no .Result/.Wait()</li>
+                <li><i class="fas fa-check-circle"></i> ValueTask for hot-path allocations</li>
+                <li><i class="fas fa-check-circle"></i> Span&lt;T&gt; / Memory&lt;T&gt; for zero-copy parsing</li>
+              </ul>
+            </div>
+            <div class="col-md-6">
+              <h6 style="font-size:12px;font-family:var(--font-code);color:var(--accent);margin-bottom:8px">Database Level</h6>
+              <ul class="checklist">
+                <li><i class="fas fa-check-circle"></i> Covering indexes for frequent queries</li>
+                <li><i class="fas fa-check-circle"></i> Read replicas for reporting workloads</li>
+                <li><i class="fas fa-check-circle"></i> Pagination — never load unbounded sets</li>
+                <li><i class="fas fa-check-circle"></i> Batch inserts with ExecuteUpdateAsync</li>
+                <li><i class="fas fa-check-circle"></i> Connection pooling and keep-alive</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-4 fade-in-up stagger-2" id="systemdesign">
+      <div class="glass-card h-100">
+        <div class="card-header-styled">
+          <div class="card-icon ci-purple"><i class="fas fa-project-diagram"></i></div>
+          <div class="card-title-sm">System Design Pillars</div>
+        </div>
+        <div class="card-body-styled">
+          <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> CAP Theorem tradeoffs</li>
+            <li><i class="fas fa-check-circle"></i> Database sharding strategies</li>
+            <li><i class="fas fa-check-circle"></i> Event-driven architecture</li>
+            <li><i class="fas fa-check-circle"></i> API Gateway patterns</li>
+            <li><i class="fas fa-check-circle"></i> Rate limiting (token bucket)</li>
+            <li><i class="fas fa-check-circle"></i> Load balancing algorithms</li>
+            <li><i class="fas fa-check-circle"></i> Data consistency patterns</li>
+            <li><i class="fas fa-check-circle"></i> Observability (logs/metrics/traces)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DEPLOYMENT ═══════ -->
+<section id="deployment" style="background:rgba(255,255,255,0.01)">
+  <div class="section-header fade-in-up">
+    <div class="section-label">Module 16</div>
+    <h2 class="section-title"><i class="fas fa-rocket" style="color:var(--neon-blue);margin-right:10px"></i>Production Deployment</h2>
+    <p class="section-subtitle">Zero-downtime deployment strategies, rollback plans, and production hardening.</p>
+  </div>
+  <div class="row g-4 fade-in-up">
+    <div class="col-md-4">
+      <div class="glass-card h-100">
+        <div class="card-header-styled" style="background:linear-gradient(135deg,rgba(0,212,255,0.08),transparent)">
+          <div class="card-icon ci-blue"><i class="fas fa-exchange-alt"></i></div>
+          <div><div class="card-title-sm">Blue-Green Deployment</div><span class="level-badge level-expert">Expert</span></div>
+        </div>
+        <div class="card-body-styled">
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Run two identical production environments, switch traffic instantly.</p>
+          <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> Zero downtime switching</li>
+            <li><i class="fas fa-check-circle"></i> Instant rollback capability</li>
+            <li><i class="fas fa-check-circle"></i> Full production testing before switch</li>
+            <li><i class="fas fa-check-circle"></i> Double infrastructure cost</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="glass-card h-100">
+        <div class="card-header-styled" style="background:linear-gradient(135deg,rgba(168,85,247,0.08),transparent)">
+          <div class="card-icon ci-purple"><i class="fas fa-sliders-h"></i></div>
+          <div><div class="card-title-sm">Canary Release</div><span class="level-badge level-expert">Expert</span></div>
+        </div>
+        <div class="card-body-styled">
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Gradually shift traffic percentage to new version, monitor metrics.</p>
+          <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> 5% → 25% → 50% → 100%</li>
+            <li><i class="fas fa-check-circle"></i> Real user feedback early</li>
+            <li><i class="fas fa-check-circle"></i> Automated rollback on SLO breach</li>
+            <li><i class="fas fa-check-circle"></i> Feature flags for fine control</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="glass-card h-100">
+        <div class="card-header-styled" style="background:linear-gradient(135deg,rgba(0,255,136,0.08),transparent)">
+          <div class="card-icon ci-green"><i class="fas fa-chart-line"></i></div>
+          <div><div class="card-title-sm">Observability</div><span class="level-badge level-advanced">Advanced</span></div>
+        </div>
+        <div class="card-body-styled">
+          <p style="font-size:13px;color:var(--text-secondary);margin-bottom:12px">Full-stack visibility with logs, metrics, and distributed traces.</p>
+          <ul class="checklist">
+            <li><i class="fas fa-check-circle"></i> OpenTelemetry SDK integration</li>
+            <li><i class="fas fa-check-circle"></i> Structured logging with Serilog</li>
+            <li><i class="fas fa-check-circle"></i> Prometheus + Grafana dashboards</li>
+            <li><i class="fas fa-check-circle"></i> Distributed tracing with Jaeger</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ PROGRESS TRACKER ═══════ -->
+<section id="progress">
+  <div class="section-header fade-in-up">
+    <div class="section-label">Your Progress</div>
+    <h2 class="section-title"><i class="fas fa-tasks" style="color:var(--neon-green);margin-right:10px"></i>Progress Tracker</h2>
+    <p class="section-subtitle">Click to mark topics as complete. Progress is saved in your browser.</p>
+  </div>
+  <div class="d-flex justify-content-between align-items-center mb-4 fade-in-up">
+    <div>
+      <span id="completedCount" style="font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--neon-green)">0</span>
+      <span style="font-size:13px;color:var(--text-muted);font-family:var(--font-code);margin-left:8px">/ 24 topics completed</span>
+    </div>
+    <button class="btn-ghost" onclick="resetProgress()" style="font-size:12px;padding:8px 16px"><i class="fas fa-redo me-1"></i>Reset</button>
+  </div>
+  <div class="tracker-grid fade-in-up" id="trackerGrid">
+    <!-- Generated by JS -->
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer id="footer">
+  <div class="row g-4">
+    <div class="col-lg-4">
+      <div class="footer-brand">FullStack Blueprint</div>
+      <div class="footer-tagline">Your complete guide from beginner to production expert</div>
+      <div class="learning-path-summary mt-3">
+        <div class="path-step active">.NET 10</div>
+        <div class="path-step">Clean Arch</div>
+        <div class="path-step">Angular/React</div>
+        <div class="path-step">Azure</div>
+        <div class="path-step">K8s</div>
+        <div class="path-step active">Production</div>
+      </div>
+    </div>
+    <div class="col-lg-2 col-6">
+      <div class="footer-section-title">Backend</div>
+      <ul class="footer-links">
+        <li><a href="#dotnet">.NET 10</a></li>
+        <li><a href="#aspnet">ASP.NET Core</a></li>
+        <li><a href="#efcore">EF Core</a></li>
+        <li><a href="#architecture">Clean Arch</a></li>
+      </ul>
+    </div>
+    <div class="col-lg-2 col-6">
+      <div class="footer-section-title">Frontend</div>
+      <ul class="footer-links">
+        <li><a href="#angular">Angular 18</a></li>
+        <li><a href="#react">React 18</a></li>
+        <li><a href="#ts-tab">TypeScript</a></li>
+      </ul>
+    </div>
+    <div class="col-lg-2 col-6">
+      <div class="footer-section-title">Cloud & Ops</div>
+      <ul class="footer-links">
+        <li><a href="#azure">Azure Cloud</a></li>
+        <li><a href="#docker">Docker & K8s</a></li>
+        <li><a href="#cicd">CI/CD</a></li>
+        <li><a href="#deployment">Deployment</a></li>
+      </ul>
+    </div>
+    <div class="col-lg-2 col-6">
+      <div class="footer-section-title">Advanced</div>
+      <ul class="footer-links">
+        <li><a href="#microservices">Microservices</a></li>
+        <li><a href="#auth">Security</a></li>
+        <li><a href="#testing">Testing</a></li>
+        <li><a href="#patterns">Patterns</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Full-Stack Production Blueprint · Built for Production Developers</span>
+    <span style="color:var(--accent)">
+      <i class="fab fa-github me-1"></i> .NET 10 · Angular 18 · React 18 · Azure · Docker · K8s
+    </span>
+  </div>
+</footer>
+
+</main>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+<script>
+// ═══════════════════════════════════════
+// THEME SYSTEM
+// ═══════════════════════════════════════
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('blueprint-theme', theme);
+  document.querySelectorAll('.theme-btn').forEach(btn => btn.classList.remove('active'));
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    if (btn.textContent.toLowerCase().includes(theme)) btn.classList.add('active');
+  });
+}
+// Load saved theme
+const savedTheme = localStorage.getItem('blueprint-theme') || 'dark';
+setTheme(savedTheme);
+
+// ═══════════════════════════════════════
+// SIDEBAR
+// ═══════════════════════════════════════
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebarOverlay').classList.toggle('active');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebarOverlay').classList.remove('active');
+}
+
+// Active sidebar link on scroll
+$(window).on('scroll', function() {
+  const scrollPos = $(this).scrollTop() + 100;
+  $('section[id], .hero').each(function() {
+    const top = $(this).offset().top;
+    const bottom = top + $(this).outerHeight();
+    if (scrollPos >= top && scrollPos < bottom) {
+      const id = $(this).attr('id');
+      $('.sidebar-link').removeClass('active');
+      $(`.sidebar-link[href="#${id}"]`).addClass('active');
+    }
+  });
+});
+
+// ═══════════════════════════════════════
+// MODULE ACCORDION
+// ═══════════════════════════════════════
+function toggleModule(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = btn.classList.contains('active');
+  btn.classList.toggle('active', !isOpen);
+  if (isOpen) {
+    $(body).slideUp(250);
+  } else {
+    $(body).slideDown(250);
+  }
+}
+
+// ═══════════════════════════════════════
+// MODULE TABS
+// ═══════════════════════════════════════
+$(document).on('click', '.module-tabs .nav-link', function(e) {
+  e.preventDefault();
+  const tab = $(this).data('tab');
+  const parent = $(this).data('parent');
+  $(this).closest('.module-tabs').find('.nav-link').removeClass('active');
+  $(this).addClass('active');
+  const bodyEl = $(this).closest('.module-body');
+  bodyEl.find('.tab-pane').hide();
+  bodyEl.find(`#${parent}-${tab}`).show();
+});
+
+// ═══════════════════════════════════════
+// TECH TABS
+// ═══════════════════════════════════════
+function switchTechTab(btn, tabId) {
+  $(btn).siblings().removeClass('active');
+  $(btn).addClass('active');
+  $('.tech-tab-content').removeClass('active').hide();
+  $(`#${tabId}`).addClass('active').show();
+}
+
+// ═══════════════════════════════════════
+// COPY CODE
+// ═══════════════════════════════════════
+function copyCode(btn) {
+  const pre = btn.closest('.code-block-wrapper').querySelector('pre code');
+  if (!pre) return;
+  navigator.clipboard.writeText(pre.textContent || '').then(() => {
+    const orig = btn.innerHTML;
+    btn.classList.add('copied');
+    btn.innerHTML = '<i class="fas fa-check me-1"></i>Copied!';
+    setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('copied'); }, 2000);
+  }).catch(() => {
+    const range = document.createRange();
+    range.selectNode(pre);
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(range);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+  });
+}
+
+// ═══════════════════════════════════════
+// Q&A TOGGLE
+// ═══════════════════════════════════════
+function toggleQA(el) {
+  const answer = el.nextElementSibling;
+  $(answer).slideToggle(200);
+}
+
+// ═══════════════════════════════════════
+// ANIMATED COUNTERS
+// ═══════════════════════════════════════
+function animateCounter(el) {
+  const target = parseInt(el.getAttribute('data-target'));
+  const duration = 1500;
+  const step = target / (duration / 16);
+  let current = 0;
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = Math.floor(current) + (target >= 100 ? '+' : '');
+  }, 16);
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.classList.contains('counted')) {
+      entry.target.classList.add('counted');
+      animateCounter(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+// ═══════════════════════════════════════
+// SCROLL ANIMATIONS
+// ═══════════════════════════════════════
+const fadeObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+document.querySelectorAll('.fade-in-up').forEach(el => fadeObserver.observe(el));
+
+// ═══════════════════════════════════════
+// GLOBAL SEARCH
+// ═══════════════════════════════════════
+$('#globalSearch').on('input', function() {
+  const q = $(this).val().toLowerCase().trim();
+  if (!q) {
+    $('.module-accordion, .glass-card, .roadmap-card').removeClass('search-hidden');
+    return;
+  }
+  $('.module-accordion').each(function() {
+    const text = $(this).text().toLowerCase();
+    $(this).toggleClass('search-hidden', !text.includes(q));
+  });
+});
+
+// ═══════════════════════════════════════
+// PROGRESS TRACKER
+// ═══════════════════════════════════════
+const topics = [
+  { name: '.NET 10', sub: 'Minimal APIs, AOT' },
+  { name: 'C# 13', sub: 'Primary Constructors' },
+  { name: 'ASP.NET Core', sub: 'Web API, Middleware' },
+  { name: 'EF Core 9', sub: 'Migrations, LINQ' },
+  { name: 'SQL Server', sub: 'Indexes, Performance' },
+  { name: 'Clean Arch', sub: 'Layers, SOLID' },
+  { name: 'CQRS + MediatR', sub: 'Commands, Queries' },
+  { name: 'Domain Events', sub: 'Event-driven' },
+  { name: 'Angular 18', sub: 'Signals, Control Flow' },
+  { name: 'React 18', sub: 'Concurrent, RSC' },
+  { name: 'TypeScript', sub: 'Advanced Types' },
+  { name: 'RxJS', sub: 'Observables, Pipes' },
+  { name: 'Azure Cloud', sub: 'App Service, AKS' },
+  { name: 'Azure DevOps', sub: 'Pipelines, Repos' },
+  { name: 'Docker', sub: 'Multi-stage Builds' },
+  { name: 'Kubernetes', sub: 'Deployments, HPA' },
+  { name: 'CI/CD Pipeline', sub: 'GitHub Actions' },
+  { name: 'Microservices', sub: 'Service Mesh, gRPC' },
+  { name: 'JWT Auth', sub: 'OAuth2, OIDC' },
+  { name: 'Redis Cache', sub: 'Distributed, Pub/Sub' },
+  { name: 'SignalR', sub: 'Real-time WebSockets' },
+  { name: 'Unit Testing', sub: 'xUnit, Moq' },
+  { name: 'Performance', sub: 'Profiling, Caching' },
+  { name: 'Prod Deployment', sub: 'Blue-Green, Canary' }
+];
+
+let progress = JSON.parse(localStorage.getItem('blueprint-progress') || '{}');
+
+function renderTracker() {
+  const grid = document.getElementById('trackerGrid');
+  grid.innerHTML = '';
+  topics.forEach((t, i) => {
+    const done = !!progress[i];
+    const div = document.createElement('div');
+    div.className = 'tracker-item' + (done ? ' done' : '');
+    div.innerHTML = `
+      <div class="tracker-check">${done ? '<i class="fas fa-check"></i>' : ''}</div>
+      <div class="tracker-name">${t.name}</div>
+      <div class="tracker-sub">${t.sub}</div>
+    `;
+    div.onclick = () => {
+      progress[i] = !progress[i];
+      localStorage.setItem('blueprint-progress', JSON.stringify(progress));
+      renderTracker();
+      updateProgress();
+    };
+    grid.appendChild(div);
+  });
+}
+
+function updateProgress() {
+  const done = Object.values(progress).filter(Boolean).length;
+  const pct = Math.round((done / topics.length) * 100);
+  document.getElementById('completedCount').textContent = done;
+  document.getElementById('progressPct').textContent = pct + '%';
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function resetProgress() {
+  if (confirm('Reset all progress?')) {
+    progress = {};
+    localStorage.removeItem('blueprint-progress');
+    renderTracker();
+    updateProgress();
+  }
+}
+
+renderTracker();
+updateProgress();
+
+// ═══════════════════════════════════════
+// PRISM HIGHLIGHT
+// ═══════════════════════════════════════
+document.addEventListener('DOMContentLoaded', () => {
+  if (window.Prism) Prism.highlightAll();
+});
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      closeSidebar();
+    }
+  });
+});
+</script>
+</body>
+</html>
