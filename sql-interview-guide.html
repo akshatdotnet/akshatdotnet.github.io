@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Top 20 SQL Interview Questions</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --bg: #0b0f1a;
+    --surface: #111828;
+    --card: #151d2e;
+    --border: #1e2d45;
+    --accent: #00d4ff;
+    --accent2: #ff6b35;
+    --accent3: #a78bfa;
+    --green: #22d3a6;
+    --yellow: #fbbf24;
+    --text: #e2e8f0;
+    --muted: #64748b;
+    --code-bg: #0d1520;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    min-height: 100vh;
+    padding: 40px 20px 80px;
+    background-image:
+      radial-gradient(ellipse 60% 40% at 80% 10%, rgba(0,212,255,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 30% at 10% 80%, rgba(167,139,250,0.06) 0%, transparent 60%);
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 56px;
+    position: relative;
+  }
+
+  .badge {
+    display: inline-block;
+    background: linear-gradient(135deg, rgba(0,212,255,0.15), rgba(167,139,250,0.15));
+    border: 1px solid rgba(0,212,255,0.3);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    padding: 4px 14px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+  }
+
+  h1 {
+    font-family: 'Syne', sans-serif;
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, #fff 30%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .section {
+    max-width: 860px;
+    margin: 0 auto 48px;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-icon {
+    font-size: 18px;
+  }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .section-title.basic   { color: var(--green); }
+  .section-title.inter   { color: var(--yellow); }
+  .section-title.adv     { color: var(--accent3); }
+  .section-title.real    { color: var(--accent2); }
+
+  .q-block {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 3px solid transparent;
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    transition: border-color 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .q-block::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.015) 0%, transparent 100%);
+    pointer-events: none;
+  }
+
+  .q-block:hover { transform: translateX(3px); }
+
+  .q-block.basic  { border-left-color: var(--green); }
+  .q-block.inter  { border-left-color: var(--yellow); }
+  .q-block.adv    { border-left-color: var(--accent3); }
+  .q-block.real   { border-left-color: var(--accent2); }
+
+  .q-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.1em;
+  }
+
+  .q-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: #f1f5f9;
+    margin-bottom: 10px;
+  }
+
+  .q-answer {
+    font-size: 13.5px;
+    color: #94a3b8;
+    line-height: 1.7;
+  }
+
+  .q-answer strong {
+    color: #cbd5e1;
+    font-weight: 500;
+  }
+
+  pre {
+    background: var(--code-bg);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 14px 16px;
+    margin-top: 12px;
+    overflow-x: auto;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    line-height: 1.75;
+    color: #7dd3fc;
+  }
+
+  .kw  { color: #a78bfa; }
+  .fn  { color: #22d3a6; }
+  .str { color: #fbbf24; }
+  .cm  { color: #475569; font-style: italic; }
+  .num { color: #fb923c; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 12px;
+    font-size: 12.5px;
+  }
+
+  th {
+    background: rgba(0,212,255,0.08);
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    padding: 8px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+  }
+
+  td {
+    padding: 8px 12px;
+    border-bottom: 1px solid rgba(30,45,69,0.6);
+    color: #94a3b8;
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: rgba(255,255,255,0.015); }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .pill {
+    background: rgba(167,139,250,0.1);
+    border: 1px solid rgba(167,139,250,0.25);
+    color: var(--accent3);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 100px;
+  }
+
+  .tip {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    margin-top: 8px;
+  }
+  .tip-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent2);
+    margin-top: 7px;
+    flex-shrink: 0;
+  }
+
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 60px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="badge">SQL · INTERVIEW PREP</div>
+  <h1>Top 20 SQL Interview Questions</h1>
+  <p class="subtitle">Concise answers · Real-world examples · Best practices</p>
+</header>
+
+<!-- ====== BASIC ====== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🔹</span>
+    <span class="section-title basic">Basic SQL</span>
+  </div>
+
+  <div class="q-block basic">
+    <div class="q-num">Q01</div>
+    <div class="q-title">What is the difference between WHERE and HAVING?</div>
+    <div class="q-answer">
+      <strong>WHERE</strong> filters rows <em>before</em> grouping. <strong>HAVING</strong> filters <em>after</em> GROUP BY.<br/>
+      <em>Example:</em> Find departments where avg salary &gt; 60k.
+      <pre><span class="kw">SELECT</span> Department, <span class="fn">AVG</span>(Salary)
+<span class="kw">FROM</span> Employees
+<span class="kw">WHERE</span> Status = <span class="str">'Active'</span>          <span class="cm">-- rows first</span>
+<span class="kw">GROUP BY</span> Department
+<span class="kw">HAVING</span> <span class="fn">AVG</span>(Salary) &gt; <span class="num">60000</span>;   <span class="cm">-- groups second</span></pre>
+    </div>
+  </div>
+
+  <div class="q-block basic">
+    <div class="q-num">Q02</div>
+    <div class="q-title">What are the types of JOINs in SQL?</div>
+    <div class="q-answer">
+      <table>
+        <tr><th>JOIN Type</th><th>Returns</th></tr>
+        <tr><td>INNER JOIN</td><td>Only matching rows from both tables</td></tr>
+        <tr><td>LEFT JOIN</td><td>All left rows + matched right rows</td></tr>
+        <tr><td>RIGHT JOIN</td><td>All right rows + matched left rows</td></tr>
+        <tr><td>FULL OUTER JOIN</td><td>All rows from both sides</td></tr>
+        <tr><td>CROSS JOIN</td><td>Cartesian product of both tables</td></tr>
+        <tr><td>SELF JOIN</td><td>Table joined with itself</td></tr>
+      </table>
+      <pre><span class="cm">-- Real-world: employees with their managers</span>
+<span class="kw">SELECT</span> e.Name, m.Name <span class="kw">AS</span> Manager
+<span class="kw">FROM</span> Employees e
+<span class="kw">LEFT JOIN</span> Employees m <span class="kw">ON</span> e.ManagerId = m.Id;</pre>
+    </div>
+  </div>
+
+  <div class="q-block basic">
+    <div class="q-num">Q03</div>
+    <div class="q-title">How do you find the second highest salary?</div>
+    <div class="q-answer">
+      Use a subquery to exclude the max, then find the next max.
+      <pre><span class="kw">SELECT</span> <span class="fn">MAX</span>(Salary) <span class="kw">AS</span> SecondHighest
+<span class="kw">FROM</span> Employees
+<span class="kw">WHERE</span> Salary &lt; (<span class="kw">SELECT</span> <span class="fn">MAX</span>(Salary) <span class="kw">FROM</span> Employees);
+
+<span class="cm">-- Best Practice: Use DENSE_RANK for Nth salary</span>
+<span class="kw">SELECT</span> Salary <span class="kw">FROM</span> (
+  <span class="kw">SELECT</span> Salary, <span class="fn">DENSE_RANK</span>() <span class="kw">OVER</span> (<span class="kw">ORDER BY</span> Salary <span class="kw">DESC</span>) <span class="kw">AS</span> rnk
+  <span class="kw">FROM</span> Employees
+) <span class="kw">AS</span> t <span class="kw">WHERE</span> rnk = <span class="num">2</span>;</pre>
+    </div>
+  </div>
+
+  <div class="q-block basic">
+    <div class="q-num">Q04</div>
+    <div class="q-title">Difference between DELETE, TRUNCATE, and DROP?</div>
+    <div class="q-answer">
+      <div class="tip"><span class="tip-dot"></span><span><strong>DELETE</strong> — removes specific rows, supports WHERE, can rollback. Slow on large tables.</span></div>
+      <div class="tip"><span class="tip-dot"></span><span><strong>TRUNCATE</strong> — removes all rows instantly, no WHERE, no rollback (in most DBs), resets identity.</span></div>
+      <div class="tip"><span class="tip-dot"></span><span><strong>DROP</strong> — removes the entire table structure + data permanently.</span></div>
+      <pre><span class="kw">DELETE FROM</span> Logs <span class="kw">WHERE</span> CreatedAt &lt; <span class="str">'2023-01-01'</span>;
+<span class="kw">TRUNCATE TABLE</span> TempStaging;
+<span class="kw">DROP TABLE</span> OldArchive;</pre>
+    </div>
+  </div>
+
+  <div class="q-block basic">
+    <div class="q-num">Q05</div>
+    <div class="q-title">What are aggregate functions in SQL?</div>
+    <div class="q-answer">
+      Functions that operate on a group of rows and return a single value.
+      <div class="pill-row">
+        <span class="pill">SUM()</span><span class="pill">COUNT()</span><span class="pill">AVG()</span><span class="pill">MAX()</span><span class="pill">MIN()</span>
+      </div>
+      <pre><span class="kw">SELECT</span> Department,
+       <span class="fn">COUNT</span>(*) <span class="kw">AS</span> Headcount,
+       <span class="fn">AVG</span>(Salary) <span class="kw">AS</span> AvgSal,
+       <span class="fn">MAX</span>(Salary) <span class="kw">AS</span> TopSal
+<span class="kw">FROM</span> Employees
+<span class="kw">GROUP BY</span> Department;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- ====== INTERMEDIATE ====== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🔸</span>
+    <span class="section-title inter">Intermediate SQL</span>
+  </div>
+
+  <div class="q-block inter">
+    <div class="q-num">Q06</div>
+    <div class="q-title">What is a subquery? Give an example.</div>
+    <div class="q-answer">
+      A query nested inside another query. Used for filtering, derived tables, or scalar values.
+      <pre><span class="cm">-- Find employees earning above average</span>
+<span class="kw">SELECT</span> Name, Salary
+<span class="kw">FROM</span> Employees
+<span class="kw">WHERE</span> Salary &gt; (<span class="kw">SELECT</span> <span class="fn">AVG</span>(Salary) <span class="kw">FROM</span> Employees);</pre>
+    </div>
+  </div>
+
+  <div class="q-block inter">
+    <div class="q-num">Q07</div>
+    <div class="q-title">How to find duplicate rows based on a column?</div>
+    <div class="q-answer">
+      Group by the column and filter groups with count &gt; 1.
+      <pre><span class="kw">SELECT</span> Email, <span class="fn">COUNT</span>(*) <span class="kw">AS</span> cnt
+<span class="kw">FROM</span> Users
+<span class="kw">GROUP BY</span> Email
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) &gt; <span class="num">1</span>;
+
+<span class="cm">-- To delete duplicates, keep only one with ROW_NUMBER()</span></pre>
+    </div>
+  </div>
+
+  <div class="q-block inter">
+    <div class="q-num">Q08</div>
+    <div class="q-title">How do indexes work in SQL?</div>
+    <div class="q-answer">
+      An index creates a data structure (B-Tree) allowing the DB engine to find rows without full-table scans.<br/><br/>
+      <strong>✅ Pros:</strong> Faster SELECT / WHERE / JOIN<br/>
+      <strong>⚠️ Cons:</strong> Slower INSERT/UPDATE, extra storage
+      <pre><span class="cm">-- Create index on frequently filtered column</span>
+<span class="kw">CREATE INDEX</span> idx_email <span class="kw">ON</span> Users(Email);
+
+<span class="cm">-- Composite index for multi-column queries</span>
+<span class="kw">CREATE INDEX</span> idx_dept_sal <span class="kw">ON</span> Employees(Department, Salary);</pre>
+    </div>
+  </div>
+
+  <div class="q-block inter">
+    <div class="q-num">Q09</div>
+    <div class="q-title">What is normalization?</div>
+    <div class="q-answer">
+      Organizing tables to reduce data redundancy and improve data integrity.
+      <table>
+        <tr><th>Normal Form</th><th>Rule</th></tr>
+        <tr><td>1NF</td><td>Atomic values, no repeating groups</td></tr>
+        <tr><td>2NF</td><td>1NF + no partial dependencies</td></tr>
+        <tr><td>3NF</td><td>2NF + no transitive dependencies</td></tr>
+        <tr><td>BCNF</td><td>Every determinant is a candidate key</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ====== ADVANCED ====== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🔷</span>
+    <span class="section-title adv">Advanced SQL</span>
+  </div>
+
+  <div class="q-block adv">
+    <div class="q-num">Q10</div>
+    <div class="q-title">What is a CTE (Common Table Expression)?</div>
+    <div class="q-answer">
+      A named temporary result set scoped to a single query. Improves readability over nested subqueries.
+      <pre><span class="kw">WITH</span> ITStaff <span class="kw">AS</span> (
+  <span class="kw">SELECT</span> * <span class="kw">FROM</span> Employees <span class="kw">WHERE</span> Department = <span class="str">'IT'</span>
+)
+<span class="kw">SELECT</span> Name, Salary
+<span class="kw">FROM</span> ITStaff
+<span class="kw">WHERE</span> Salary &gt; <span class="num">70000</span>;</pre>
+    </div>
+  </div>
+
+  <div class="q-block adv">
+    <div class="q-num">Q11</div>
+    <div class="q-title">What is a window function?</div>
+    <div class="q-answer">
+      Performs a calculation over a set of rows <em>related to the current row</em> without collapsing them into groups.
+      <pre><span class="cm">-- Running total of sales per region</span>
+<span class="kw">SELECT</span> Region, SaleDate, Amount,
+  <span class="fn">SUM</span>(Amount) <span class="kw">OVER</span> (<span class="kw">PARTITION BY</span> Region <span class="kw">ORDER BY</span> SaleDate) <span class="kw">AS</span> RunningTotal
+<span class="kw">FROM</span> Sales;</pre>
+    </div>
+  </div>
+
+  <div class="q-block adv">
+    <div class="q-num">Q12</div>
+    <div class="q-title">Difference between RANK(), DENSE_RANK(), ROW_NUMBER()?</div>
+    <div class="q-answer">
+      <table>
+        <tr><th>Function</th><th>Ties?</th><th>Skips numbers?</th></tr>
+        <tr><td>ROW_NUMBER()</td><td>Unique per row</td><td>N/A</td></tr>
+        <tr><td>RANK()</td><td>Same rank for ties</td><td>Yes (gaps)</td></tr>
+        <tr><td>DENSE_RANK()</td><td>Same rank for ties</td><td>No (no gaps)</td></tr>
+      </table>
+      <pre><span class="cm">-- Salaries: 90k, 90k, 80k</span>
+<span class="cm">-- ROW_NUMBER → 1, 2, 3</span>
+<span class="cm">-- RANK       → 1, 1, 3  (skips 2)</span>
+<span class="cm">-- DENSE_RANK → 1, 1, 2  (no skip)</span></pre>
+    </div>
+  </div>
+
+  <div class="q-block adv">
+    <div class="q-num">Q13</div>
+    <div class="q-title">What is a stored procedure?</div>
+    <div class="q-answer">
+      Precompiled SQL logic saved in the DB. Improves performance and reuse.
+      <pre><span class="kw">CREATE PROCEDURE</span> <span class="fn">GetEmployee</span> @Id <span class="kw">INT</span>
+<span class="kw">AS</span>
+<span class="kw">BEGIN</span>
+  <span class="kw">SELECT</span> * <span class="kw">FROM</span> Employees <span class="kw">WHERE</span> Id = @Id
+<span class="kw">END</span>
+
+<span class="cm">-- Call it:</span>
+<span class="kw">EXEC</span> <span class="fn">GetEmployee</span> @Id = <span class="num">101</span>;</pre>
+    </div>
+  </div>
+
+  <div class="q-block adv">
+    <div class="q-num">Q14</div>
+    <div class="q-title">What are transactions in SQL?</div>
+    <div class="q-answer">
+      A sequence of operations treated as a single unit — either all succeed or all fail.
+      <pre><span class="kw">BEGIN TRANSACTION</span>;
+  <span class="kw">UPDATE</span> Accounts <span class="kw">SET</span> Balance -= <span class="num">500</span> <span class="kw">WHERE</span> Id = <span class="num">1</span>;
+  <span class="kw">UPDATE</span> Accounts <span class="kw">SET</span> Balance += <span class="num">500</span> <span class="kw">WHERE</span> Id = <span class="num">2</span>;
+<span class="kw">IF</span> @@ERROR &lt;&gt; <span class="num">0</span>
+    <span class="kw">ROLLBACK</span>;
+<span class="kw">ELSE</span>
+    <span class="kw">COMMIT</span>;</pre>
+    </div>
+  </div>
+</div>
+
+<!-- ====== REAL-WORLD ====== -->
+<div class="section">
+  <div class="section-header">
+    <span class="section-icon">🔴</span>
+    <span class="section-title real">Real-World Scenarios</span>
+  </div>
+
+  <div class="q-block real">
+    <div class="q-num">Q15</div>
+    <div class="q-title">How to update a column using values from another table?</div>
+    <div class="q-answer">
+      Join the target table with a source table and set values from source.
+      <pre><span class="kw">UPDATE</span> e
+<span class="kw">SET</span> e.Salary = n.Salary
+<span class="kw">FROM</span> Employees e
+<span class="kw">JOIN</span> NewSalary n <span class="kw">ON</span> e.Id = n.Id;
+
+<span class="cm">-- Best practice: test with SELECT first before UPDATE</span></pre>
+    </div>
+  </div>
+
+  <div class="q-block real">
+    <div class="q-num">Q16</div>
+    <div class="q-title">Find rows in one table but NOT in another?</div>
+    <div class="q-answer">
+      Use NOT EXISTS (better performance) or LEFT JOIN … WHERE NULL.
+      <pre><span class="cm">-- Option 1: NOT EXISTS (preferred)</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> Orders o
+<span class="kw">WHERE NOT EXISTS</span> (
+  <span class="kw">SELECT</span> <span class="num">1</span> <span class="kw">FROM</span> Invoices i <span class="kw">WHERE</span> o.Id = i.OrderId
+);
+
+<span class="cm">-- Option 2: LEFT JOIN anti-pattern</span>
+<span class="kw">SELECT</span> o.* <span class="kw">FROM</span> Orders o
+<span class="kw">LEFT JOIN</span> Invoices i <span class="kw">ON</span> o.Id = i.OrderId
+<span class="kw">WHERE</span> i.OrderId <span class="kw">IS NULL</span>;</pre>
+    </div>
+  </div>
+
+  <div class="q-block real">
+    <div class="q-num">Q17</div>
+    <div class="q-title">What is UNION vs UNION ALL?</div>
+    <div class="q-answer">
+      <strong>UNION</strong> removes duplicates (slower). <strong>UNION ALL</strong> keeps all rows (faster).
+      <pre><span class="cm">-- Use UNION ALL when duplicates are acceptable (faster)</span>
+<span class="kw">SELECT</span> Name <span class="kw">FROM</span> CurrentEmployees
+<span class="kw">UNION ALL</span>
+<span class="kw">SELECT</span> Name <span class="kw">FROM</span> FormerEmployees;
+
+<span class="cm">-- Use UNION when distinct results are required</span></pre>
+    </div>
+  </div>
+
+  <div class="q-block real">
+    <div class="q-num">Q18</div>
+    <div class="q-title">How to pivot data in SQL Server?</div>
+    <div class="q-answer">
+      Convert rows to columns using PIVOT or CASE + GROUP BY.
+      <pre><span class="cm">-- CASE-based pivot (portable across DBs)</span>
+<span class="kw">SELECT</span> Department,
+  <span class="fn">SUM</span>(<span class="kw">CASE WHEN</span> Quarter=<span class="str">'Q1'</span> <span class="kw">THEN</span> Revenue <span class="kw">END</span>) <span class="kw">AS</span> Q1,
+  <span class="fn">SUM</span>(<span class="kw">CASE WHEN</span> Quarter=<span class="str">'Q2'</span> <span class="kw">THEN</span> Revenue <span class="kw">END</span>) <span class="kw">AS</span> Q2
+<span class="kw">FROM</span> Sales
+<span class="kw">GROUP BY</span> Department;</pre>
+    </div>
+  </div>
+
+  <div class="q-block real">
+    <div class="q-num">Q19</div>
+    <div class="q-title">Explain ACID properties.</div>
+    <div class="q-answer">
+      Guarantees for reliable database transactions:
+      <table>
+        <tr><th>Property</th><th>Meaning</th></tr>
+        <tr><td>Atomicity</td><td>All or nothing — transaction fully completes or fully rolls back</td></tr>
+        <tr><td>Consistency</td><td>Data remains valid before and after the transaction</td></tr>
+        <tr><td>Isolation</td><td>Concurrent transactions don't interfere with each other</td></tr>
+        <tr><td>Durability</td><td>Committed data persists even after a system crash</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="q-block real">
+    <div class="q-num">Q20</div>
+    <div class="q-title">What is a view? When should you use it?</div>
+    <div class="q-answer">
+      A virtual table based on a saved SELECT query. Use for security, simplification, and reuse.
+      <pre><span class="cm">-- Create view for HR-safe employee data</span>
+<span class="kw">CREATE VIEW</span> EmployeeSummary <span class="kw">AS</span>
+<span class="kw">SELECT</span> Id, Name, Department, <span class="fn">YEAR</span>(JoinDate) <span class="kw">AS</span> JoinYear
+<span class="kw">FROM</span> Employees;
+
+<span class="cm">-- Query like a table</span>
+<span class="kw">SELECT</span> * <span class="kw">FROM</span> EmployeeSummary <span class="kw">WHERE</span> Department = <span class="str">'Finance'</span>;</pre>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  ⚡ SQL Interview Guide · 20 Questions · Best Practices Edition
+</footer>
+
+</body>
+</html>
